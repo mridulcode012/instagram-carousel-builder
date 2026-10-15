@@ -364,7 +364,16 @@ def run(cdir):
         if bpal and v.lower() not in bpal:
             add("colour_off_brand", "warn", f"{k} {v} is not in the {'theme or brand' if free else 'brand'} palette.")
     theme = vision.get("theme") or resolved.get("theme")
-    if root and theme and not any(os.path.isfile(os.path.join(r, "themes", theme, "theme.json")) for r in (root, ASSETS)) and theme != "editorial":
+    def theme_found(name):
+        d = os.path.abspath(cdir)
+        while True:
+            if os.path.isfile(os.path.join(d, "themes", name, "theme.json")):
+                return True
+            if os.path.dirname(d) == d:
+                break
+            d = os.path.dirname(d)
+        return any(os.path.isfile(os.path.join(r, "themes", name, "theme.json")) for r in (root, ASSETS))
+    if root and theme and not theme_found(theme) and theme != "editorial":
         add("unknown_theme", "error", f"Theme '{theme}' isn't in themes/.")
     if vision.get("status") != "locked":
         add("vision_not_locked", "warn", "vision.json is not locked; the designer hasn't signed off the look.")

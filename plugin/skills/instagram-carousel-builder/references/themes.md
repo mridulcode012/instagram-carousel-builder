@@ -72,26 +72,51 @@ Brand line as **Design**: how good the look is for Instagram.
 
 ## 3. Adding a theme from template photos
 
-Use this when someone hands over screenshots of carousels or templates they want as a house style.
+Use this when someone hands over screenshots of carousels or templates and wants that look as a
+theme (not a one-off tweak; for one post, the closest theme plus `vision.json` is enough). It's a
+bigger job than a carousel: expect 2-4 render-and-look rounds.
+
+**First, ask which kind** (one question): keep it **on-brand** (map the photos onto the brand palette and
+fonts; lint enforces them) or make it **free** (`"brand": "free"`: the photos' own colours and fonts; the
+judge scores it on Instagram craft). Default to on-brand unless the person says the look itself matters.
 
 1. **Look at every photo** and write down, per photo:
    - grid: margins, alignment, where the headline sits, how many text levels
-   - type: which role is serif/sans/mono, case, italic, weight, relative sizes (cover vs body)
-   - emphasis: highlight block, underline, colour, italic, or none
-   - colour: background, text, accent, which slides are full colour. **Map each one onto the
-     nearest brand.json colour**; note any photo colour with no brand equivalent
-   - devices: rules, numbers, icons, frames, cards, photos, patterns, the progress indicator
-   - CTA/button style, kicker/label style, footer/handle placement
-2. **Map the photo's slides onto our slide types** (cover, stake, point, stat, steps, quote, recap,
-   cta, image). If a layout has no equivalent (e.g. a split image/text slide), note it. It needs
-   a new slide type in `render.py`, not just CSS.
-3. **Create `assets/themes/<name>/`** with `theme.json` (section 4), `theme.css` (section 5) and, for the
-   record, `refs/` with the photos and `notes.md` with the section 1 notes.
-4. **Preview it** (maintainers, working in the repo): `python3 <skill-dir>/scripts/theme_preview.py <name>` writes
-   `assets/themes/<name>/preview.png`. Put it next to the photos and compare. Iterate on `theme.css`
-   until it reads as the same system, not just the same colours.
-5. **Note what you couldn't match** in `notes.md` and tell the person: off-brand colours, fonts we don't
-   have, layouts that need a new slide type, photography (the brand bans stock photos).
+   - type: serif/sans/mono per role, case, italic, weight, width (condensed/wide), relative sizes
+   - emphasis: highlight block, underline, colour, italic, script word, or none
+   - colour: background, text, accent, which slides are full colour; sample the hexes
+   - devices: rules, frames, cards, stickers, patterns, the progress indicator; CTA/button and footer style
+2. **Fonts: match each role to the closest Google Font**, by letterform, not by mood (a Helvetica-Black
+   product poster is Inter Tight 800-900, a narrow high-contrast italic is Instrument Serif Italic, a
+   typewriter zine is Courier Prime / Special Elite). Check side by side with the photo after the first
+   render. On-brand themes use the brand's three fonts and only borrow case, weight and width.
+3. **Colours**: on-brand, map each onto the nearest `brand.json` colour and note any with no equivalent;
+   free, list every hex in `theme.json → palette` (lint checks against it). Every text pair must reach
+   4.5:1; the renderer measures it.
+4. **Map the photo's slides onto our slide types** (cover, stake, point, stat, steps, quote, recap, cta,
+   image). A layout with no equivalent (e.g. a split photo/text slide) needs a new slide type in
+   `render.py`, not just CSS; say so.
+5. **Apply the house rules over the photos.** Drop logos and brand lockups, slide numbers and giant
+   ghost numbers, kickers or labels above the headline, and faded background words that sit behind copy.
+   Rebuild photos of people or stock objects as the theme's visuals (`references/visuals.md`), restyled
+   through the `--ui-*` variables and theme CSS. Raise every text size to 34px and every weight to 400+.
+6. **Create the theme in the working folder: `themes/<name>/`** with `theme.json` (section 4),
+   `theme.css` (section 5), `refs/` with the photos and `notes.md` with your notes. The renderer finds a
+   project's `themes/` before the bundled ones, so it's usable straight away. A theme can `"extends"`
+   an existing one and override only what differs.
+7. **Test it on a real post**: copy `examples/claude-code-mods` and `examples/ai-pilots-stall` into
+   `carousels/`, set the theme, render, and lint to 0 errors. Then look at every slide at full size for
+   what lint can't see: tall script or highlight words crashing into the line above (give them their own
+   line box), empty bands under small visuals (scale visuals to 40-60% of the slide), commands wrapping
+   inside windows, decoration colliding with a visual (hide it under `.has-visual`).
+8. **Preview it**: `python3 <skill-dir>/scripts/theme_preview.py <name>` (from the working folder) writes
+   `themes/<name>/preview.png`. Put it next to the photos: it should read as the same system, not just
+   the same colours. Then run the check workflow on one test post; a free theme should score 4+ on Design.
+9. **Note what you couldn't match** in `notes.md` and tell the person.
+
+**Sharing a new theme with everyone**: a theme in a working folder is only on that machine. To ship it
+to the team, a maintainer moves it into the skill's `assets/themes/` in the repo, adds it to the table
+in section 2, bumps the plugin version and releases (README, "Releasing a change").
 
 ## 4. theme.json fields
 

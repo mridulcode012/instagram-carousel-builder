@@ -779,18 +779,39 @@ def slide_html(s, i, total, v, brand, carousel_dir):
             f'<div class="frame">{top}<div class="content">{content_html(s, v, carousel_dir)}</div>{foot}</div>{prog}</section>')
 
 
+def theme_dirs(start, root):
+    """Where themes are looked up, first match wins: a themes/ folder in the working project (walking up from
+    the carousel), then the brand root's themes/, then the skill's bundled assets/themes."""
+    out, d = [], os.path.abspath(start or ".")
+    while True:
+        if os.path.isdir(os.path.join(d, "themes")):
+            out.append(os.path.join(d, "themes"))
+        parent = os.path.dirname(d)
+        if parent == d:
+            break
+        d = parent
+    for extra in (os.path.join(root, "themes"), os.path.join(ASSETS, "themes")):
+        if extra not in out:
+            out.append(extra)
+    return out
+
+
+THEME_START = None  # set by main() to the carousel folder, so project themes are found
+
+
 def load_theme(root, name, _seen=None):
     """themes/<name>/theme.json (+ theme.css). Unknown theme -> error, so a typo can't silently fall back.
     "extends": "<parent>" reuses the parent's CSS and defaults (own CSS loads after, own defaults win);
     variants, fonts, palette and the brand mode are the child's own."""
-    d = os.path.join(root, "themes", name or "editorial")
-    if not os.path.isfile(os.path.join(d, "theme.json")):   # a project kit without its own themes uses the bundled ones
-        d = os.path.join(ASSETS, "themes", name or "editorial")
+    dirs = theme_dirs(THEME_START, root)
+    d = next((os.path.join(t, name or "editorial") for t in dirs if os.path.isfile(os.path.join(t, name or "editorial", "theme.json"))),
+             os.path.join(dirs[-1], name or "editorial"))
     meta = load_json(os.path.join(d, "theme.json"))
     if meta is None:
         if (name or "editorial") == "editorial":
             return {"name": "editorial", "defaults": {}}, ""
-        avail = sorted(x for x in os.listdir(os.path.join(root, "themes"))) if os.path.isdir(os.path.join(root, "themes")) else []
+        avail = sorted({x for t in dirs if os.path.isdir(t) for x in os.listdir(t) if not x.startswith(("_", "."))
+                        and os.path.isfile(os.path.join(t, x, "theme.json"))})
         raise SystemExit(f"Theme '{name}' not found in themes/. Available: {', '.join(avail) or 'none'}")
     css = ""
     if os.path.isfile(os.path.join(d, meta.get("css", "theme.css"))):
@@ -1124,6 +1145,8 @@ def main():
     args = ap.parse_args()
 
     cdir = os.path.abspath(args.carousel)
+    global THEME_START
+    THEME_START = cdir
     root = find_root(cdir)
     if not root:
         sys.exit("No brand kit found: neither a brand/brand.json above this folder nor the skill's assets/brand/brand.json.")

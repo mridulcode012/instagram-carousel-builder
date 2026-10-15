@@ -1,6 +1,6 @@
 {
   "name": "instagram-carousel-builder",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Make and check BuildableLabs Instagram carousels: brief, theme, copy, visuals, caption, 1080x1350 slides, a WhatsApp-safe PDF, and a shares-first score with fixes.",
   "author": { "name": "BuildableLabs" },
   "keywords": ["instagram", "carousel", "content", "social"]

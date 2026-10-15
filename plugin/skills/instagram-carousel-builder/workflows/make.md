@@ -20,6 +20,7 @@ stopped. Don't rely on conversation memory.
   examples/claude-code-mods/     a finished post (PAS, poster theme) to copy the shape of
   examples/ai-pilots-stall/      a finished post (PPP, cards theme)
 <working folder>/                (where the person runs Claude; created as needed)
+  themes/<name>/                 new themes drafted from reference photos (found before the bundled ones)
   visions/<name>.json            locked visions (reuse them; that is how questions shrink)
   carousels/<slug>/
     brief.md              the approved brief + evidence (numbers must trace to this)

@@ -2,7 +2,7 @@
 """
 theme_preview.py - render the sample script in every theme (and its variants) and save
 assets/themes/<name>/preview.png, so themes can be compared side by side and picked by eye.
-A maintainer tool: it writes into the skill's own assets, so run it in the repo, not an installed plugin.
+Previews go next to the theme: a project's own themes/<name>/ (new themes) or, in the repo, the bundled assets/themes.
 
 Usage
   python3 theme_preview.py                 # every theme
@@ -29,12 +29,14 @@ def main():
         sys.exit("No brand kit found (assets/brand/brand.json is missing).")
     if any(a in ("-h", "--help") for a in sys.argv[1:]):
         print(__doc__.strip()); return
-    tdir = os.path.join(root, "themes")
-    if not os.path.isdir(tdir):
-        tdir = os.path.join(render.ASSETS, "themes")
+    # a project's own themes/ (where new themes are drafted) wins; otherwise the skill's bundled themes (maintainers)
+    tdir = next((t for t in render.theme_dirs(os.getcwd(), root) if os.path.isdir(t)), os.path.join(render.ASSETS, "themes"))
+    render.THEME_START = os.getcwd()
     names = sys.argv[1:] or sorted(d for d in os.listdir(tdir)
                                     if not d.startswith(("_", ".")) and os.path.isfile(os.path.join(tdir, d, "theme.json")))
     sample = os.path.join(tdir, "_sample")
+    if not os.path.isfile(os.path.join(sample, "script.json")):
+        sample = os.path.join(render.ASSETS, "themes", "_sample")
     binary = render.find_chrome()
     if not binary:
         sys.exit("Chrome/Chromium not found.")
@@ -43,7 +45,7 @@ def main():
         if meta is None:
             print(f"skip {name}: no theme.json in {tdir}/{name}"); continue
         rows = [(None, "default")] + [(k, k) for k in (meta.get("variants") or {})]
-        work = tempfile.mkdtemp(prefix=f"preview-{name}-")
+        work = tempfile.mkdtemp(prefix=f".preview-{name}-", dir=os.getcwd())  # inside the project, so its themes/ is found
         try:
             row_html = []
             for variant, label in rows:
