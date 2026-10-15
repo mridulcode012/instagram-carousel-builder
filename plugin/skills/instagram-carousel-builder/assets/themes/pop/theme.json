@@ -1,0 +1,74 @@
+{
+  "name": "pop",
+  "description": "Bold retro-pop posters in the Alloy palette: flat brand-blue slides alternating with off-white ones, chunky tight Manrope ExtraBold headlines, one word on a black bar, and big flat shapes (a corner circle, sunburst rays, concentric wavy rings, bracket lines, a thick black frame) with a big corner numeral as the page counter.",
+  "source": "themes/pop/refs/ref-8.png (retro-pop Instagram template set, orange/cream/black), translated into brand/brand.json, October 2026",
+  "best_for": [
+    "punchy listicles and how-tos",
+    "event, launch and announcement posts",
+    "motivational or conviction one-liners",
+    "posts that need to stop the scroll more than look editorial"
+  ],
+  "css": "theme.css",
+  "fill_types": [
+    "cover",
+    "stat",
+    "quote",
+    "cta"
+  ],
+  "defaults": {
+    "mode": "light",
+    "colors": {
+      "bg": "#F5F6F8",
+      "text": "#0A0B0E",
+      "muted": "#565D6E",
+      "accent": "#0B3FDE",
+      "fill": "#0B3FDE",
+      "on_fill": "#FFFFFF"
+    },
+    "type": {
+      "display": "Manrope",
+      "body": "Manrope",
+      "mono": "JetBrains Mono",
+      "display_case": "none",
+      "scale": {
+        "cover": 124,
+        "headline": 84,
+        "body": 38,
+        "label": 34,
+        "number": 250
+      }
+    },
+    "layout": {
+      "align": "left",
+      "margin": 96,
+      "texture": "none",
+      "counter": false,
+      "handle": true,
+      "progress": true,
+      "swipe_cue": true,
+      "cta_fill": true
+    }
+  },
+  "variants": {
+    "ink": {
+      "mode": "dark",
+      "colors": {
+        "bg": "#0A0B0E",
+        "text": "#F5F6F8",
+        "muted": "#B8BECC",
+        "accent": "#6789EC",
+        "fill": "#0B3FDE",
+        "on_fill": "#FFFFFF"
+      }
+    }
+  },
+  "options": {
+    "variant": [
+      "(light default: blue + off-white)",
+      "ink (blue + near-black, closer to the brand's dark substrate)"
+    ],
+    "texture": [
+      "none (the shapes are the texture)"
+    ]
+  }
+}

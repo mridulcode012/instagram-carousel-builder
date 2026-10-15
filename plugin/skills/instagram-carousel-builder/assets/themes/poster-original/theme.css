@@ -1,0 +1,166 @@
+/* poster-original: the agency poster grid in the templates' real colours and type feel.
+   Loads after themes/poster/theme.css and only overrides it.
+   Electric blue #1F55E8 (deep navy vignette) alternates with studio grey #CFCFD1.
+   Archivo (variable width): condensed 62% caps on blue slides, wide 125% caps on grey slides.
+   Mrs Saint Delafield: the one script accent word. Neon yellow / magenta / lime stickers.
+   Every hex here is listed in theme.json -> palette. */
+
+/* ------------------------------------------------------------ slide colour system */
+.slide {
+  --hl: 62%;                       /* headline width: condensed on blue */
+  --hl-track: -.004em;
+  --hl-scale: 1;
+  --ghost: color-mix(in srgb, #FFFFFF 11%, var(--bg));
+  --edge: #0B2A9C;
+  --swoop: #0A1E78;
+  --bar: #111214; --on-bar: #FFFFFF;
+  --btn: #FFFFFF; --on-btn: #1F55E8;
+  --sticker: #F1E80E; --on-sticker: #111214;
+  background: radial-gradient(ellipse 130% 95% at 50% 24%, var(--bg) 38%, var(--edge) 100%);
+}
+
+/* black poster (fill: true) */
+.slide.fill {
+  --edge: #111214; --ghost: color-mix(in srgb, #FFFFFF 9%, #111214); --swoop: #35363C;
+  --bar: #FFFFFF; --on-bar: #111214; --btn: #F1E80E; --on-btn: #111214; --accent: #F1E80E;
+}
+
+/* grey slides (even): flat studio grey, ink type set WIDE, ink script */
+.slide:not(.fill):is([data-n="2"],[data-n="4"],[data-n="6"],[data-n="8"],[data-n="10"],[data-n="12"],
+  [data-n="14"],[data-n="16"],[data-n="18"],[data-n="20"],[data-n="22"],[data-n="24"]) {
+  --bg: #CFCFD1; --text: #111214; --muted: #3E3E44; --accent: #111214;
+  --line: color-mix(in srgb, #111214 18%, #CFCFD1);
+  --ghost: #BCBCBF;
+  --edge: color-mix(in srgb, #CFCFD1 72%, #9A9AA0);
+  --swoop: #9A9AA0;
+  --bar: #111214; --on-bar: #FFFFFF;
+  --btn: #1F55E8; --on-btn: #FFFFFF;
+  --hl: 125%; --hl-track: -.03em; --hl-scale: .7;
+  color: var(--text);
+}
+
+/* ------------------------------------------------------------ ghost word: wide Archivo, tone on tone */
+.slide::before {
+  font-family: var(--f-body); font-weight: 900; font-stretch: 125%; letter-spacing: -.04em;
+  font-size: 250px; line-height: .82; top: 58%;
+}
+
+/* ------------------------------------------------------------ swoop: navy calligraphy on blue */
+.decor { opacity: .9; }
+.t-steps .decor, .t-recap .decor { opacity: .5; }
+
+/* ------------------------------------------------------------ labels: Archivo, not mono */
+.top, .foot, .source, .list .ix, .pill, .slide::after { font-family: var(--f-body); }
+.top { font-weight: 700; font-stretch: 112%; letter-spacing: .07em; color: var(--muted); }
+.top .kicker { color: var(--text); font-weight: 800; }
+
+/* ------------------------------------------------------------ headlines */
+/* 28px of side room inside .content (text stays on the margin) so script swashes and visual shadows aren't clipped */
+.content { margin: 0 -28px; padding-left: 28px; padding-right: 28px; }
+.display {
+  font-family: var(--f-body); font-weight: 800; font-stretch: var(--hl); text-transform: uppercase;
+  letter-spacing: var(--hl-track); word-spacing: .02em; line-height: .9;
+}
+.h-cover { font-size: calc(var(--s-cover) * var(--hl-scale) * var(--fit)); line-height: .88; }
+.h { font-size: calc(var(--s-headline) * var(--hl-scale) * var(--fit)); }
+.h-sm { font-size: calc(var(--s-headline) * .56 * var(--fit)); letter-spacing: -.004em; line-height: .94; font-stretch: 75%; }
+.h-cta { font-size: calc(var(--s-headline) * var(--hl-scale) * 1.02 * var(--fit)); }
+.slide:not(.fill):is([data-n="2"],[data-n="4"],[data-n="6"],[data-n="8"],[data-n="10"],[data-n="12"],
+  [data-n="14"],[data-n="16"],[data-n="18"],[data-n="20"],[data-n="22"],[data-n="24"]) .display { line-height: .96; font-weight: 800; }
+
+/* script accent: Mrs Saint Delafield, as written, big enough to read in the grid */
+.display em, .quote em {
+  font-family: var(--f-display); font-style: normal; font-weight: 400; font-stretch: normal; text-transform: none;
+  letter-spacing: 0; word-spacing: 0; font-size: 1.32em; line-height: .5; color: var(--accent); padding: 0 .16em 0 .02em;
+}
+.slide:not(.fill):is([data-n="2"],[data-n="4"],[data-n="6"],[data-n="8"],[data-n="10"],[data-n="12"],
+  [data-n="14"],[data-n="16"],[data-n="18"],[data-n="20"],[data-n="22"],[data-n="24"]) .display em { font-size: 1.7em; }
+.body em, .sub em, .list em { font-family: var(--f-body); font-style: normal; font-weight: 800; color: var(--text); }
+
+/* cover sub-line: white tag, blue type (the refs' "Digitalize your brand" bar) */
+.t-cover .sub { font-family: var(--f-body); font-weight: 700; border-radius: 999px; padding: .14em .6em; color: var(--bg); }
+.slide.fill.t-cover .sub { color: #111214; }
+
+.body { font-family: var(--f-body); font-weight: 500; font-stretch: 100%; letter-spacing: -.005em; }
+.t-stake .body, .t-point .body { border-top-width: 3px; }
+
+/* ------------------------------------------------------------ stat */
+.num { font-family: var(--f-body); font-weight: 900; font-stretch: 62%; letter-spacing: -.01em; line-height: .82; }
+
+/* ------------------------------------------------------------ steps */
+.list li { font-family: var(--f-body); font-weight: 600; }
+.list .ix { font-weight: 800; font-stretch: 112%; color: var(--text); }
+
+/* recap: the refs' neon pill chips (yellow / magenta / lime / ink), ink type */
+.t-recap .list li {
+  border: none; border-radius: 999px; background: #F1E80E; color: #111214;
+  font-stretch: 112%; font-weight: 800; letter-spacing: -.01em; padding: calc(18px * var(--fit)) calc(38px * var(--fit));
+  box-shadow: 0 10px 24px rgba(17,18,20,.18);
+}
+.t-recap .list li:nth-child(4n+1) { background: #F1E80E; color: #111214; }
+.t-recap .list li:nth-child(4n+2) { background: #E040E8; color: #111214; }
+.t-recap .list li:nth-child(4n+3) { background: #63F23C; color: #111214; }
+.t-recap .list li:nth-child(4n)   { background: #111214; color: #FFFFFF; }
+.t-recap .list li:nth-child(n) .ix { color: inherit; }
+
+/* ------------------------------------------------------------ quote */
+.quote-mark { font-family: var(--f-display); font-size: 300px; line-height: .9; height: 150px; color: var(--sticker); margin-left: -6px; }
+.quote { font-family: var(--f-body); font-weight: 800; font-stretch: 62%; letter-spacing: -.004em; line-height: .92;
+  font-size: calc(var(--s-headline) * .86 * var(--fit)); }
+
+/* ------------------------------------------------------------ cta: rounded pill (ref-3's search bar) */
+.pill { border-radius: 999px; font-weight: 800; font-stretch: 112%; letter-spacing: .01em; text-transform: uppercase; padding: 26px 46px; }
+
+/* badge: neon-yellow round sticker */
+.slide::after {
+  border: none; background: var(--sticker); color: var(--on-sticker); font-weight: 800; font-stretch: 112%;
+  letter-spacing: .06em; font-size: 23px; box-shadow: 0 16px 34px rgba(17,18,20,.3);
+}
+
+/* ------------------------------------------------------------ footer: ref-3's black pill bar */
+.foot {
+  border-radius: 999px; margin: 0 -18px; padding: 15px 30px 15px 22px; font-weight: 600; font-stretch: 100%;
+  letter-spacing: .02em; text-transform: none; font-size: 22px; gap: 14px;
+}
+.foot > span:first-child { display: flex; align-items: center; gap: 12px; }
+.foot > span:first-child::before {      /* the url dot at the left of the bar */
+  content: ""; width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--on-bar); flex: none;
+}
+.foot .cue { text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+.progress { height: 6px; background: var(--sticker); }
+.slide:not(.fill):is([data-n="2"],[data-n="4"],[data-n="6"],[data-n="8"],[data-n="10"],[data-n="12"],
+  [data-n="14"],[data-n="16"],[data-n="18"],[data-n="20"],[data-n="22"],[data-n="24"]) .progress { background: #1F55E8; }
+
+/* ------------------------------------------------------------ slide visuals: ink screens, neon-yellow highlights */
+.visual {
+  font-family: var(--f-body);
+  --ui-bg: #111214; --ui-panel: #1C1D21; --ui-line: #35363C; --ui-text: #FFFFFF; --ui-dim: #9A9AA2;
+  --ui-accent: #F1E80E; --ui-fill: #F1E80E; --ui-on-fill: #111214;
+  --ui-shadow: 0 18px 26px rgba(6, 16, 70, .34);
+}
+.win, .hud, .dialog { border-radius: 14px; }
+.ln, .slot .key { font-family: var(--f-mono); }
+.ln-dim { color: #9A9AA2; }
+.win-bar { letter-spacing: .08em; font-weight: 700; }
+.toast { border-radius: 999px; border-color: #111214; font-stretch: 112%; font-weight: 800; letter-spacing: .06em; }
+.slot { border-radius: 14px; }
+.slot.on { color: var(--ui-on-fill); border-color: #111214; box-shadow: inset 0 0 0 6px rgba(17,18,20,.1), var(--ui-shadow); }
+.dl-btn { border-radius: 999px; }
+.fl-chip { border-radius: 999px; font-weight: 800; }
+.fl-via { border-radius: 14px; }
+.slots-cap { font-weight: 700; letter-spacing: .08em; }
+
+/* ------------------------------------------------------------ house-rule fixes (October 2026)
+   The script word is far taller than the caps around it. As an inline-block with its own line box it pushes the
+   neighbouring lines apart instead of crashing into them (gate G3: no overlaps). */
+.display em, .quote em { display: inline-block; line-height: 1.02; padding-top: .04em; vertical-align: -.06em; }
+.slide:not(.fill):is([data-n="2"],[data-n="4"],[data-n="6"],[data-n="8"],[data-n="10"],[data-n="12"],
+  [data-n="14"],[data-n="16"],[data-n="18"],[data-n="20"],[data-n="22"],[data-n="24"]) .display em { font-size: 1.5em; }
+/* the cover's tag carries the twist, so it reads at support-headline size */
+.t-cover .sub { font-size: calc(46px * var(--fit)); padding: .16em .7em; }
+/* slot numbers read as clutter; the caption balances so no word sits alone */
+.slot .key { display: none; }
+.slots-cap { text-wrap: balance; }
+/* blue slides: condensed caps leave room above, so the script needs less of its own line box */
+.slide:not(:is([data-n="2"],[data-n="4"],[data-n="6"],[data-n="8"],[data-n="10"],[data-n="12"],
+  [data-n="14"],[data-n="16"],[data-n="18"],[data-n="20"],[data-n="22"],[data-n="24"])) .display em { line-height: .74; vertical-align: .1em; margin-top: .16em; }

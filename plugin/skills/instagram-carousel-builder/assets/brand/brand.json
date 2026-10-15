@@ -1,0 +1,89 @@
+{
+  "name": "BuildableLabs",
+  "handle": "@buildablelabs",
+  "source": "Buildable Labs Brand Foundation, Version 01, July 2026 (Typography and Color sections are LOCKED). Full rules in brand/design-rules.md.",
+  "tagline": "Building AI Systems That Ship & Scale",
+  "look": "Execution-first AI studio, linear.app territory. Deep near-black substrate, brand blue for authority, chrome/silver greys for craft. Headlines in Instrument Serif italic, sentence case, with editorial gravity; one key word can sit on a solid blue block. Manrope for body and bold sans headlines; JetBrains Mono for uppercase labels, metadata and numbers-as-data. Generous space, thin dividers, square buttons. Calm conviction, never hype.",
+  "palette": {
+    "brand-blue": "#0B3FDE",
+    "blue-600": "#3964E5",
+    "blue-400": "#6789EC",
+    "blue-300": "#95AFF3",
+    "blue-200": "#C3D4FA",
+    "black": "#0A0B0E",
+    "surface": "#12141A",
+    "graphite": "#1A1D24",
+    "line": "#22242B",
+    "slate-ink": "#2C3444",
+    "slate": "#565D6E",
+    "steel": "#7A8296",
+    "silver": "#B8BECC",
+    "off-white": "#F5F6F8",
+    "white": "#FFFFFF"
+  },
+  "palette_notes": {
+    "usage_ratio": "70% deep neutrals (black/graphite) · 18% brand blue · 7% steel · 5% off-white",
+    "chrome_gradient": "linear-gradient(135deg,#E8EAEE,#9AA1AE 40%,#F5F6F8 60%,#8A909D 80%,#DEE1E6). Reserved for thin accent rules; never for text or big fills.",
+    "contrast": "Brand blue #0B3FDE is a FILL (blocks, buttons, highlight behind a word, colour slides). On black it is only 2.5:1, so small blue text on dark uses blue-400 #6789EC (6.0:1).",
+    "error": "#E85C5C is used only for 'never' markers in internal docs, not on social slides."
+  },
+  "fonts": {
+    "display": {
+      "family": "Instrument Serif",
+      "google": "Instrument+Serif:ital@0;1",
+      "fallback": "Georgia, serif",
+      "use": "Display and headlines, italic, sentence case, line-height 1.0-1.1"
+    },
+    "body": {
+      "family": "Manrope",
+      "google": "Manrope:wght@400;500;600;700;800",
+      "fallback": "Helvetica, Arial, sans-serif",
+      "use": "Body (Regular), H1 (Bold), H2 (SemiBold), buttons (SemiBold)"
+    },
+    "mono": {
+      "family": "JetBrains Mono",
+      "google": "JetBrains+Mono:wght@400;500;700",
+      "fallback": "Menlo, monospace",
+      "use": "Labels, metadata, data, system identifiers; uppercase, letter-spacing 0.10-0.12em"
+    }
+  },
+  "voice": {
+    "registers": [
+      "Precise",
+      "Partner-first",
+      "Conviction-led"
+    ],
+    "never": [
+      "leverage synergies",
+      "out of the box",
+      "game-changer",
+      "unlock",
+      "revolutionize",
+      "supercharge",
+      "cutting-edge",
+      "seamless",
+      "best-in-class",
+      "world-class",
+      "per hour",
+      "billable hours"
+    ],
+    "never_note": "No transactional language, time-based thinking, marketing spin or SOW-only rigidity.",
+    "example_hook": "Your AI strategy is only as good as what actually deploys.",
+    "example_cta": "Start with a discovery call. No deck, no pitch, just the problem and what it takes to solve it."
+  },
+  "rules": [
+    "Default headline style (foundation theme): Instrument Serif italic, sentence case. Brand themes may change case or layout but keep the Alloy palette and the three brand fonts. Free themes (theme.json \"brand\": \"free\") are deliberate exceptions with their own palette and fonts, used when a post calls for an off-brand look.",
+    "One accent family per slide: brand blue and its tints. No other hues (no amber, no neon, no rainbow gradients).",
+    "Brand blue #0B3FDE is a fill only on dark backgrounds; small blue text uses #6789EC.",
+    "Emphasis is one key word on a solid blue block, at most once per slide.",
+    "Labels and metadata are JetBrains Mono, uppercase, tracked out.",
+    "Buttons are square (4px radius), solid brand blue, Manrope SemiBold, sentence case.",
+    "Footer on every slide: BUILDABLELABS.COM bottom-left in plain text (not a logo), swipe cue bottom-right; the last slide may carry a CTA cue instead.",
+    "House rules for Instagram: no slide or page numbers, no kicker or eyebrow above the headline, no text under 34px, 6 slides maximum, a real visual on every slide (slide 1 an infographic), no self-promotion.",
+    "Patterns (Loop, Weave, Ascent) sit at 5-12% opacity in the background only.",
+    "Imagery: never stock photography, AI-hype gradients, neon glow, busy photographic backgrounds or generic tech imagery.",
+    "Numbers on slides must come from a source in the brief, with a source line.",
+    "No logo or brand mark on posts; the handle is the only brand sign-off."
+  ],
+  "footer": "BUILDABLELABS.COM"
+}

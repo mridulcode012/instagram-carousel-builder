@@ -1,0 +1,151 @@
+{
+  "title": "Why AI pilots stall",
+  "variant": "standard",
+  "slides": [
+    {
+      "type": "cover",
+      "headline": "Most AI pilots never reach *production.*",
+      "sub": "Here's where they stall.",
+      "visual": {
+        "kind": "funnel",
+        "stages": [
+          {
+            "t": "Ideas",
+            "icon": "sparkle"
+          },
+          {
+            "t": "Demos",
+            "icon": "play"
+          },
+          {
+            "t": "Pilots",
+            "icon": "zap"
+          }
+        ],
+        "out": {
+          "t": "In production",
+          "icon": "check"
+        }
+      },
+      "alt": "Funnel: ideas, demos and pilots narrowing to in production."
+    },
+    {
+      "type": "point",
+      "headline": "Everyone's chasing the *same tools.*",
+      "visual": {
+        "kind": "tags",
+        "tags": [
+          "Agents",
+          "RAG",
+          "Evals",
+          "Fine-tuning",
+          "MCP",
+          "Prompting",
+          "Guardrails"
+        ],
+        "active": [
+          3
+        ],
+        "caption": "The one that decides if it ships"
+      },
+      "alt": "A cloud of AI buzzwords with Evals highlighted."
+    },
+    {
+      "type": "point",
+      "headline": "The fix is *boring.*",
+      "visual": {
+        "kind": "compare",
+        "left": {
+          "title": "Demo",
+          "rows": [
+            "Happy path only",
+            "No owner",
+            "Vibes as tests"
+          ]
+        },
+        "right": {
+          "title": "Production",
+          "rows": [
+            "Edge cases logged",
+            "One named owner",
+            "Evals on every change"
+          ]
+        }
+      },
+      "alt": "Demo vs production: happy path, no owner, vibes as tests against edge cases logged, one named owner, evals on every change."
+    },
+    {
+      "type": "point",
+      "headline": "Where the *time* actually goes.",
+      "visual": {
+        "kind": "chart",
+        "title": "A typical pilot",
+        "bars": [
+          {
+            "label": "Building the demo",
+            "value": 2
+          },
+          {
+            "label": "Data access",
+            "value": 5
+          },
+          {
+            "label": "Getting sign-off",
+            "value": 8
+          }
+        ],
+        "highlight": 3
+      },
+      "alt": "Bar chart of a typical pilot: building the demo, data access, and getting sign-off, which takes longest."
+    },
+    {
+      "type": "point",
+      "headline": "Ship it in *4 moves.*",
+      "visual": {
+        "kind": "timeline",
+        "active": 2,
+        "steps": [
+          {
+            "t": "Name one owner",
+            "when": "Week 1",
+            "icon": "shield"
+          },
+          {
+            "t": "Write the evals",
+            "when": "Week 2",
+            "icon": "check"
+          },
+          {
+            "t": "Run it in the shadows",
+            "when": "Week 3",
+            "icon": "eye"
+          },
+          {
+            "t": "Flip the switch",
+            "when": "Week 4",
+            "icon": "zap"
+          }
+        ]
+      },
+      "alt": "Timeline: week 1 name one owner, week 2 write the evals, week 3 shadow run, week 4 flip the switch."
+    },
+    {
+      "type": "cta",
+      "headline": "Send this to your *pilot owner.*",
+      "action": "share",
+      "button": "Send to a teammate",
+      "visual": {
+        "kind": "dialog",
+        "title": "Before you pilot",
+        "icon": "shield",
+        "primary": false,
+        "rows": [
+          "One owner",
+          "Evals first",
+          "Shadow run"
+        ]
+      },
+      "alt": "Checklist before you pilot: one owner, evals first, shadow run."
+    }
+  ]
+}

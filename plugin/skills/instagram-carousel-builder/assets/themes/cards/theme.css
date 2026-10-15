@@ -1,0 +1,236 @@
+/* cards: a friendly UI-card system (refs: clinic grid ref-1, delivery grid ref-10) in the Alloy palette.
+   Loaded after the base slide CSS in render.py, so anything here overrides it.
+   Every slide gets a "tone" (a set of local variables) from its position and type:
+     even slides  -> near-black #0A0B0E, graphite cards
+     odd slides   -> blue-200 tint #C3D4FA, white cards   (every 4n+3 -> off-white #F5F6F8, tint cards)
+     cover + cta  -> always tint, with the dark wave along the bottom
+     .fill        -> full brand blue #0B3FDE, off-white cards (quote via fill_types)
+   All text/background pairs below are >= 4.5:1 (see notes.md for the table). */
+
+/* ------------------------------------------------------------ tones */
+.slide {
+  /* dark tone (default) */
+  --bg: #0A0B0E; --text: #F5F6F8; --muted: #B8BECC; --accent: #6789EC; --line: #22242B;
+  --card: #1A1D24; --card-text: #F5F6F8; --card-muted: #B8BECC;
+  --chip: #0B3FDE; --chip-text: #FFFFFF;
+  --btn: #0B3FDE; --btn-text: #FFFFFF; --btn-disc: #0A0B0E;
+  --em-bg: #0B3FDE; --em-text: #FFFFFF;
+  --panel: #0B3FDE; --panel-text: #FFFFFF; --panel-muted: #C3D4FA;
+  --spark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236789EC' d='M12 0C12.8 7 17 11.2 24 12 17 12.8 12.8 17 12 24 11.2 17 7 12.8 0 12 7 11.2 11.2 7 12 0Z'/%3E%3C/svg%3E");
+  --aster: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236789EC' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 2v20M3.3 7l17.4 10M3.3 17l17.4-10'/%3E%3C/svg%3E");
+  background-color: var(--bg); color: var(--text);
+}
+/* light tone: odd slides */
+.slide:nth-of-type(odd), .slide.t-cover, .slide.t-cta {
+  --bg: #C3D4FA; --text: #0A0B0E; --muted: #2C3444; --accent: #0B3FDE; --line: rgba(10,11,14,.14);
+  --card: #FFFFFF; --card-text: #0A0B0E; --card-muted: #565D6E;
+  --chip: #0B3FDE; --chip-text: #FFFFFF;
+  --btn: #0A0B0E; --btn-text: #FFFFFF; --btn-disc: #0B3FDE;
+  --panel: #0A0B0E; --panel-text: #F5F6F8; --panel-muted: #B8BECC;
+  --spark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230A0B0E' d='M12 0C12.8 7 17 11.2 24 12 17 12.8 12.8 17 12 24 11.2 17 7 12.8 0 12 7 11.2 11.2 7 12 0Z'/%3E%3C/svg%3E");
+  --aster: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A0B0E' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 2v20M3.3 7l17.4 10M3.3 17l17.4-10'/%3E%3C/svg%3E");
+}
+/* off-white tone: every 4n+3 (cover/cta stay tint) */
+.slide:nth-of-type(4n+3):not(.t-cover):not(.t-cta):not(.fill) {
+  --bg: #F5F6F8; --muted: #565D6E; --card: #C3D4FA; --card-muted: #2C3444;
+  --panel: #0B3FDE; --panel-text: #FFFFFF; --panel-muted: #C3D4FA;
+}
+/* full brand blue (fill_types: quote, or "fill": true on any slide) */
+.slide.fill {
+  --bg: #0B3FDE; --fill: #0B3FDE; --text: #FFFFFF; --muted: #C3D4FA; --accent: #FFFFFF; --line: rgba(255,255,255,.3);
+  --card: #F5F6F8; --card-text: #0A0B0E; --card-muted: #565D6E;
+  --chip: #0A0B0E; --chip-text: #FFFFFF;
+  --btn: #FFFFFF; --btn-text: #0A0B0E; --btn-disc: #0B3FDE;
+  --em-bg: #0B3FDE; --em-text: #FFFFFF;
+  --panel: #0A0B0E; --panel-text: #F5F6F8; --panel-muted: #B8BECC;
+  --spark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23FFFFFF' d='M12 0C12.8 7 17 11.2 24 12 17 12.8 12.8 17 12 24 11.2 17 7 12.8 0 12 7 11.2 11.2 7 12 0Z'/%3E%3C/svg%3E");
+  --aster: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 2v20M3.3 7l17.4 10M3.3 17l17.4-10'/%3E%3C/svg%3E");
+  background-color: var(--bg); color: var(--text);
+}
+
+/* ------------------------------------------------------------ type: friendly bold sans, sentence case */
+.display {
+  font-family: var(--f-body); font-style: normal; font-weight: 800; text-transform: none;
+  letter-spacing: -.035em; line-height: 1.04; text-wrap: balance;
+}
+.h-cover { font-size: calc(var(--s-cover) * var(--fit)); line-height: 1.1; }
+.h { font-size: calc(var(--s-headline) * var(--fit)); }
+.t-steps .h, .t-recap .h { font-size: calc(var(--s-headline) * .86 * var(--fit)); }
+.h-sm { font-size: calc(var(--s-headline) * .72 * var(--fit)); font-weight: 700; letter-spacing: -.025em; line-height: 1.12; }
+.h-cta { font-size: calc(var(--s-headline) * 1.1 * var(--fit)); }
+.sub { color: var(--muted); font-weight: 500; font-size: calc(var(--s-body) * var(--fit)); line-height: 1.35; max-width: 820px; }
+.body { color: var(--muted); font-size: calc(var(--s-body) * var(--fit)); line-height: 1.42; }
+
+/* emphasis: one word on a rounded blue block */
+.display em, .quote em {
+  font-style: normal; color: var(--em-text); background: var(--em-bg);
+  display: inline-block; line-height: 1; padding: .04em .16em .1em; margin: .08em .02em 0; border-radius: .22em;
+}
+.slide.fill .display em { background: #0A0B0E; color: #FFFFFF; }
+.body em, .sub em, .list em { font-style: normal; font-weight: 700; color: inherit; background: none; }
+
+/* ------------------------------------------------------------ chrome: pill tags top + bottom */
+.frame { inset: var(--m); }
+.top, .foot { font-size: var(--s-label); letter-spacing: .1em; }
+.top > span, .foot > span {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 12px 22px; border-radius: 999px; line-height: 1; white-space: nowrap;
+}
+.top .kicker { background: var(--chip); color: var(--chip-text); font-weight: 500; }
+.top > span:last-child { border: 2px solid var(--line); color: var(--muted); }
+.top > span:empty, .foot > span:empty { padding: 0; border: 0; background: none; }
+/* footer: handle in a pill with a small round dot */
+.foot > span:first-child { border: 2px solid var(--line); color: var(--muted); }
+.foot > span:first-child::before {
+  content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); flex: none;
+}
+.foot .cue { background: var(--chip); color: var(--chip-text); }
+
+/* progress: slim rounded bar */
+.progress { height: 8px; border-radius: 0 8px 8px 0; background: var(--accent); }
+.slide.fill .progress { background: #FFFFFF; }
+
+/* ------------------------------------------------------------ decoration: sparkles + bottom wave */
+.decor2 {
+  background-image: var(--spark), var(--aster);
+  background-repeat: no-repeat;
+  background-size: 58px 58px, 34px 34px;
+  background-position: right 96px top 160px, right 172px top 232px;
+}
+/* cover + cta: the dark curved shape along the bottom (ref-10), sparkles sit on it */
+.t-cover .decor, .t-cta .decor {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1080 360' preserveAspectRatio='none'%3E%3Cpath fill='%230A0B0E' d='M0 170C170 70 360 40 560 92 760 144 900 120 1080 18V360H0Z'/%3E%3C/svg%3E") no-repeat left bottom / 1080px 360px;
+}
+.t-cover .decor2, .t-cta .decor2 {
+  /* a UI-card mockup (abstract geometry, no photos) sitting on the wave + sparkles */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 330'%3E%3Crect x='0' y='0' width='560' height='96' rx='48' fill='%23FFFFFF'/%3E%3Ccircle cx='48' cy='48' r='28' fill='%230B3FDE'/%3E%3Crect x='94' y='30' width='230' height='16' rx='8' fill='%230A0B0E'/%3E%3Crect x='94' y='56' width='150' height='12' rx='6' fill='%23B8BECC'/%3E%3Crect x='430' y='34' width='96' height='28' rx='14' fill='%23C3D4FA'/%3E%3Crect x='40' y='117' width='560' height='96' rx='48' fill='%230B3FDE'/%3E%3Ccircle cx='88' cy='165' r='28' fill='%23FFFFFF'/%3E%3Crect x='134' y='147' width='230' height='16' rx='8' fill='%23FFFFFF'/%3E%3Crect x='134' y='173' width='150' height='12' rx='6' fill='%2395AFF3'/%3E%3Crect x='470' y='151' width='96' height='28' rx='14' fill='%230A0B0E'/%3E%3Crect x='0' y='234' width='560' height='96' rx='48' fill='%23FFFFFF'/%3E%3Ccircle cx='48' cy='282' r='28' fill='%230A0B0E'/%3E%3Crect x='94' y='264' width='230' height='16' rx='8' fill='%230A0B0E'/%3E%3Crect x='94' y='290' width='150' height='12' rx='6' fill='%23B8BECC'/%3E%3Crect x='430' y='268' width='96' height='28' rx='14' fill='%23C3D4FA'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23C3D4FA' d='M12 0C12.8 7 17 11.2 24 12 17 12.8 12.8 17 12 24 11.2 17 7 12.8 0 12 7 11.2 11.2 7 12 0Z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236789EC' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 2v20M3.3 7l17.4 10M3.3 17l17.4-10'/%3E%3C/svg%3E");
+  background-size: 600px 330px, 60px 60px, 38px 38px;
+  background-position: right 88px bottom 172px, left 132px bottom 196px, left 236px bottom 160px;
+}
+.t-cta .decor2 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 620 300'%3E%3Crect x='0' y='0' width='470' height='110' rx='46' fill='%23FFFFFF'/%3E%3Ccircle cx='54' cy='55' r='28' fill='%230B3FDE'/%3E%3Crect x='100' y='36' width='300' height='15' rx='7.5' fill='%230A0B0E'/%3E%3Crect x='100' y='62' width='210' height='12' rx='6' fill='%23B8BECC'/%3E%3Crect x='150' y='128' width='470' height='110' rx='46' fill='%230B3FDE'/%3E%3Ccircle cx='566' cy='183' r='28' fill='%23C3D4FA'/%3E%3Crect x='196' y='164' width='300' height='15' rx='7.5' fill='%23FFFFFF'/%3E%3Crect x='196' y='190' width='200' height='12' rx='6' fill='%2395AFF3'/%3E%3Crect x='0' y='256' width='150' height='44' rx='22' fill='%23FFFFFF'/%3E%3Ccircle cx='45' cy='278' r='7' fill='%23565D6E'/%3E%3Ccircle cx='75' cy='278' r='7' fill='%23565D6E'/%3E%3Ccircle cx='105' cy='278' r='7' fill='%23565D6E'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23C3D4FA' d='M12 0C12.8 7 17 11.2 24 12 17 12.8 12.8 17 12 24 11.2 17 7 12.8 0 12 7 11.2 11.2 7 12 0Z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236789EC' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 2v20M3.3 7l17.4 10M3.3 17l17.4-10'/%3E%3C/svg%3E");
+  background-size: 620px 300px, 60px 60px, 38px 38px;
+}
+/* text on the wave: footer turns light */
+.t-cover .foot, .t-cta .foot { --line: rgba(195,212,250,.35); --muted: #C3D4FA; --accent: #6789EC; }
+.t-cover .foot .cue, .t-cta .foot .cue { background: #0B3FDE; color: #FFFFFF; }
+.t-cover .progress, .t-cta .progress { background: #6789EC; }
+/* keep reading text clear of the wave (shrink-to-fit kicks in before it would overlap) */
+.t-cover .content, .t-cta .content { justify-content: flex-start; padding-top: 56px; padding-bottom: 380px; }
+
+/* a slide visual replaces the card mockup and the wave, and gets the space back */
+.has-visual.t-cover .decor, .has-visual.t-cta .decor, .has-visual.t-cover .decor2, .has-visual.t-cta .decor2 { background: none; }
+.has-visual.t-cover .content, .has-visual.t-cta .content { padding-bottom: 28px; }
+.has-visual.t-cover .foot, .has-visual.t-cta .foot { --line: rgba(10,11,14,.14); --muted: #2C3444; }
+
+/* ------------------------------------------------------------ cover */
+.t-cover .content { gap: calc(36px * var(--fit)); }
+.t-cover .num {
+  align-self: flex-start; font-family: var(--f-body); font-weight: 800; color: var(--panel-text);
+  background: var(--panel); border-radius: 40px; padding: 18px 36px; font-size: calc(var(--s-number) * .5 * var(--fit)); line-height: 1;
+}
+
+/* ------------------------------------------------------------ stake / point: headline + body in a rounded card */
+.rule {
+  width: 92px; height: 92px; border-radius: 50%; background: var(--chip) center / 44px 44px no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 9v4M12 17h.01'/%3E%3Cpath d='M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z'/%3E%3C/svg%3E");
+}
+.t-point .rule {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6M10 22h4'/%3E%3Cpath d='M15.1 14c.2-1 .7-1.7 1.4-2.5A4.6 4.6 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/%3E%3C/svg%3E");
+}
+.slide.fill .rule { background-color: #0A0B0E; }
+.t-stake .body, .t-point .body {
+  background: var(--card); color: var(--card-text); border-radius: 44px;
+  padding: calc(44px * var(--fit)) calc(48px * var(--fit)); max-width: none; font-weight: 500;
+}
+
+/* ------------------------------------------------------------ stat: big number inside a rounded panel */
+.t-stat .content { gap: calc(34px * var(--fit)); }
+.t-stat .num {
+  position: relative; font-family: var(--f-body); font-weight: 800; letter-spacing: -.05em; line-height: .9;
+  color: var(--panel-text); background: var(--panel); border-radius: 56px;
+  padding: calc(70px * var(--fit)) calc(64px * var(--fit)) calc(80px * var(--fit));
+}
+.t-stat .num::after {
+  content: ""; position: absolute; right: 56px; top: 56px; width: 64px; height: 64px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23C3D4FA' d='M12 0C12.8 7 17 11.2 24 12 17 12.8 12.8 17 12 24 11.2 17 7 12.8 0 12 7 11.2 11.2 7 12 0Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.t-stat .decor2 { background: none; }
+.source {
+  align-self: flex-start; font-family: var(--f-mono); font-size: var(--s-label); letter-spacing: .06em;
+  color: var(--muted); border: 2px solid var(--line); border-radius: 999px; padding: 12px 22px; line-height: 1.2;
+}
+.align-center .source { align-self: center; }
+
+/* ------------------------------------------------------------ steps / recap: list rows as stacked rounded cards */
+.list { gap: calc(20px * var(--fit)); counter-reset: card; }
+.list li {
+  border: 0; padding: calc(32px * var(--fit)) calc(32px * var(--fit)); align-items: center; gap: 28px;
+  background: var(--card); color: var(--card-text); border-radius: 40px;
+  font-weight: 600; font-size: calc(var(--s-body) * 1.02 * var(--fit)); line-height: 1.25;
+}
+.list li > span:last-child { flex: 1; }
+.list .ix {
+  width: calc(84px * var(--fit)); height: calc(84px * var(--fit)); min-width: 0; border-radius: 50%; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--chip); color: var(--chip-text); font-weight: 700; letter-spacing: 0;
+  font-size: calc(var(--s-label) * 1.15 * var(--fit));
+}
+/* arrow chip at the end of each row (ref-1 list rows) */
+.list li::after {
+  content: ""; flex: none; width: calc(60px * var(--fit)); height: calc(60px * var(--fit)); border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--card-text) 18%, transparent);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B8BECC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M7 7h10v10'/%3E%3C/svg%3E") center / 50% no-repeat;
+}
+.slide:nth-of-type(odd) .list li::after, .slide.fill .list li::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23565D6E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M7 7h10v10'/%3E%3C/svg%3E");
+}
+/* the last row is the "active" card: full blue, like the highlighted row in the refs */
+.list li:last-child { background: #0B3FDE; color: #FFFFFF; }
+.list li:last-child .ix { background: #FFFFFF; color: #0B3FDE; }
+.list li:last-child::after {
+  border-color: rgba(255,255,255,.35);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M7 7h10v10'/%3E%3C/svg%3E");
+}
+.slide.fill .list li:last-child { background: #0A0B0E; }
+/* recap: check rows, no arrow */
+.t-recap .list li::after { display: none; }
+.t-recap .list .ix { font-family: var(--f-body); font-size: calc(var(--s-label) * 1.5 * var(--fit)); }
+.t-steps .content > .body, .t-recap .content > .body { font-size: calc(var(--s-body) * .9 * var(--fit)); }
+
+/* ------------------------------------------------------------ quote: a chat thread */
+.t-quote .content { gap: calc(22px * var(--fit)); }
+.quote-mark {
+  width: 96px; height: 96px; border-radius: 50%; flex: none; background: #0A0B0E; color: #C3D4FA;
+  font-family: var(--f-body); font-weight: 800; font-size: 96px; line-height: 1; padding-top: 22px; text-align: center;
+  overflow: hidden;
+}
+.quote {
+  font-family: var(--f-body); font-style: normal; font-weight: 700; letter-spacing: -.02em; line-height: 1.2;
+  font-size: calc(var(--s-headline) * .66 * var(--fit)); text-wrap: pretty;
+  background: var(--card); color: var(--card-text);
+  border-radius: 48px 48px 48px 10px; padding: calc(52px * var(--fit)) calc(56px * var(--fit));
+}
+/* attribution as the reply bubble, right-aligned, with an avatar dot */
+.t-quote .source {
+  align-self: flex-end; display: inline-flex; align-items: center; gap: 16px;
+  background: #0A0B0E; color: #F5F6F8; border: 0; border-radius: 40px 40px 10px 40px;
+  padding: 22px 30px; font-size: calc(var(--s-label) * 1.1); letter-spacing: .08em; text-transform: uppercase;
+}
+.t-quote .source::after {
+  content: ""; width: 34px; height: 34px; border-radius: 50%; flex: none;
+  background: #6789EC url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A0B0E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 60% no-repeat;
+}
+.align-center .quote-mark { align-self: center; }
+
+/* ------------------------------------------------------------ cta: rounded pill button with an icon disc */
+.t-cta .content { gap: calc(40px * var(--fit)); }
+.pill {
+  border: 0; border-radius: 999px; background: var(--btn); color: var(--btn-text);
+  font-family: var(--f-body); font-weight: 700; text-transform: none; letter-spacing: -.005em;
+  font-size: 36px; padding: 16px 44px 16px 16px; gap: 24px;
+}
+.pill svg {
+  width: 76px; height: 76px; padding: 18px; border-radius: 50%; background: var(--btn-disc); color: #FFFFFF;
+  stroke-width: 2.2; flex: none;
+}

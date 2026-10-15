@@ -1,0 +1,90 @@
+{
+  "name": "arcade",
+  "brand": "free",
+  "description": "8-bit arcade screens: deep night-violet slides with sparse pixel stars and a dithered floor that holds the footer like a status bar, Press Start 2P caps headlines with one yellow word on a hot-pink drop, Chakra Petch reading copy, VT323 for labels and terminal lines, and a segmented lime power bar for progress. Visuals become native game UI: pixel-framed windows, heart HUDs, inventory slots, stepped flow paths and RPG dialog boxes. The CTA is a yellow screen.",
+  "source": "Free theme, built from scratch for an off-brand retro-game look, October 2026. No template photos.",
+  "best_for": [
+    "gaming, mods, tools and dev-culture posts",
+    "playful how-tos and level-by-level steps",
+    "launches and 'new feature unlocked' news",
+    "loadouts, toolkits and pick-your-option lists"
+  ],
+  "css": "theme.css",
+  "fill_types": [],
+  "palette": {
+    "night": "#1A0B3D",
+    "deep": "#0C0624",
+    "panel": "#261552",
+    "grape": "#3D2785",
+    "cream": "#FFF4DC",
+    "lavender": "#BDB0FF",
+    "yellow": "#FFD23F",
+    "pink": "#FF4FA3",
+    "cyan": "#45E6FF",
+    "lime": "#9BFF4A"
+  },
+  "fonts": [
+    {
+      "family": "Press Start 2P",
+      "google": "Press+Start+2P",
+      "fallback": "'Courier New', monospace"
+    },
+    {
+      "family": "Chakra Petch",
+      "google": "Chakra+Petch:wght@500;600;700",
+      "fallback": "Helvetica, Arial, sans-serif"
+    },
+    {
+      "family": "VT323",
+      "google": "VT323",
+      "fallback": "'Courier New', monospace"
+    }
+  ],
+  "defaults": {
+    "mode": "dark",
+    "colors": {
+      "bg": "#1A0B3D",
+      "text": "#FFF4DC",
+      "muted": "#BDB0FF",
+      "accent": "#FFD23F",
+      "fill": "#FFD23F",
+      "on_fill": "#1A0B3D"
+    },
+    "type": {
+      "display": "Press Start 2P",
+      "body": "Chakra Petch",
+      "mono": "VT323",
+      "display_case": "upper",
+      "scale": {
+        "cover": 72,
+        "headline": 60,
+        "body": 40,
+        "label": 34,
+        "number": 176
+      }
+    },
+    "layout": {
+      "align": "left",
+      "margin": 96,
+      "texture": "none",
+      "counter": false,
+      "handle": true,
+      "progress": true,
+      "swipe_cue": true,
+      "cta_fill": true
+    }
+  },
+  "variants": {},
+  "options": {
+    "variant": [
+      "(night-violet screens, yellow CONTINUE? CTA)"
+    ],
+    "texture": [
+      "none (pixel stars and the dithered floor are the texture)"
+    ],
+    "slide_fields": [
+      "fill: true turns any slide into a yellow screen (default only on the CTA)",
+      "visual tilt is ignored: pixel art stays square to the grid"
+    ]
+  }
+}

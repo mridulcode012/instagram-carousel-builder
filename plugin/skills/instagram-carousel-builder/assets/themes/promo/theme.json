@@ -1,0 +1,53 @@
+{
+  "name": "promo",
+  "description": "Retail-campaign poster system on white: a black mono tag top-left with the counter under it, an abstract blue geometry hero in the middle with a rotating blue circular badge, a huge Manrope ExtraBold uppercase headline stacked tight bottom-left, a rounded brand-blue pill along the bottom and >>> chevrons bottom-right. Every slide repeats the same skeleton.",
+  "source": "themes/promo/refs/ref-9.png (retail 'Black Weeks' promo series), translated into Brand Foundation v01 Alloy palette and fonts, 2026-10-14",
+  "best_for": [
+    "launches and announcements",
+    "offers, programmes and open slots",
+    "short punchy series where every slide is one claim",
+    "events and deadlines"
+  ],
+  "css": "theme.css",
+  "fill_types": [],
+  "defaults": {
+    "mode": "light",
+    "colors": {
+      "bg": "#FFFFFF",
+      "text": "#0A0B0E",
+      "muted": "#2C3444",
+      "accent": "#0B3FDE",
+      "fill": "#0B3FDE",
+      "on_fill": "#FFFFFF"
+    },
+    "type": {
+      "display": "Instrument Serif",
+      "body": "Manrope",
+      "mono": "JetBrains Mono",
+      "display_case": "upper",
+      "scale": {
+        "cover": 100,
+        "headline": 80,
+        "body": 36,
+        "label": 34,
+        "number": 250
+      }
+    },
+    "layout": {
+      "align": "left",
+      "margin": 88,
+      "texture": "none",
+      "counter": false,
+      "handle": true,
+      "progress": true,
+      "swipe_cue": true,
+      "cta_fill": false
+    }
+  },
+  "options": {
+    "slide fields": [
+      "kicker -> the black tag (falls back to 'Buildable Labs')",
+      "badge -> text in the centre of the circular badge"
+    ]
+  }
+}

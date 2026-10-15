@@ -1,0 +1,48 @@
+/* foundation: the Buildable Labs website / Brand Foundation look.
+   Loaded after the base slide CSS in render.py, so anything here overrides it.
+   Variables available: --bg --text --muted --accent --fill --on-fill --line --pattern
+   --f-display --f-body --f-mono --s-cover --s-headline --s-body --s-label --s-number --fit */
+
+/* Headlines: Instrument Serif italic, sentence case */
+.display { font-style: italic; text-transform: none; letter-spacing: -.012em; line-height: 1.04; }
+.h-cover { line-height: 1.0; }
+
+/* Emphasis: one word on a solid brand-blue block (the tagline's "Ship") */
+.display em, .quote em {
+  font-style: italic; color: #fff; background: var(--fill);
+  padding: 0 .12em .04em; margin: 0 .02em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.slide.fill .display em, .slide.fill .quote em { background: var(--on-fill); color: var(--fill); }
+.body em, .sub em, .list em { font-style: normal; font-weight: 700; color: var(--text); background: none; }
+
+/* Data + announcement slides use the bold sans headline (Brand Foundation H1: Manrope Bold) */
+.t-stat .h-sm, .t-steps .h, .t-recap .h, .t-cta .h-cta {
+  font-family: var(--f-body); font-style: normal; font-weight: 700; letter-spacing: -.02em; line-height: 1.12;
+}
+.t-stat .h-sm { font-size: calc(var(--s-headline) * .7 * var(--fit)); }
+.t-steps .h, .t-recap .h { font-size: calc(var(--s-headline) * .72 * var(--fit)); }
+.t-cta .h-cta { font-size: calc(var(--s-headline) * .86 * var(--fit)); }
+
+/* Numbers as data: Manrope ExtraBold in blue ("6 wks") */
+.num { font-family: var(--f-body); font-style: normal; font-weight: 800; letter-spacing: -.045em; line-height: .9; color: var(--accent); }
+
+/* Quiet structure */
+.rule { width: 96px; height: 4px; }
+.list .ix { color: var(--accent); }
+.sub { color: var(--muted); }
+.body { color: color-mix(in srgb, var(--text) 82%, var(--bg)); }
+
+/* Quote slides (full brand blue via fill_types) */
+.quote-mark { font-size: 170px; height: 84px; color: var(--accent); opacity: .7; }
+.quote { font-size: calc(var(--s-headline) * .9 * var(--fit)); line-height: 1.12; }
+
+/* Square button: brand blue, Manrope SemiBold, sentence case */
+.pill {
+  border: none; border-radius: 4px; background: var(--fill); color: #fff;
+  font-family: var(--f-body); font-weight: 600; text-transform: none; letter-spacing: 0;
+  font-size: 34px; padding: 26px 44px;
+}
+.slide.fill .pill { background: var(--on-fill); color: var(--fill); }
+
+.progress { height: 6px; }

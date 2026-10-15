@@ -1,0 +1,91 @@
+{
+  "name": "brutal",
+  "brand": "free",
+  "description": "Neo-brutalist posters (Gumroad / Figma-community style): one loud flat colour per slide from a fixed lemon, pink, mint, lilac, orange, sky sequence, black ink everywhere, chunky Archivo Black headlines with one word on a tilted sticker, 5px black outlines and hard offset shadows on every card, tag and button, a black swipe tag in the footer, and every visual redrawn as white outlined cards with hard shadows.",
+  "source": "Free theme (off-brand by design), built for the 'looks entirely different from the brand' request, October 2026. Direction: neo-brutalism as seen on Gumroad and Figma community files.",
+  "best_for": [
+    "loud scroll-stoppers and hot takes",
+    "tool, product and how-to posts with UI visuals",
+    "listicles, checklists and step-by-steps",
+    "playful or community posts that should not look corporate"
+  ],
+  "css": "theme.css",
+  "fill_types": [
+    "quote"
+  ],
+  "palette": {
+    "ink": "#111111",
+    "white": "#FFFFFF",
+    "lemon": "#FFE14D",
+    "pink": "#FF6FB5",
+    "mint": "#6EE7B7",
+    "lilac": "#B9A5FF",
+    "orange": "#FF7F3F",
+    "sky": "#7CC8FF",
+    "graphite": "#4A4A4A",
+    "smoke": "#DDDDDD"
+  },
+  "fonts": [
+    {
+      "family": "Archivo Black",
+      "google": "Archivo+Black",
+      "fallback": "'Arial Black', Impact, sans-serif"
+    },
+    {
+      "family": "Space Grotesk",
+      "google": "Space+Grotesk:wght@400;500;700",
+      "fallback": "Helvetica, Arial, sans-serif"
+    },
+    {
+      "family": "Space Mono",
+      "google": "Space+Mono:wght@400;700",
+      "fallback": "'Courier New', monospace"
+    }
+  ],
+  "defaults": {
+    "mode": "light",
+    "colors": {
+      "bg": "#FFE14D",
+      "text": "#111111",
+      "muted": "#111111",
+      "accent": "#111111",
+      "fill": "#111111",
+      "on_fill": "#FFE14D"
+    },
+    "type": {
+      "display": "Archivo Black",
+      "body": "Space Grotesk",
+      "mono": "Space Mono",
+      "display_case": "none",
+      "scale": {
+        "cover": 108,
+        "headline": 78,
+        "body": 40,
+        "label": 34,
+        "number": 260
+      }
+    },
+    "layout": {
+      "align": "left",
+      "margin": 88,
+      "texture": "none",
+      "counter": false,
+      "handle": true,
+      "progress": true,
+      "swipe_cue": true,
+      "cta_fill": false
+    }
+  },
+  "variants": {},
+  "options": {
+    "variant": [
+      "(none: the per-slide colour sequence is the system)"
+    ],
+    "texture": [
+      "none (flat colour is the point)"
+    ],
+    "slide fields": [
+      "fill: true turns any slide black with lemon stickers (quote does this by default)"
+    ]
+  }
+}

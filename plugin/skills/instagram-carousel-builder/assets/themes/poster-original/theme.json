@@ -1,0 +1,100 @@
+{
+  "name": "poster-original",
+  "extends": "poster",
+  "brand": "free",
+  "description": "The agency poster grid in its real colours: electric-blue slides with a deep-navy vignette alternate with flat studio-grey slides. Blue slides shout in heavy condensed caps, grey slides in wide black caps, one copperplate script word as the accent, a ghost word echoing down the slide, navy calligraphic swoops, neon-yellow / magenta / lime sticker chips and a black pill footer bar.",
+  "source": "themes/poster/refs/ref-3.png + ref-4.png (agency social-media poster grids), kept in their own palette and type feel, October 2026",
+  "best_for": [
+    "loud one-idea hooks, launches and offers",
+    "agency, services and marketing posts",
+    "short punchy carousels where every slide is a poster",
+    "grid-led profiles that alternate blue and grey tiles"
+  ],
+  "css": "theme.css",
+  "fill_types": [],
+  "palette": {
+    "electric_blue": "#1F55E8",
+    "navy_edge": "#0B2A9C",
+    "navy_swoop": "#0A1E78",
+    "ice": "#E6ECFF",
+    "white": "#FFFFFF",
+    "studio_grey": "#CFCFD1",
+    "grey_ghost": "#BCBCBF",
+    "grey_swoop": "#9A9AA0",
+    "slate": "#3E3E44",
+    "ink": "#111214",
+    "ink_panel": "#1C1D21",
+    "ink_line": "#35363C",
+    "ink_dim": "#9A9AA2",
+    "deep_blue": "#1A47D6",
+    "neon_yellow": "#F1E80E",
+    "magenta": "#E040E8",
+    "lime": "#63F23C"
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "google": "Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900",
+      "fallback": "'Arial Narrow', Arial, sans-serif"
+    },
+    {
+      "family": "Mrs Saint Delafield",
+      "google": "Mrs+Saint+Delafield",
+      "fallback": "cursive"
+    },
+    {
+      "family": "JetBrains Mono",
+      "google": "JetBrains+Mono:wght@400;500;700",
+      "fallback": "monospace"
+    }
+  ],
+  "defaults": {
+    "mode": "blue",
+    "colors": {
+      "bg": "#1F55E8",
+      "text": "#FFFFFF",
+      "muted": "#E6ECFF",
+      "accent": "#FFFFFF",
+      "fill": "#111214",
+      "on_fill": "#FFFFFF"
+    },
+    "type": {
+      "display": "Mrs Saint Delafield",
+      "body": "Archivo",
+      "mono": "JetBrains Mono",
+      "display_case": "upper",
+      "scale": {
+        "cover": 150,
+        "headline": 126,
+        "body": 38,
+        "label": 34,
+        "number": 340
+      }
+    },
+    "layout": {
+      "align": "left",
+      "margin": 88,
+      "texture": "none",
+      "counter": false,
+      "handle": true,
+      "progress": true,
+      "swipe_cue": true,
+      "cta_fill": false
+    }
+  },
+  "variants": {},
+  "options": {
+    "variant": [
+      "(electric blue + studio grey alternating, the only look)"
+    ],
+    "fonts": [
+      "display = Mrs Saint Delafield: only the *emphasis* word (script accent)",
+      "body = Archivo variable: condensed 62% caps on blue slides, wide 125% caps on grey slides, normal width for reading copy and labels",
+      "mono = JetBrains Mono: terminal lines inside visuals only"
+    ],
+    "slide_fields": [
+      "ghost: the big background word (cover, stat, any slide); empty = no ghost",
+      "fill: true turns a slide into a black poster"
+    ]
+  }
+}

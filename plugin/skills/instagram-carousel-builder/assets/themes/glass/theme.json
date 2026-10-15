@@ -1,0 +1,57 @@
+{
+  "name": "glass",
+  "description": "Cinematic agency grid in Alloy: near-black substrate lit by soft directional brand-blue light, a frosted-glass card holding the text, wide-tracked uppercase Manrope headlines split across the slide, tiny JetBrains Mono meta in the corners with ↘ arrows, and a big glowing glass disc with spaced-out letters for the number slide. Quote slides are full brand blue behind glass.",
+  "source": "themes/glass/refs/ref-5.png (\"Visual / Digital agency\" Instagram grid), translated into the Brand Foundation v01 (blue duotone only, no photography), October 2026",
+  "best_for": [
+    "announcements and launches",
+    "studio / capability posts",
+    "case studies with one hard number",
+    "bold one-line positioning statements"
+  ],
+  "css": "theme.css",
+  "fill_types": [
+    "quote"
+  ],
+  "defaults": {
+    "mode": "dark",
+    "colors": {
+      "bg": "#0A0B0E",
+      "text": "#F5F6F8",
+      "muted": "#B8BECC",
+      "accent": "#95AFF3",
+      "fill": "#0B3FDE",
+      "on_fill": "#FFFFFF"
+    },
+    "type": {
+      "display": "Instrument Serif",
+      "body": "Manrope",
+      "mono": "JetBrains Mono",
+      "display_case": "upper",
+      "scale": {
+        "cover": 92,
+        "headline": 70,
+        "body": 38,
+        "label": 34,
+        "number": 150
+      }
+    },
+    "layout": {
+      "align": "left",
+      "margin": 96,
+      "texture": "none",
+      "counter": false,
+      "handle": true,
+      "progress": true,
+      "swipe_cue": true,
+      "cta_fill": false
+    }
+  },
+  "options": {
+    "texture": [
+      "none"
+    ],
+    "variant": [
+      "(dark only)"
+    ]
+  }
+}

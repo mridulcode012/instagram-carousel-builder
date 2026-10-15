@@ -1,0 +1,373 @@
+{
+  "format": "carousel",
+  "version": "3.2.0",
+  "updated": "2026-10-15",
+  "calibrated": false,
+  "calibration_note": "Not yet checked against past posts (references/calibration.md). Treat the 4.0 bar as provisional until it is; set calibrated: true when done.",
+  "changelog": [
+    "1.0.0 (2026-10-14): initial weights and pass rule from the content pipeline guide, Step 05.",
+    "1.1.0 (2026-10-14): visuals. Hook anchor: a cover visual that shows the promise can lift 4 to 5; Flow anchor 3 now includes three or more text-only slides in a row. Lint checks text inside visuals and warns on text-only runs (no caps).",
+    "2.0.0 (2026-10-14): shares-first. Added Send-worthy (20%, must be 4+) and Caption (8%) lines; reweighted the six existing lines; caption and engagement-bait lint checks. Evidence: references/engagement-research.md.",
+    "2.1.0 (2026-10-14): free themes. A theme with \"brand\": \"free\" is off-brand by design; lint checks it against its own palette and fonts, and the Brand line is scored as Design (Instagram craft) with its own anchors.",
+    "3.0.0 (2026-10-14): Instagram house rules merged from the owner's carousel-post-review skill. Hard gates G1-G10 (any failure blocks a pass); 6 slides max; 34px minimum for all text; no slide numbers, no kicker, BUILDABLELABS.COM footer; judge also returns gate rulings and 'why might this NOT get engagement' risks. Scoring stays shares-first for Instagram.",
+    "3.1.0 (2026-10-15): checks borrowed from the ig-carousel/ig-caption/ig-human and linkedin-carousel-builder skills. Render: measured contrast of every text run against what is painted under it (error under 3:1, warn under 4.5:1 for text under 48px), light font weights. Copy: machine-written sentence shapes ('It's not X, it's Y', 'not only/but also', one-word question lines, shouted runs), numbers spelled as words on slides, invisible characters, a longer stock-phrase list. Caption: links, weak openers, emoji density, junk hashtags, search terms from brief.md '## Search terms' (caption and alt text), and the feed preview line.",
+    "3.2.0 (2026-10-15): story framework. carousel-make picks PAS (readers underestimate the problem) or PPP (readers doubt the fix) and records it in brief.md '## Story'; the Flow 4 anchor now includes a framework that doesn't fit the reader; lint notes a missing '## Story' (info, no cap)."
+  ],
+  "pass": {
+    "weighted_avg_min": 4.0,
+    "line_min": 3,
+    "line_mins": {
+      "share": 4
+    },
+    "note": "Instagram first. Every gate must pass; then 4.0+ weighted, no line below 3, Send-worthy 4+."
+  },
+  "max_rounds": 3,
+  "lines": [
+    {
+      "id": "share",
+      "name": "Send-worthy",
+      "weight": 0.2,
+      "asks": "Would a reader DM this to a specific person? Clear who-to-send-to, one standalone sendable slide, a real surprise or fix, makes the sender look sharp."
+    },
+    {
+      "id": "hook",
+      "name": "Hook slide",
+      "weight": 0.18,
+      "asks": "Stops the scroll in 0.5 seconds: specific, surprising, 10 words or fewer, a slide-1 infographic that shows the promise, readable in the grid crop."
+    },
+    {
+      "id": "flow",
+      "name": "Story flow",
+      "weight": 0.14,
+      "asks": "Headlines alone tell the story; problem, pain, the obvious fix fails, BUT, insight, how, CTA; no answer before the BUT; slide 2 works as a second cover."
+    },
+    {
+      "id": "value",
+      "name": "Value",
+      "weight": 0.12,
+      "asks": "Worth saving: a checklist, steps, framework or sourced number; concrete specifics; a beginner gets it immediately."
+    },
+    {
+      "id": "readability",
+      "name": "Readability",
+      "weight": 0.1,
+      "asks": "Each slide read in 3 seconds on a phone: one focal point, visual 40-60% of the slide, the type scale, strong contrast, balanced space."
+    },
+    {
+      "id": "brand",
+      "name": "Brand / design",
+      "weight": 0.1,
+      "asks": "Brand themes: ours (palette, fonts, theme, footer, voice) and a clean render. Free themes: design quality for Instagram."
+    },
+    {
+      "id": "cta",
+      "name": "Call to action",
+      "weight": 0.08,
+      "asks": "One honest ask tied to the payoff (send, save, or a question to the reader), ideally a callback to the hook; no bait, no promotion."
+    },
+    {
+      "id": "caption",
+      "name": "Caption",
+      "weight": 0.08,
+      "evidence": "caption",
+      "asks": "Line 1 is a second hook before '...more'; adds what the slides don't; searchable keywords; one ask; 3-5 precise hashtags."
+    }
+  ],
+  "limits": {
+    "slide_size": [
+      1080,
+      1350
+    ],
+    "slides_min": 4,
+    "slides_max": 6,
+    "slides_hard_max": 20,
+    "blog_plug_slides": 4,
+    "words_per_slide": 30,
+    "words_per_slide_hard": 40,
+    "cover_words": 10,
+    "cover_words_hard": 14,
+    "headline_words": 12,
+    "min_content_px": 34,
+    "min_meta_px": 34,
+    "contrast_min": 4.5,
+    "fit_warn_below": 0.85,
+    "margin_min": 80,
+    "caption_hook_chars": 125,
+    "caption_max_chars": 2200,
+    "caption_words_max": 220,
+    "hashtags_max": 5,
+    "min_text_px": 34
+  },
+  "caps": {
+    "wrong_size": {
+      "line": "readability",
+      "max": 1,
+      "why": "Instagram will crop or letterbox it."
+    },
+    "overflow": {
+      "line": "readability",
+      "max": 2,
+      "why": "Text is clipped on the slide."
+    },
+    "low_contrast": {
+      "line": "readability",
+      "max": 2,
+      "why": "Colour pair is below WCAG 4.5:1."
+    },
+    "words_way_over": {
+      "line": "readability",
+      "max": 2,
+      "why": "A slide is a paragraph."
+    },
+    "words_over": {
+      "line": "readability",
+      "max": 3,
+      "why": "A slide is over the word limit."
+    },
+    "font_too_small": {
+      "line": "readability",
+      "max": 3,
+      "why": "Reading text is too small for a phone."
+    },
+    "font_fallback": {
+      "line": "brand",
+      "max": 2,
+      "why": "A brand font failed to load; the render used a fallback."
+    },
+    "font_off_brand": {
+      "line": "brand",
+      "max": 2,
+      "why": "The vision uses a font that is not in brand.json."
+    },
+    "colour_off_brand": {
+      "line": "brand",
+      "max": 3,
+      "why": "The vision uses a colour that is not in brand.json."
+    },
+    "vision_not_locked": {
+      "line": "brand",
+      "max": 3,
+      "why": "The look was never locked with the designer."
+    },
+    "no_handle": {
+      "line": "brand",
+      "max": 4,
+      "why": "Screenshots travel without the handle."
+    },
+    "cover_way_long": {
+      "line": "hook",
+      "max": 2,
+      "why": "The cover headline is far past 10 words."
+    },
+    "cover_long": {
+      "line": "hook",
+      "max": 3,
+      "why": "The cover headline is over 10 words."
+    },
+    "too_few_slides": {
+      "line": "flow",
+      "max": 3,
+      "why": "Too short for the swipe to build."
+    },
+    "unsourced_number": {
+      "line": "value",
+      "max": 2,
+      "why": "A number on a slide is not in the brief's evidence."
+    },
+    "stat_without_source": {
+      "line": "value",
+      "max": 2,
+      "why": "A stat slide has no source line."
+    },
+    "unverified_evidence": {
+      "line": "value",
+      "max": 1,
+      "why": "A number comes from evidence the brief marks as unverified or test data."
+    },
+    "no_cta": {
+      "line": "cta",
+      "max": 1,
+      "why": "The last slide is not a call to action."
+    },
+    "cta_no_action": {
+      "line": "cta",
+      "max": 2,
+      "why": "The CTA never says what to do."
+    },
+    "cta_many_asks": {
+      "line": "cta",
+      "max": 3,
+      "why": "The CTA asks for more than one thing."
+    },
+    "unknown_theme": {
+      "line": "brand",
+      "max": 2,
+      "why": "The vision names a theme that doesn't exist."
+    },
+    "no_caption": {
+      "line": "caption",
+      "max": 1,
+      "why": "There is no caption.md."
+    },
+    "caption_too_long": {
+      "line": "caption",
+      "max": 2,
+      "why": "The caption is over Instagram's 2,200-character limit."
+    },
+    "caption_hook_long": {
+      "line": "caption",
+      "max": 3,
+      "why": "The caption's first line runs past the '...more' cut."
+    },
+    "caption_many_asks": {
+      "line": "caption",
+      "max": 3,
+      "why": "The caption asks for more than one thing."
+    },
+    "hashtags_many": {
+      "line": "caption",
+      "max": 3,
+      "why": "More than 5 hashtags; they classify a post, they don't spread it."
+    },
+    "engagement_bait": {
+      "line": "share",
+      "max": 2,
+      "why": "Engagement bait (tag/comment/like-if prompts) gets posts demoted."
+    },
+    "slide_no_visual": {
+      "line": "readability",
+      "max": 2,
+      "why": "A slide with no visual is a wall of words in the feed (gate G1)."
+    },
+    "text_under_min": {
+      "line": "readability",
+      "max": 2,
+      "why": "Text under 34px (gate G4)."
+    },
+    "over_six_slides": {
+      "line": "flow",
+      "max": 2,
+      "why": "More than 6 slides (gate G6)."
+    },
+    "slide_numbers": {
+      "line": "brand",
+      "max": 2,
+      "why": "Slide numbers on the slides (gate G7)."
+    },
+    "self_promo": {
+      "line": "cta",
+      "max": 1,
+      "why": "Self-promotion (gate G8)."
+    },
+    "low_contrast_text": {
+      "line": "readability",
+      "max": 3,
+      "why": "Some text is hard to read against what's behind it."
+    },
+    "light_weight": {
+      "line": "readability",
+      "max": 3,
+      "why": "A light font weight disappears at phone size."
+    },
+    "caption_link": {
+      "line": "caption",
+      "max": 3,
+      "why": "Caption links aren't clickable; it reads as off-platform."
+    },
+    "invisible_chars": {
+      "line": "caption",
+      "max": 3,
+      "why": "Invisible characters from pasted AI text."
+    }
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "name": "Visual on every slide",
+      "lint": [
+        "slide_no_visual"
+      ],
+      "judge": true,
+      "fails_when": "Any slide is text-only or has only a decorative object; or slide 1 has no infographic (a visual with information in it)."
+    },
+    {
+      "id": "G2",
+      "name": "No dead space",
+      "lint": [],
+      "judge": true,
+      "fails_when": "Any slide has an empty area over about 20% of the slide that reads as a gap (e.g. a full-width band taller than ~270px, or a ~600x600px empty block)."
+    },
+    {
+      "id": "G3",
+      "name": "No overlaps",
+      "lint": [
+        "overflow"
+      ],
+      "judge": true,
+      "fails_when": "Text overlaps text or objects, objects collide, anything is hidden or clipped, or a highlight block touches the line above or below."
+    },
+    {
+      "id": "G4",
+      "name": "Nothing under 34px",
+      "lint": [
+        "text_under_min"
+      ],
+      "judge": true,
+      "fails_when": "Any text anywhere (labels, chips, diagram text, footer) is under 34px at 1080px width."
+    },
+    {
+      "id": "G5",
+      "name": "No logo",
+      "lint": [],
+      "judge": true,
+      "fails_when": "The Buildable Labs mark or wordmark appears anywhere, in any variant. The plain-text footer BUILDABLELABS.COM is not a logo."
+    },
+    {
+      "id": "G6",
+      "name": "6 slides maximum",
+      "lint": [
+        "over_six_slides"
+      ],
+      "judge": false,
+      "fails_when": "More than 6 slides."
+    },
+    {
+      "id": "G7",
+      "name": "No slide numbers",
+      "lint": [
+        "slide_numbers"
+      ],
+      "judge": true,
+      "fails_when": "Any counter or page number: '01 / 06', '3/7', numbered slide labels, giant ghost numerals."
+    },
+    {
+      "id": "G8",
+      "name": "No self-promotion",
+      "lint": [
+        "self_promo"
+      ],
+      "judge": true,
+      "fails_when": "The CTA or any slide promotes Buildable Labs or its services ('we help...', 'book a call', 'free consultation')."
+    },
+    {
+      "id": "G9",
+      "name": "Every number sourced",
+      "lint": [
+        "unsourced_number",
+        "unverified_evidence",
+        "stat_without_source"
+      ],
+      "judge": false,
+      "fails_when": "A number on a slide, in a visual or in the caption isn't in brief.md's evidence, or comes from evidence marked unverified."
+    },
+    {
+      "id": "G10",
+      "name": "No engagement bait",
+      "lint": [
+        "engagement_bait"
+      ],
+      "judge": true,
+      "fails_when": "'Tag a friend', 'comment YES', 'comment MOD for the link', 'like if', 'share if': Instagram demotes posts built to inflate engagement."
+    }
+  ]
+}

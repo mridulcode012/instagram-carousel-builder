@@ -1,0 +1,68 @@
+{
+  "name": "zine",
+  "description": "A handmade writing-zine feel in the Alloy palette: off-white paper, near-black mono label bars, brand-blue hand-drawn scribbles (wavy underlines, loop circles, bursts), tape strips and a rotated mono stamp. Instrument Serif italic headlines, one word on a blue block, JetBrains Mono labels, a full-blue quote slide and a black closing slide.",
+  "source": "themes/zine/refs/ref-7.png (writing-zine Instagram template set: off-white paper, black label bars, red scribbles), translated into brand/brand.json, October 2026",
+  "best_for": [
+    "how-to and step-by-step posts",
+    "founder notes and opinion pieces with a personal voice",
+    "process and behind-the-build posts",
+    "quote-led or lesson-led carousels that should feel made by hand"
+  ],
+  "css": "theme.css",
+  "fill_types": [
+    "quote"
+  ],
+  "defaults": {
+    "mode": "light",
+    "colors": {
+      "bg": "#F5F6F8",
+      "text": "#0A0B0E",
+      "muted": "#565D6E",
+      "accent": "#0B3FDE",
+      "fill": "#0B3FDE",
+      "on_fill": "#FFFFFF"
+    },
+    "type": {
+      "display": "Instrument Serif",
+      "body": "Manrope",
+      "mono": "JetBrains Mono",
+      "display_case": "none",
+      "scale": {
+        "cover": 124,
+        "headline": 86,
+        "body": 38,
+        "label": 34,
+        "number": 230
+      }
+    },
+    "layout": {
+      "align": "left",
+      "margin": 96,
+      "texture": "none",
+      "counter": false,
+      "handle": true,
+      "progress": true,
+      "swipe_cue": true,
+      "cta_fill": false
+    }
+  },
+  "variants": {
+    "ink": {
+      "mode": "dark",
+      "colors": {
+        "bg": "#0A0B0E",
+        "text": "#F5F6F8",
+        "muted": "#B8BECC",
+        "accent": "#6789EC",
+        "fill": "#0B3FDE",
+        "on_fill": "#FFFFFF"
+      }
+    }
+  },
+  "options": {
+    "variant": [
+      "(paper default)",
+      "ink"
+    ]
+  }
+}

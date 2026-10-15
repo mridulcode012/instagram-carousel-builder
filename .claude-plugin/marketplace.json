@@ -1,0 +1,14 @@
+{
+  "name": "buildablelabs",
+  "description": "BuildableLabs content tools for Claude: Instagram carousel making and checking.",
+  "owner": {
+    "name": "BuildableLabs"
+  },
+  "plugins": [
+    {
+      "name": "instagram-carousel-builder",
+      "source": "./plugin",
+      "description": "Make and check BuildableLabs Instagram carousels end to end."
+    }
+  ]
+}

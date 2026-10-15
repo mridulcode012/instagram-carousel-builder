@@ -1,0 +1,68 @@
+{
+  "name": "swiss-grid",
+  "description": "Swiss modular grid in Alloy colours: off-white slide with a strict 4 x 6 grid of thin brand-blue rules, a few cells filled solid brand blue, huge Manrope ExtraBold headlines set tight and flush left across the grid lines, a small mono counter on the blue cell, the handle running vertically down the right margin and a bookmark mark in the corner. Quote slides flip to full brand blue with white rules and near-black cells.",
+  "source": "themes/swiss-grid/refs/ref-2.png (\"Grid Systems\" Swiss-style template), translated into brand/brand.json and brand/design-rules.md, October 2026",
+  "best_for": [
+    "frameworks, systems and how-it-works explainers",
+    "structured lists and checklists",
+    "design, architecture and process posts",
+    "data-led case studies with one hard number"
+  ],
+  "css": "theme.css",
+  "fill_types": [
+    "quote"
+  ],
+  "defaults": {
+    "mode": "light",
+    "colors": {
+      "bg": "#F5F6F8",
+      "text": "#0A0B0E",
+      "muted": "#565D6E",
+      "accent": "#0B3FDE",
+      "fill": "#0B3FDE",
+      "on_fill": "#FFFFFF"
+    },
+    "type": {
+      "display": "Instrument Serif",
+      "body": "Manrope",
+      "mono": "JetBrains Mono",
+      "display_case": "none",
+      "scale": {
+        "cover": 112,
+        "headline": 96,
+        "body": 38,
+        "label": 34,
+        "number": 300
+      }
+    },
+    "layout": {
+      "align": "left",
+      "margin": 80,
+      "texture": "none",
+      "counter": false,
+      "handle": true,
+      "progress": true,
+      "swipe_cue": true,
+      "cta_fill": false
+    }
+  },
+  "variants": {
+    "dark": {
+      "mode": "dark",
+      "colors": {
+        "bg": "#0A0B0E",
+        "text": "#F5F6F8",
+        "muted": "#7A8296",
+        "accent": "#6789EC",
+        "fill": "#0B3FDE",
+        "on_fill": "#FFFFFF"
+      }
+    }
+  },
+  "options": {
+    "variant": [
+      "(off-white, default)",
+      "dark (near-black with blue rules)"
+    ]
+  }
+}

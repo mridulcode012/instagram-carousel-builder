@@ -1,0 +1,271 @@
+/* crt: retro terminal on a CRT monitor. Free theme (theme.json "brand": "free").
+   Every colour comes from the theme palette through the vision colours (--bg --text --muted --accent --fill
+   --on-fill); tints are alpha / color-mix blends of those, plus #000 for the tube shadow. The amber variant
+   only swaps the six colours, so nothing below is green-specific.
+   Layers: .decor = phosphor bloom, .decor2 = the screen frame, .slide::after = scanlines + tube vignette (on top). */
+
+/* root copies of the colours: .fill slides overwrite --accent/--muted locally, visuals keep the screen colours */
+:root {
+  --c-bg: var(--bg); --c-text: var(--text); --c-muted: var(--muted); --c-accent: var(--accent);
+  --c-fill: var(--fill); --c-on: var(--on-fill);
+}
+
+.slide { --screen: var(--bg); --edge: 44px; background-color: var(--bg); }
+.slide.fill { --screen: var(--fill); }
+
+/* ---------------------------------------------------------------- the tube */
+.decor {           /* phosphor bloom in the middle of the glass */
+  background: radial-gradient(ellipse 75% 60% at 50% 46%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 72%);
+}
+.slide::after {    /* scanlines + curved-tube vignette, over everything; light enough to keep text crisp */
+  content: ""; position: absolute; inset: 0; z-index: 6; pointer-events: none; border-radius: 34px;
+  background:
+    repeating-linear-gradient(180deg, rgba(0,0,0,.20) 0 2px, transparent 2px 5px),
+    radial-gradient(ellipse 120% 100% at 50% 50%, transparent 62%, rgba(0,0,0,.42) 100%);
+  box-shadow: inset 0 0 90px 10px rgba(0,0,0,.55), 0 0 0 40px #000;
+}
+.slide.fill::after {
+  background:
+    repeating-linear-gradient(180deg, rgba(0,0,0,.10) 0 2px, transparent 2px 5px),
+    radial-gradient(ellipse 120% 100% at 50% 50%, transparent 62%, rgba(0,0,0,.30) 100%);
+  box-shadow: inset 0 0 90px 10px rgba(0,0,0,.35), 0 0 0 40px #000;
+}
+
+/* the screen frame: a thin rule box with square corner blocks, labels cut into its top and bottom edges */
+.decor2::before {
+  content: ""; position: absolute; inset: var(--edge);
+  border: 2px solid color-mix(in srgb, var(--accent) 42%, var(--screen));
+  background:
+    linear-gradient(var(--accent), var(--accent)) top left / 14px 14px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) top right / 14px 14px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) bottom left / 14px 14px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) bottom right / 14px 14px no-repeat;
+}
+
+/* ---------------------------------------------------------------- foot on the frame edge (no counter, no kicker) */
+.frame { inset: var(--m); }
+.top { display: none; }
+.foot { height: 44px; font-family: var(--f-mono); font-weight: 500; font-size: var(--s-label); letter-spacing: .1em;
+  margin-bottom: calc(var(--edge) - 22px - var(--m)); }
+.foot > span:not(:empty) { background: var(--screen); padding: 0 16px; margin: 0 -16px; line-height: 44px; }
+.foot > span:first-child { color: var(--muted); }
+.foot .cue { color: var(--accent); }
+.foot .cue::after { content: "_"; margin-left: 2px; }
+
+/* progress: phosphor segments cut into the top edge of the frame */
+.progress, .slide.fill .progress {
+  z-index: 3; top: calc(var(--edge) - 7px); bottom: auto; left: var(--edge); height: 14px; max-width: calc(100% - 2 * var(--edge));
+  background: repeating-linear-gradient(90deg, var(--accent) 0 12px, transparent 12px 18px);
+  box-shadow: none; filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 50%, transparent));
+}
+.slide.fill .progress { background: repeating-linear-gradient(90deg, var(--on-fill) 0 12px, transparent 12px 18px); filter: none; }
+
+/* ---------------------------------------------------------------- type */
+.content { padding: 64px 0 56px; }
+.display {
+  font-family: var(--f-display); font-weight: 400; font-style: normal; letter-spacing: 0; line-height: .94;
+  color: var(--text); text-wrap: balance; font-variant-ligatures: none;
+  text-shadow: 0 0 2px color-mix(in srgb, var(--text) 55%, transparent), 0 0 22px color-mix(in srgb, var(--accent) 34%, transparent);
+}
+/* prompt + cursor on the big headlines */
+.h-cover, .h, .h-cta { padding-left: .72em; text-indent: -.72em; }
+.h-cover::before, .h::before, .h-cta::before { content: ">"; display: inline-block; width: .72em; text-indent: 0; color: var(--accent); }
+.h-cover::after, .h::after, .h-cta::after {
+  content: ""; display: inline-block; width: .42em; height: .74em; margin-left: .2em; vertical-align: -.04em;
+  background: var(--accent); box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+/* inverse-video emphasis, like a terminal selection */
+em, .display em, .quote em {
+  font-style: normal; color: var(--screen); background: var(--accent); text-shadow: none;
+  padding: 0 .12em; margin: 0 .02em; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.body em, .sub em, .list em { font-weight: 700; padding: 0 .2em; }
+
+.body { color: var(--text); line-height: 1.42; font-weight: 400; text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 22%, transparent); }
+.sub { color: var(--muted); line-height: 1.36; font-weight: 500; }
+.sub::before { content: "// "; color: color-mix(in srgb, var(--muted) 70%, var(--screen)); }
+.source { color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+.source::before { content: "# "; }
+
+/* no boot-log rule: anything above the headline reads as a kicker (house rule) */
+.rule { display: none; }
+
+/* ---------------------------------------------------------------- cover */
+.t-cover .content { justify-content: center; gap: calc(44px * var(--fit)); }
+.t-cover .h-cover { line-height: .92; }
+
+/* ---------------------------------------------------------------- stat: a big pixel number */
+.t-stat .num {
+  font-family: var(--f-display); color: var(--accent); line-height: .78; letter-spacing: 0;
+  text-shadow: 0 0 3px color-mix(in srgb, var(--accent) 70%, transparent), 0 0 46px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.t-stat .h-sm { font-size: calc(var(--s-headline) * .68 * var(--fit)); line-height: 1; }
+
+/* ---------------------------------------------------------------- lists: [01] rows on dashed rules */
+.list li { border-top: 2px dashed color-mix(in srgb, var(--accent) 30%, var(--screen)); color: var(--text); font-weight: 500; }
+.list li:last-child { border-bottom: 2px dashed color-mix(in srgb, var(--accent) 30%, var(--screen)); padding-bottom: calc(24px * var(--fit)); }
+.list .ix { font-family: var(--f-mono); font-weight: 700; color: var(--accent); min-width: 84px; }
+.list .ix::before { content: "["; color: var(--muted); }
+.list .ix::after { content: "]"; color: var(--muted); }
+.t-steps .h, .t-recap .h { font-size: calc(var(--s-headline) * .86 * var(--fit)); }
+
+/* ---------------------------------------------------------------- quote: the whole screen in inverse video */
+.quote-mark { font-family: var(--f-display); font-size: 260px; line-height: .6; height: 110px; color: var(--accent); }
+.quote {
+  font-family: var(--f-display); font-style: normal; font-size: calc(var(--s-headline) * 1.02 * var(--fit)); line-height: .98;
+  text-wrap: balance;
+}
+.slide.fill .display, .slide.fill .quote, .slide.fill .num { text-shadow: none; }
+.slide.fill .body { text-shadow: none; }
+.slide.fill em { background: var(--on-fill); color: var(--fill); }
+.slide.fill .decor { background: radial-gradient(ellipse 75% 60% at 50% 46%, rgba(255,255,255,.10), transparent 72%); }
+
+/* ---------------------------------------------------------------- cta button: an inverse-video key */
+.pill {
+  border: none; border-radius: 0; background: var(--accent); color: var(--screen);
+  font-family: var(--f-mono); font-weight: 700; font-size: 36px; letter-spacing: .06em; padding: 24px 36px;
+  margin: 8px 0 0 8px;
+  box-shadow: 0 0 0 4px var(--screen), 0 0 0 6px var(--accent), 0 0 18px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.pill span::after { content: " _"; }
+.slide.fill .pill { background: var(--on-fill); color: var(--fill); box-shadow: 0 0 0 4px var(--fill), 0 0 0 6px var(--on-fill); }
+
+/* ---------------------------------------------------------------- image */
+.img { border-radius: 0; border: 2px solid color-mix(in srgb, var(--accent) 50%, var(--screen)); filter: grayscale(1) contrast(1.1); mix-blend-mode: screen; }
+
+/* ---------------------------------------------------------------- visuals as terminal UI */
+.visual {
+  margin-block: calc(8px * var(--fit)) 0;
+  transform: none;  /* terminal UI sits square on the glass; tilt reads as a sticker, not a screen */
+  --ui-bg: color-mix(in srgb, var(--c-accent) 5%, var(--c-bg));
+  --ui-panel: color-mix(in srgb, var(--c-accent) 12%, var(--c-bg));
+  --ui-line: color-mix(in srgb, var(--c-accent) 48%, var(--c-bg));
+  --ui-text: var(--c-text); --ui-dim: var(--c-muted); --ui-accent: var(--c-accent);
+  --ui-fill: var(--c-accent); --ui-on-fill: var(--c-bg);
+  --ui-shadow: 0 0 0 1px color-mix(in srgb, var(--c-accent) 18%, transparent), 0 0 20px color-mix(in srgb, var(--c-accent) 16%, transparent);
+}
+.win, .hud, .dialog { border-radius: 0; border-width: 2px; }
+
+/* window: [ title ] ............ [-][x] */
+.win-bar { background: var(--ui-panel); color: var(--ui-text); font-weight: 500; gap: 0; padding: 14px 22px; border-bottom-style: solid; }
+.win-bar i { display: none; }
+.win-bar span { margin-left: 0; }
+.win-bar span::before { content: "[ "; color: var(--ui-accent); }
+.win-bar span::after { content: " ]"; color: var(--ui-accent); }
+.win-bar::after { content: "[-] [x]"; margin-left: auto; color: var(--ui-dim); letter-spacing: .06em; }
+.win-body { padding: calc(28px * var(--fit)) 30px; }
+.ln { font-size: calc(38px * var(--fit)); line-height: 1.25; text-shadow: 0 0 8px color-mix(in srgb, var(--c-accent) 30%, transparent); }
+.ln-dim { color: var(--ui-dim); }
+.ln-hl span { background: var(--ui-fill); color: var(--ui-on-fill); }
+.win-body .ln:last-child::after {
+  content: ""; display: inline-block; width: .55em; height: 1.05em; margin-left: .2em; align-self: center;
+  background: var(--ui-accent); flex: none;
+}
+.toast {
+  transform: none; border-radius: 0; right: 0; top: -34px; padding: 12px 20px;
+  background: var(--ui-fill); color: var(--ui-on-fill); border: none;
+  box-shadow: 0 0 0 4px var(--c-bg), 0 0 0 6px var(--ui-fill), 0 0 20px color-mix(in srgb, var(--c-accent) 35%, transparent);
+}
+.toast span::before { content: "[ OK ] "; }
+.visual:has(.toast) .win-bar::after { content: none; }
+
+/* hud: status panel with a double rule */
+.hud { border-style: double; border-width: 6px; }
+.hud-label { color: var(--ui-text); }
+.hud-label::before { content: "> "; color: var(--ui-dim); }
+.hud-tag::before { content: "["; color: var(--ui-dim); }
+.hud-tag::after { content: "]"; color: var(--ui-dim); }
+.px-heart { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--c-accent) 45%, transparent)); }
+.px-heart.off { fill: color-mix(in srgb, var(--c-accent) 20%, var(--c-bg)); filter: none; }
+.seg-bar { border-radius: 0; gap: 5px; }
+.seg-bar i { background: color-mix(in srgb, var(--c-accent) 12%, var(--c-bg)); }
+.seg-bar i.on { box-shadow: 0 0 8px color-mix(in srgb, var(--c-accent) 40%, transparent); }
+
+/* flow: bracketed chips, your thing in inverse video */
+.flow { color: var(--c-accent); }
+.fl-chip { border-width: 2px; border-radius: 0; background: var(--ui-bg); color: var(--ui-text); border-color: var(--ui-line); font-weight: 500; }
+.fl-chip .ic { color: var(--ui-accent); }
+.fl-via { background: var(--ui-fill); color: var(--ui-on-fill); border-color: var(--ui-fill); font-weight: 700; }
+.fl-via .ic { color: var(--ui-on-fill); }
+.fl-arrow { height: 2px; background: repeating-linear-gradient(90deg, currentColor 0 8px, transparent 8px 13px); }
+.fl-outs { border-left-width: 2px; }
+.fl-out::before { height: 2px; }
+
+/* slots: inventory cells, the equipped one in inverse video */
+.slot { border-width: 2px; border-radius: 0; box-shadow: var(--ui-shadow); }
+.slot .key::before { content: "F"; }
+.slot-label { font-family: var(--f-mono); font-weight: 500; font-size: calc(36px * var(--fit)); letter-spacing: 0; line-height: 1.2; }
+.slot.on { border-color: var(--ui-fill); box-shadow: 0 0 0 4px var(--c-bg), 0 0 0 6px var(--ui-fill), 0 0 20px color-mix(in srgb, var(--c-accent) 30%, transparent); }
+.slot.on .slot-label { color: var(--ui-on-fill); }
+.slot.on::after { content: "> Equipped"; top: -30px; border-radius: 0; background: var(--c-bg); color: var(--ui-accent); border: 2px solid var(--ui-fill); }
+.slots-cap { color: var(--c-muted); }
+.slots-cap::before { content: "// "; }
+
+/* dialog: ncurses box, < OK > buttons */
+.dialog { border-style: double; border-width: 6px; }
+.dl-title { font-family: var(--f-mono); font-weight: 700; font-size: calc(36px * var(--fit)); letter-spacing: .04em; text-transform: uppercase;
+  background: var(--ui-fill); color: var(--ui-on-fill); border-bottom: none; }
+.dl-title .ic { color: var(--ui-on-fill); }
+.dl-row { font-family: var(--f-mono); font-weight: 500; font-size: calc(36px * var(--fit)); line-height: 1.25; align-items: flex-start; }
+.dl-row .ic { margin-top: .1em; }
+.dl-row::before { content: "[x]"; display: none; }
+.dl-btn { font-family: var(--f-mono); border-radius: 0; border: none; padding: 10px 18px; color: var(--ui-text); }
+.dl-btn::before { content: "< "; color: var(--ui-accent); }
+.dl-btn::after { content: " >"; color: var(--ui-accent); }
+.dl-btn.primary { background: var(--ui-fill); color: var(--ui-on-fill); }
+.dl-btn.primary::before, .dl-btn.primary::after { color: var(--ui-on-fill); }
+
+/* new kinds: square terminal boxes, inverse-video selections */
+.fn-stage, .cp-col, .chart { border-radius: 0; border-width: 2px; font-family: var(--f-mono); }
+.fn-stage { font-weight: 500; }
+.fn-out { border-radius: 0; font-family: var(--f-mono); box-shadow: 0 0 0 4px var(--c-bg), 0 0 0 6px var(--ui-fill), 0 0 20px color-mix(in srgb, var(--c-accent) 35%, transparent); }
+.fn-arrow { background: var(--c-accent); }
+.fn-arrow::after { border-top-color: var(--c-accent); }
+.tag { border-radius: 0; border-width: 2px; font-family: var(--f-mono); font-weight: 500; color: var(--c-text); border-color: var(--ui-line); transform: none; }
+.tag::before { content: "["; color: var(--c-muted); margin-right: .2em; }
+.tag::after { content: "]"; color: var(--c-muted); margin-left: .2em; }
+.tag.on { box-shadow: 0 0 20px color-mix(in srgb, var(--c-accent) 35%, transparent); }
+.tag.on::before, .tag.on::after { color: var(--ui-on-fill); }
+.tags-cap { font-family: var(--f-mono); color: var(--c-muted); }
+.tags-cap::before { content: "// "; }
+.cp-row { font-family: var(--f-mono); font-weight: 500; }
+.cp-title::before { content: "[ "; } .cp-title::after { content: " ]"; }
+.ch-head { font-family: var(--f-mono); font-weight: 500; }
+.ch-track { border-radius: 0; }
+.ch-track i { background: repeating-linear-gradient(90deg, var(--ui-dim) 0 14px, transparent 14px 20px); }
+.ch-row.on .ch-track i { background: repeating-linear-gradient(90deg, var(--ui-accent) 0 14px, transparent 14px 20px); }
+.timeline::before { background: repeating-linear-gradient(180deg, var(--c-accent) 0 8px, transparent 8px 14px); opacity: .6; width: 2px; }
+.tl-node { border-radius: 0; border-width: 2px; }
+.tl-t { font-family: var(--f-mono); font-weight: 500; }
+
+/* sized to fill the glass: the visual is the picture, 40-60% of the slide */
+.visual { margin-block: auto; }
+.win-bar { font-size: 38px; padding: 16px 26px; }
+.win-body { padding: calc(34px * var(--fit)) 34px calc(38px * var(--fit)); gap: calc(14px * var(--fit)); }
+.ln { font-size: calc(44px * var(--fit)); }
+.toast { font-size: 36px; padding: 14px 22px; top: -40px; }
+.hud { padding: calc(40px * var(--fit)) 40px calc(44px * var(--fit)); gap: calc(40px * var(--fit)); }
+.hud-label, .hud-tag, .v-hud .hud-label, .v-hud .hud-tag { font-size: 42px; }
+.v-hud .px-heart { width: calc(74px * var(--fit)); }
+.v-hud .seg-bar { height: calc(58px * var(--fit)); }
+.fl-chip { font-size: 40px; padding: 22px 28px; gap: 14px; font-family: var(--f-mono); }
+.fl-chip .ic { font-size: 44px; }
+.fl-via { font-size: 46px; padding: 30px 40px; }
+.fl-arrow { width: 2px; height: calc(64px * var(--fit)); background: repeating-linear-gradient(180deg, currentColor 0 8px, transparent 8px 13px); }
+.fl-out { font-size: 36px; padding: 18px 20px; gap: 12px; }
+.fl-outs { gap: 18px; flex-wrap: nowrap; }
+.slot { min-height: calc(250px * var(--fit)); padding: 34px 30px 30px; }
+.slot .ic { font-size: calc(70px * var(--fit)); }
+.slot-label { font-size: calc(40px * var(--fit)); }
+.slots { gap: 40px 30px; }
+.slots-cap { margin-top: 40px; font-size: 38px; }
+.dl-title { font-size: calc(40px * var(--fit)); padding: 24px 30px; }
+.dl-rows { padding: calc(34px * var(--fit)) 30px calc(38px * var(--fit)); gap: calc(24px * var(--fit)); }
+.dl-row { font-size: calc(38px * var(--fit)); }
+.dl-row .ic { font-size: 40px; }
+.ln { font-size: calc(38px * var(--fit)); }   /* Plex Mono is wide: a 32-character command still fits one line */
+/* the cover's sub carries the twist, so it reads at support-headline size in full phosphor */
+.t-cover .sub { font-size: calc(48px * var(--fit)); color: var(--text); }
+/* judge round 1: on the CTA slide the button is the only filled block, so the checklist header goes outline */
+.t-cta .dl-title { background: var(--ui-panel); color: var(--ui-accent); border-bottom: 2px solid var(--ui-line); }
+.t-cta .dl-title .ic { color: var(--ui-accent); }

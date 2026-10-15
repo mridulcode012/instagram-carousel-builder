@@ -1,0 +1,72 @@
+{
+  "name": "headline-mix",
+  "description": "Editorial two-voice headlines: a small Instrument Serif italic lead-in stacked on one HUGE Manrope ExtraBold uppercase word (the *emphasis* word), with a small italic serif trailing line. Flat colour slides that alternate black / off-white with full brand-blue quote slides, and a quiet footer: handle left, bookmark 'save for later' centre, thin arrow right.",
+  "source": "themes/headline-mix/refs/ref-6.png (creator editorial grid, 'Asterisk Create'), translated into the Buildable Labs Alloy palette and three brand fonts, October 2026",
+  "best_for": [
+    "hook-led opinion posts with one punch word",
+    "myth-busting and 'stop doing X' takes",
+    "educational threads that want a magazine-cover feel",
+    "posts meant to be saved"
+  ],
+  "css": "theme.css",
+  "fill_types": [
+    "quote"
+  ],
+  "defaults": {
+    "mode": "dark",
+    "colors": {
+      "bg": "#0A0B0E",
+      "text": "#F5F6F8",
+      "muted": "#7A8296",
+      "accent": "#6789EC",
+      "fill": "#0B3FDE",
+      "on_fill": "#FFFFFF"
+    },
+    "type": {
+      "display": "Instrument Serif",
+      "body": "Manrope",
+      "mono": "JetBrains Mono",
+      "display_case": "none",
+      "scale": {
+        "cover": 128,
+        "headline": 88,
+        "body": 40,
+        "label": 34,
+        "number": 260
+      }
+    },
+    "layout": {
+      "align": "center",
+      "margin": 88,
+      "texture": "none",
+      "counter": false,
+      "handle": true,
+      "progress": true,
+      "swipe_cue": true,
+      "cta_fill": false
+    }
+  },
+  "variants": {
+    "blue": {
+      "mode": "blue",
+      "colors": {
+        "bg": "#0B3FDE",
+        "text": "#FFFFFF",
+        "muted": "#FFFFFF",
+        "accent": "#FFFFFF",
+        "fill": "#0A0B0E",
+        "on_fill": "#FFFFFF"
+      }
+    }
+  },
+  "options": {
+    "variant": [
+      "(dark default: black / off-white / blue quote)",
+      "blue (brand blue / off-white / black quote)"
+    ],
+    "align": [
+      "center (default)",
+      "left"
+    ]
+  }
+}

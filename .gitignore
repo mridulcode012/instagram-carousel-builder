@@ -1,0 +1,12 @@
+# local work: posts, saved visions, archived drafts, build output
+carousels/
+visions/
+archive/
+dist/
+# system / python
+.DS_Store
+__pycache__/
+*.pyc
+
+# template reference photos are third-party work: kept locally and in the private zip, not published
+plugin/skills/instagram-carousel-builder/assets/themes/*/refs/

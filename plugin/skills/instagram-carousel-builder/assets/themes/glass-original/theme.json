@@ -1,0 +1,85 @@
+{
+  "name": "glass-original",
+  "extends": "glass",
+  "brand": "free",
+  "description": "The agency grid as it really looks: dusty denim-navy slides lit by soft cream and burnt-orange light, a frosted-glass card holding wide Encode Sans Expanded caps (regular words, bold punch word), cream slides with ember-orange type, a rust quote slide and a glowing orange halo behind a cream disc for the number. Off-brand by design: its own blue-orange duotone and fonts.",
+  "source": "themes/glass/refs/ref-5.png (\"Visual / Digital agency\" Instagram grid), faithful colours and type, October 2026",
+  "best_for": [
+    "announcements and launches that should look like an agency campaign",
+    "studio / capability posts",
+    "case studies with one hard number",
+    "bold one-line positioning statements"
+  ],
+  "css": "theme.css",
+  "fill_types": [
+    "quote"
+  ],
+  "palette": {
+    "navy": "#1C355C",
+    "deep-navy": "#13284A",
+    "denim": "#3D6194",
+    "haze": "#8FA7C9",
+    "mist": "#B9C6DA",
+    "cream": "#F3E9E1",
+    "peach": "#F2B59A",
+    "orange": "#E2672F",
+    "ember": "#A83E16",
+    "rust": "#9E2F17",
+    "cocoa": "#7A4A36",
+    "ink": "#111214"
+  },
+  "fonts": [
+    {
+      "family": "Encode Sans Expanded",
+      "google": "Encode+Sans+Expanded:wght@300;400;500;600;700",
+      "fallback": "'Helvetica Neue', Arial, sans-serif"
+    },
+    {
+      "family": "DM Mono",
+      "google": "DM+Mono:wght@400;500",
+      "fallback": "ui-monospace, Menlo, monospace"
+    }
+  ],
+  "defaults": {
+    "mode": "dark",
+    "colors": {
+      "bg": "#1C355C",
+      "text": "#F3E9E1",
+      "muted": "#B9C6DA",
+      "accent": "#F2B59A",
+      "fill": "#9E2F17",
+      "on_fill": "#F3E9E1"
+    },
+    "type": {
+      "display": "Encode Sans Expanded",
+      "body": "Encode Sans Expanded",
+      "mono": "DM Mono",
+      "display_case": "upper",
+      "scale": {
+        "cover": 84,
+        "headline": 64,
+        "body": 38,
+        "label": 34,
+        "number": 132
+      }
+    },
+    "layout": {
+      "align": "left",
+      "margin": 96,
+      "texture": "none",
+      "counter": false,
+      "handle": true,
+      "progress": true,
+      "swipe_cue": true,
+      "cta_fill": false
+    }
+  },
+  "options": {
+    "texture": [
+      "none"
+    ],
+    "variant": [
+      "(one look: navy / cream / orange-glass slides by type, rust quote)"
+    ]
+  }
+}

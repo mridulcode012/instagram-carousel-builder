@@ -1,0 +1,127 @@
+/* promo: retail-campaign poster skeleton (ref-9 "Black Weeks"), translated into the Alloy palette.
+   Same skeleton on every slide: black mono tag + counter top-left, abstract blue hero mid-slide with a
+   circular badge, huge Manrope ExtraBold uppercase headline bottom-left, blue pill + >>> along the bottom.
+   Colours used: #FFFFFF #F5F6F8 #0A0B0E #2C3444 #0B3FDE #C3D4FA #FFFFFF (all brand.json palette). */
+
+.slide { background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 58%, #F5F6F8 100%); }
+
+/* ---------- top-left tag ("BLACK WEEKS" bar + date under it) ---------- */
+.top { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 10px; }
+.top .kicker {
+  background: var(--text); color: var(--bg); font-weight: 700; letter-spacing: .1em;
+  padding: 9px 16px 8px; line-height: 1.1; border-radius: 3px;
+}
+.slide[data-kicker=""] .top .kicker::before { content: "Buildable Labs"; }
+.top > span:last-child { color: var(--text); font-weight: 700; letter-spacing: .08em; padding-left: 2px; }
+
+/* ---------- hero: abstract geometry instead of the product + person cutout ---------- */
+/* big pale disc (the "product") */
+.decor::before {
+  content: ""; position: absolute; width: 640px; height: 640px; left: 300px; top: 150px;
+  border-radius: 50%; background: #C3D4FA;
+}
+/* tilted brand-blue slab with Ascent lines breaking out of the disc, with a flat floor shadow */
+.decor::after {
+  content: ""; position: absolute; width: 250px; height: 380px; left: 430px; top: 120px;
+  border-radius: 28px; transform: rotate(-14deg);
+  background: repeating-linear-gradient(-62deg, transparent 0 34px, rgba(255,255,255,.16) 34px 37px), #0B3FDE;
+  box-shadow: 34px 30px 0 0 #0A0B0E;
+}
+
+/* circular rotating-text badge ("TOP DEAL" sticker) overlapping the hero */
+.decor2::before {
+  content: ""; position: absolute; width: 250px; height: 250px; right: 70px; top: 150px;
+  transform: rotate(-18deg);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='100' fill='%230B3FDE'/%3E%3Ccircle cx='100' cy='100' r='57' fill='none' stroke='%23FFFFFF' stroke-width='1.5'/%3E%3Cpath id='p' fill='none' d='M100,100 m-75,0 a75,75 0 1,1 150,0 a75,75 0 1,1 -150,0'/%3E%3Ctext font-family='JetBrains Mono,Menlo,monospace' font-weight='700' font-size='17' fill='%23FFFFFF'%3E%3CtextPath href='%23p' textLength='468' lengthAdjust='spacing'%3EBUILDABLE LABS %C2%B7 SHIP %26amp%3B SCALE %C2%B7 %3C/textPath%3E%3C/text%3E%3C/svg%3E") center / contain no-repeat;
+}
+/* badge centre: the slide's own `badge` text (attr() reads the <section>, so this lives on .slide) */
+.slide::after {
+  content: attr(data-badge); position: absolute; z-index: 1; right: 70px; top: 150px; width: 250px; height: 250px;
+  box-sizing: border-box; display: grid; place-content: center; text-align: center;
+  padding: 0 62px; transform: rotate(-18deg);
+  font-family: var(--f-body); font-weight: 800; font-size: 17px; line-height: 1.15; letter-spacing: 0;
+  text-transform: uppercase; color: #FFFFFF;
+}
+
+/* every other slide flips the hero, like the ref's badge switching sides from product to product */
+.slide:nth-child(even) .decor::before { left: 140px; }
+.slide:nth-child(even) .decor::after { left: 380px; top: 140px; transform: rotate(12deg); box-shadow: -34px 30px 0 0 #0A0B0E; }
+.slide:nth-child(even) .decor2::before, .slide:nth-child(even)::after { right: auto; left: 150px; top: 330px; }
+
+/* ---------- headline: huge, heavy, uppercase, stacked tight, bottom-left ---------- */
+.content { justify-content: flex-end; gap: calc(28px * var(--fit)); padding: 20px 0 34px; }
+.display {
+  font-family: var(--f-body); font-style: normal; font-weight: 800; text-transform: uppercase;
+  letter-spacing: -.03em; line-height: .95; text-wrap: balance;
+}
+.h-cover { line-height: .93; }
+.h-sm { font-size: calc(var(--s-headline) * .8 * var(--fit)); }
+.h-cta { font-size: calc(var(--s-headline) * 1.12 * var(--fit)); }
+
+/* emphasis: the yellow highlight becomes a solid brand-blue block, white text */
+.display em, .quote em {
+  font-style: normal; color: #FFFFFF; padding: 0 .08em; margin: 0 .02em;
+  /* paint only a cap-height band, so the block never covers the tightly stacked line above */
+  background: linear-gradient(var(--fill), var(--fill)) 0 58% / 100% 68% no-repeat;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.body em, .sub em, .list em { font-style: normal; font-weight: 800; color: var(--text); background: none; }
+
+.sub { color: var(--muted); font-weight: 600; max-width: 820px; }
+.body { color: var(--muted); font-weight: 500; max-width: 820px; }
+.rule { display: none; }
+
+/* stat: the number is the hero */
+.num {
+  font-family: var(--f-body); font-style: normal; font-weight: 800; letter-spacing: -.06em; line-height: .82;
+  color: var(--accent);
+}
+.source { color: var(--muted); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+
+/* lists */
+.list { gap: calc(16px * var(--fit)); }
+.list li {
+  font-weight: 700; border-top: 3px solid var(--text); padding-top: calc(16px * var(--fit));
+  font-size: calc(var(--s-body) * 1.06 * var(--fit));
+}
+.list .ix { color: var(--accent); font-weight: 700; }
+
+/* quote */
+.quote-mark { font-family: var(--f-display); font-style: italic; font-size: 190px; line-height: .5; height: 64px; margin-bottom: -50px; color: var(--accent); }
+.quote {
+  font-family: var(--f-body); font-style: normal; font-weight: 800; text-transform: uppercase;
+  letter-spacing: -.025em; line-height: .96; font-size: calc(var(--s-headline) * .9 * var(--fit));
+}
+
+/* ---------- bottom row: blue pill + >>> chevrons ---------- */
+.foot { align-items: center; }
+.foot > span:first-child {
+  background: var(--fill); color: var(--on-fill); border-radius: 999px;
+  font-family: var(--f-body); font-weight: 700; letter-spacing: .06em; font-size: 26px;
+  padding: 18px 56px; min-width: 460px; text-align: center;
+}
+/* chevrons replace the swipe cue and sit on every slide but the last */
+.foot > span:last-child, .foot > .cue {
+  width: 132px; height: 48px; flex: none; overflow: hidden; text-indent: 200px; white-space: nowrap;
+  background: var(--text);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 132 48'%3E%3Cpath d='M8 6l18 18-18 18M48 6l18 18-18 18M88 6l18 18-18 18' fill='none' stroke='%23000' stroke-width='10' stroke-linecap='butt' stroke-linejoin='miter'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 132 48'%3E%3Cpath d='M8 6l18 18-18 18M48 6l18 18-18 18M88 6l18 18-18 18' fill='none' stroke='%23000' stroke-width='10' stroke-linecap='butt' stroke-linejoin='miter'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.slide[data-pos="last"] .foot > span:last-child { visibility: hidden; }
+
+/* CTA slide: the button is the pill; the handle steps back to a plain label */
+.pill {
+  border: none; border-radius: 999px; background: var(--fill); color: var(--on-fill);
+  font-family: var(--f-body); font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  font-size: 32px; padding: 26px 60px;
+}
+.slide[data-pos="last"] .foot > span:first-child {
+  background: none; color: var(--text); padding: 0; min-width: 0; text-align: left;
+  font-family: var(--f-mono); font-size: var(--s-label); letter-spacing: .12em; font-weight: 700;
+}
+
+.progress { height: 6px; background: var(--text); }
+
+/* a slide visual takes the hero's place: drop the geometry and the badge so they don't collide */
+.has-visual .decor, .has-visual .decor2 { display: none; }
+.slide.has-visual::after { content: none; }
