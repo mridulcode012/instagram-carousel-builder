@@ -9,3 +9,11 @@ out="dist/instagram-carousel-builder-$ver.zip"
 rm -f "$out"
 (cd plugin && zip -qr "../$out" . -x '*.DS_Store' -x '*__pycache__*')
 echo "$out ($(du -h "$out" | cut -f1))"
+
+# Skill-only zip for Claude Desktop / claude.ai: Settings -> Skills -> upload, then "Publish to Org".
+# The folder sits at the zip root with SKILL.md inside. Template reference photos are left out (not needed to run).
+skill="dist/instagram-carousel-builder-$ver.skill.zip"
+rm -f "$skill"
+(cd plugin/skills && zip -qr "../../$skill" instagram-carousel-builder -x '*.DS_Store' -x '*__pycache__*' -x '*/refs/*')
+echo "$skill ($(du -h "$skill" | cut -f1))"
+
