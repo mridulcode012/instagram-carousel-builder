@@ -9,7 +9,7 @@
 
 ## Evidence
 No statistics. The post uses a mechanism (demo vs production), an illustrative effort chart with no
-printed figures, and a 4-week plan. No numbers go on a slide.
+printed figures, and a 4-week plan. No figures or percentages go on a slide (counts like "4 moves" are structure).
 
 ## Share test
 1. **Who sends it to whom?** A founder sends it to whoever owns their AI pilot.

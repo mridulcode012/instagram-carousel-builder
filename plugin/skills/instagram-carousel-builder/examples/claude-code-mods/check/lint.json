@@ -1,0 +1,27 @@
+{
+  "rubric_version": "4.0.0",
+  "gates_failed": {},
+  "counts": {
+    "fatal": 0,
+    "error": 0,
+    "warn": 0,
+    "info": 0
+  },
+  "caps": {},
+  "stats": {
+    "slides": 6,
+    "variant": "standard",
+    "words": [
+      13,
+      22,
+      15,
+      12,
+      16,
+      11
+    ],
+    "caption_chars": 720,
+    "caption_words": 112,
+    "caption_preview": "Claude Code mods can rewrite or skip what Claude does next. They also run with your permissions."
+  },
+  "findings": []
+}

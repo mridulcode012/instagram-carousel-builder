@@ -1,151 +1,20 @@
 {
   "title": "You can now mod Claude Code like a video game",
   "variant": "standard",
+  "blog_url": null,
   "slides": [
-    {
-      "type": "cover",
-      "kicker": "Claude Code",
-      "headline": "You can now *mod* Claude Code like a video game.",
-      "sub": "There's a catch.",
-      "visual": {
-        "kind": "window",
-        "title": "claude",
-        "tilt": -2,
-        "lines": [
-          {
-            "t": "/plugin install <mod>@<marketplace>",
-            "s": "cmd"
-          }
-        ],
-        "toast": "Mod loaded",
-        "toast_icon": "gamepad"
-      },
-      "alt": "Cover: You can now mod Claude Code like a video game. There's a catch. A terminal installing a mod with a 'Mod loaded' sticker."
-    },
-    {
-      "type": "stake",
-      "headline": "Your coding session can have a *health bar.*",
-      "visual": {
-        "kind": "hud",
-        "tilt": 1.5,
-        "rows": [
-          {
-            "label": "Usage",
-            "tag": "Health",
-            "hearts": [
-              7,
-              10
-            ]
-          },
-          {
-            "label": "Context window",
-            "tag": "XP",
-            "bar": 0.62
-          }
-        ]
-      },
-      "body": "One popular mod turns your usage into health and your context window into XP.",
-      "alt": "A game HUD: usage shown as pixel hearts, the context window as an XP bar."
-    },
-    {
-      "type": "point",
-      "headline": "A mod runs *inside* Claude Code.",
-      "visual": {
-        "kind": "flow",
-        "from": "Tool call",
-        "from_icon": "terminal",
-        "via": "Your mod",
-        "via_icon": "plug",
-        "to": [
-          {
-            "t": "Run it",
-            "icon": "play"
-          },
-          {
-            "t": "Rewrite it",
-            "icon": "code"
-          },
-          {
-            "t": "Skip it",
-            "icon": "x"
-          }
-        ]
-      },
-      "body": "Hooks only watch. Mods can change what happens next.",
-      "alt": "Diagram: a tool call goes through your mod, which can run it, rewrite it or skip it."
-    },
-    {
-      "type": "point",
-      "kicker": "Loadout",
-      "headline": "Pick your *loadout.*",
-      "visual": {
-        "kind": "slots",
-        "active": 2,
-        "items": [
-          {
-            "icon": "layout",
-            "label": "Redraw the interface"
-          },
-          {
-            "icon": "shield",
-            "label": "Pause rm -rf before it runs"
-          },
-          {
-            "icon": "slash",
-            "label": "Add your own /command"
-          },
-          {
-            "icon": "gamepad",
-            "label": "Play Doom while it works"
-          }
-        ],
-        "caption": "Equipped: blast-radius, Anthropic's sample mod"
-      },
-      "alt": "A game inventory with four mod slots: redraw the interface, pause rm -rf and force push (equipped), add your own command, play Doom while it works."
-    },
-    {
-      "type": "point",
-      "kicker": "Before you install",
-      "headline": "Mods aren't sandboxed. *Check first.*",
-      "visual": {
-        "kind": "window",
-        "title": "terminal",
-        "tilt": -1.5,
-        "lines": [
-          {
-            "t": "claude plugin validate ./the-mod",
-            "s": "shell"
-          },
-          {
-            "t": "# lists every event it hooks",
-            "s": "dim"
-          },
-          {
-            "t": "# and every API call it makes",
-            "s": "dim"
-          }
-        ]
-      },
-      "body": "They run with your permissions. Only install from sources you trust.",
-      "alt": "Terminal: claude plugin validate, which lists every event a mod hooks and every API call it makes."
-    },
-    {
-      "type": "cta",
-      "headline": "Send this to your team's *first modder.*",
-      "visual": {
-        "kind": "dialog",
-        "title": "Before you install",
-        "icon": "shield",
-        "tilt": 1.5,
-        "rows": [
-          "Installed only from a source you trust",
-          "Ran claude plugin validate and read it",
-          "blast-radius on to pause risky commands"
-        ]
-      },
-      "action": "share",
-      "button": "Send to a teammate",
-      "alt": "A pre-install checklist: installed only from a source you trust, ran claude plugin validate and read it, blast-radius on to pause risky commands. Send this to your team's first modder."
-    }
+    {"type": "cover", "headline": "You can now *mod* Claude Code like a video game.", "sub": "There's a catch.",
+     "alt": "A Claude Code prompt with a pixel health bar above it and a MOD LOADED sticker, for Claude Code mods.",
+     "visual": "a Claude Code window with a game HUD (hearts and XP bar) above the real install command, and a MOD LOADED sticker"},
+    {"type": "stake", "headline": "Your coding session can have a *health bar.*", "body": "One popular mod turns your usage into health and your context window into XP.",
+     "visual": "a HUD: ten pixel hearts for usage and a segmented XP bar for the context window"},
+    {"type": "point", "headline": "A mod runs *inside* Claude Code.", "body": "Hooks only watch. Mods can change what happens next.",
+     "visual": "a flow: tool call goes into your mod, which can run it, rewrite it or skip it"},
+    {"type": "point", "headline": "Equip one and it can *change* anything.", "body": "Equipped: blast-radius, Anthropic's sample mod.",
+     "visual": "four inventory slots: redraw the interface, pause rm -rf before it runs (equipped), add your own /command, play Doom while it works"},
+    {"type": "point", "headline": "Mods aren't sandboxed. *Check first.*", "body": "They run with your permissions. Only install from sources you trust.",
+     "visual": "a terminal running claude plugin validate with comments listing every event it hooks and every API call it makes"},
+    {"type": "cta", "headline": "Send this to your team's *first modder.*", "action": "share", "button": "Send to a teammate",
+     "visual": "a Before you install checklist: trusted source, ran validate, added blast-radius"}
   ]
 }

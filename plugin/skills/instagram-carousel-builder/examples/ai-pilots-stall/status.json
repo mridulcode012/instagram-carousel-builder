@@ -1,0 +1,32 @@
+{
+  "slug": "ai-pilots-stall",
+  "stage": "rendered",
+  "updated": "2026-10-19T12:27:47+05:30",
+  "history": [
+    {
+      "at": "2026-10-19T11:55:21+05:30",
+      "event": "rendered",
+      "slides": "all"
+    },
+    {
+      "at": "2026-10-19T11:55:33+05:30",
+      "event": "rendered",
+      "slides": "all"
+    },
+    {
+      "at": "2026-10-19T12:10:45+05:30",
+      "event": "rendered",
+      "slides": "all"
+    },
+    {
+      "at": "2026-10-19T12:18:45+05:30",
+      "event": "rendered",
+      "slides": "all"
+    },
+    {
+      "at": "2026-10-19T12:27:47+05:30",
+      "event": "rendered",
+      "slides": "all"
+    }
+  ]
+}

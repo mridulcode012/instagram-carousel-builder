@@ -80,7 +80,7 @@ These are the rubric's lines, and the rules the make workflow writes to.
 | Save-worthy reference | A checklist, steps, a framework or a sourced number someone will come back to | Value |
 | One honest ask | Save, or send to a named kind of person for a stated reason. Never bait | CTA |
 | Caption that adds, not repeats | A first line that works as a second hook before "...more", keywords people search for, one ask, 3-5 precise hashtags | Caption |
-| Original and on-brand | Our angle, our visuals and our evidence; no reposts, no stock | Brand |
+| Original and distinctive | Our angle, our visuals and our evidence, a look that isn't the last post's; no reposts, no stock | Design |
 
 ## 4. Things we deliberately don't do
 

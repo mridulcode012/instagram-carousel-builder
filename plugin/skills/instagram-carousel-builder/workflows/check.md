@@ -18,13 +18,12 @@ things keep the score honest, and all three matter:
 ## Inputs
 
 A carousel folder made by the make workflow (layout: `workflows/make.md`). It needs `slides/` (PNG
-per slide), `script.json`, `vision.json`, `brief.md`, `caption.md` and ideally `render_report.json`. Run
+per slide), `slides.html`, `design.md`, `script.json`, `brief.md`, `caption.md` and ideally `render_report.json`. Run
 commands from the working folder. Scripts are in this skill's `scripts/` folder; call them by absolute path.
-The brand kit and themes come from this skill's `assets/` (or a project's own `brand/` above the carousel).
+The voice rules come from this skill's `assets/brand/` (or a project's own `brand/` above the carousel).
 
 **Check `status.json` first.** Check runs when the stage is `rendered`.
-- `vision_draft` / `waiting_on_designer`: the designer hasn't signed off the look yet. Say so and
-  stop. If a person explicitly asks for a check anyway, run it; lint will cap Brand at 3.
+- `designed` (or no stage): the slides haven't been rendered yet. Say so and stop.
 - `needs_fix`: the make workflow hasn't done the fix round yet. Stop.
 - `awaiting_approval` / `approved`: already checked. Only re-check if asked.
 
@@ -47,17 +46,17 @@ current conversation:
 
 > You are the carousel judge. You did not make this carousel, so score it cold.
 > Folder: `<absolute path to carousels/slug>`. Rubric anchors: `<skill-dir>/references/rubric.md`.
-> Read the rubric first, then `brief.md`, `script.json`, `caption.md`, `<skill-dir>/assets/brand/brand.json`, `<skill-dir>/assets/brand/design-rules.md`,
-> the theme's `<skill-dir>/assets/themes/<theme>/theme.json` and `preview.png` (the theme name is in `vision.json`), and `check/lint.json`.
-> If that theme.json says `"brand": "free"`, score the brand line with the rubric's **Design** table (Instagram
-> craft), not Brand match.
+> Read the rubric first, then `brief.md`, `script.json`, `caption.md`, `design.md` (the design this post was built
+> from: palette, fonts, layout, emphasis, devices; a `reference` design means it copies an attached photo, which you
+> can find in `refs/`), `<skill-dir>/assets/brand/brand.json` (the voice rules) and `check/lint.json`.
+> Score the design line with the rubric's **Design** table: Instagram craft, cohesion, and match to `design.md`.
 > Then **look at every image in `slides/` in order**, at full size, and at `board.png`. Rule on every
-> judge gate (G1-G10, rubric §2) before scoring the lines, and list 3-5 reasons it might NOT get engagement. Score the eight lines
+> judge gate (the ones marked judge in `rubric.json → gates`, listed in rubric §2) before scoring the lines, and list 3-5 reasons it might NOT get engagement. Score the eight lines
 > exactly as the rubric says, and write `check/judge-r<N>.json` in the format the rubric gives. Judge it as a
 > stranger scrolling Instagram would: would you stop, swipe to the end, and send it to someone?
-> Don't read `status.json`, `vision.json → notes` or earlier rounds in `check/`; judge what's on
+> Don't read `status.json`, `design.md`'s "Decisions" section or earlier rounds in `check/`; judge what's on
 > the slides. Set `"judge": "subagent"`. Don't work out the verdict or the weighted score; a script
-> does that. Don't change any other file. Reply with only the eight scores on one line, e.g. `share 4, hook 4, flow 3, value 3, readability 4, brand 4, cta 5, caption 4`.
+> does that. Don't change any other file. Reply with only the eight scores on one line, e.g. `share 4, hook 4, flow 3, value 3, readability 4, design 4, cta 5, caption 4`.
 
 If you can't start a subagent, judge it yourself, following `references/rubric.md` to the letter,
 and set `"judge": "same-session"`. The approver will see that label and give the score less weight.
@@ -121,9 +120,9 @@ saves and shares, the weights are wrong. When you change it, bump `version` and 
 4.0 threshold at all, calibrate it against posts you've already published:
 `references/calibration.md`.
 
-## Slides made in Canva or by hand
+## Slides made outside this workflow
 
-These work too. Export PNGs at 1080x1350 into `slides/` as `01.png`, `02.png` and so on, with a
-`script.json` holding the copy (write it from the slides if needed, since lint reads words and
-numbers from it). There's no `render_report.json`, so lint can't detect clipping, type size or
-font fallback. The judge has to look for those deliberately; the rubric says how.
+These work too (a Canva export, a designer's files). Export PNGs at 1080x1350 into `slides/` as `01.png`, `02.png` and so
+on, with a `script.json` holding the copy (write it from the slides if needed, since lint reads words and numbers from
+it) and a `design.md` describing the look. There's no `render_report.json`, so lint can't detect clipping, type size,
+overlaps or font fallback. The judge has to look for those deliberately; the rubric says how.

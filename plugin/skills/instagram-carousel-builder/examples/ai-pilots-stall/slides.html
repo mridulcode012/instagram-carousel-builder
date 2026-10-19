@@ -1,0 +1,184 @@
+<!doctype html>
+<!-- ai-pilots-stall: the finished slides for design.md (pilot-paper). Written by hand from assets/slide-base.html. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Why AI pilots stall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=block">
+<style>
+:root{
+  --bg:#F3EFE6; --text:#141414; --muted:#5A564C; --accent:#B52A16; --rule:rgba(20,20,20,.16);
+  --f-big:"Archivo Black","Arial Black",Impact,sans-serif; --f-serif:"Instrument Serif",Georgia,serif;
+  --f-body:"Manrope",Helvetica,Arial,sans-serif; --f-label:"JetBrains Mono",Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1080px;background:#000}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--f-body)}
+.slide.ink{--bg:#141414;--text:#F3EFE6;--muted:#B8B3A4;--accent:#FF7A57;--rule:rgba(243,239,230,.18)}
+.slide.red{--bg:#B52A16;--text:#F3EFE6;--muted:#F3EFE6;--accent:#F3EFE6;--rule:rgba(243,239,230,.3)}
+.decor{position:absolute;inset:0;pointer-events:none;z-index:0}
+.decor i{position:absolute;top:88px;bottom:88px;width:2px;background:var(--rule)}
+.decor i:nth-child(1){left:314px}.decor i:nth-child(2){left:540px}.decor i:nth-child(3){left:766px}
+.bar{position:absolute;left:0;bottom:0;height:8px;background:var(--text);z-index:2}
+.frame{position:absolute;inset:92px 88px 84px;display:flex;flex-direction:column;gap:40px;z-index:1}
+.headline{display:flex;flex-direction:column;align-items:flex-start}
+.lead{font-family:var(--f-serif);font-style:italic;font-weight:400;font-size:64px;line-height:1.05;letter-spacing:-.01em}
+.big{font-family:var(--f-big);font-weight:400;text-transform:uppercase;letter-spacing:-.03em;line-height:.92;color:var(--accent);margin:6px 0 4px;white-space:nowrap}
+.tail{font-family:var(--f-serif);font-style:italic;font-size:56px;line-height:1.05}
+.sub{font-weight:600;font-size:44px;line-height:1.25;color:var(--muted);max-width:820px}
+.visual{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center}
+.visual svg{width:100%;height:auto;display:block;overflow:visible}
+.visual svg text{font-family:var(--f-body);font-weight:700;fill:var(--text)}
+.visual svg .mono{font-family:var(--f-label);font-weight:500}
+.cmp{display:grid;grid-template-columns:1fr 1fr;border:3px solid var(--text)}
+.cmp>div+div{border-left:3px solid var(--text)}
+.cmp h3{font-family:var(--f-label);font-weight:700;font-size:36px;letter-spacing:.08em;text-transform:uppercase;padding:20px 26px 18px;border-bottom:3px solid var(--text)}
+.cmp .after h3{background:var(--accent);color:#F3EFE6}
+.cmp ul{list-style:none}
+.cmp li{display:flex;gap:18px;align-items:flex-start;padding:30px 26px;font-weight:600;font-size:40px;line-height:1.2;border-top:2px solid var(--rule)}
+.cmp li:first-child{border-top:0}
+.cmp li svg{flex:none;width:40px;height:40px;margin-top:4px;fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:square}
+.cmp .before li{color:var(--muted)}
+.box{background:#F3EFE6;color:#141414;border:3px solid #141414}
+.box h3{background:#141414;color:#F3EFE6;font-family:var(--f-label);font-weight:700;font-size:36px;letter-spacing:.08em;text-transform:uppercase;padding:18px 26px 16px}
+.box li{list-style:none;display:flex;gap:20px;align-items:flex-start;padding:26px 26px;font-weight:700;font-size:42px;line-height:1.2;border-top:2px solid rgba(20,20,20,.16)}
+.box li:first-of-type{border-top:0}
+.box li svg{flex:none;width:44px;height:44px;margin-top:4px;fill:none;stroke:#B52A16;stroke-width:5;stroke-linecap:square}
+.btn{align-self:flex-start;display:inline-flex;align-items:center;gap:20px;background:#141414;color:#F3EFE6;font-weight:700;font-size:40px;padding:26px 40px}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--rule);padding-top:22px;
+  font-family:var(--f-label);font-size:34px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.foot .cue{color:var(--accent);font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- 1 cover: funnel -->
+<section class="slide" data-type="cover"><div class="decor"><i></i><i></i><i></i></div><div class="bar" style="width:17%"></div>
+<div class="frame">
+  <h1 class="headline"><span class="lead">Most AI pilots never reach</span><span class="big" style="font-size:104px">Production.</span></h1>
+  <p class="sub">Here's where they stall.</p>
+  <div class="visual" data-kind="funnel">
+    <svg viewBox="0 0 904 520" role="img" aria-label="A funnel narrowing from ideas to demos to pilots to in production">
+      <g fill="none" stroke="#141414" stroke-width="3">
+        <rect x="1.5" y="1.5" width="901" height="97"/>
+        <rect x="102" y="141.5" width="700" height="97"/>
+        <rect x="202" y="281.5" width="500" height="97"/>
+      </g>
+      <rect x="302" y="421.5" width="300" height="97" fill="#B52A16"/>
+      <g text-anchor="middle" font-size="44">
+        <text x="452" y="62">Ideas</text><text x="452" y="202">Demos</text><text x="452" y="342">Pilots</text>
+        <text x="452" y="482" style="fill:#F3EFE6;font-size:40px">In production</text>
+      </g>
+      <g stroke="#141414" stroke-width="3" fill="none">
+        <path d="M452 104v30M440 124l12 12 12-12"/><path d="M452 244v30M440 264l12 12 12-12"/><path d="M452 384v30M440 404l12 12 12-12"/>
+      </g>
+    </svg>
+  </div>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span><span class="cue">SWIPE →</span></div>
+</div></section>
+
+<!-- 2 tags -->
+<section class="slide ink" data-type="point"><div class="decor"><i></i><i></i><i></i></div><div class="bar" style="width:33%"></div>
+<div class="frame">
+  <h2 class="headline"><span class="lead">Everyone's chasing the same</span><span class="big" style="font-size:190px">Tools.</span></h2>
+  <div class="visual" data-kind="tags">
+    <svg viewBox="0 0 904 470" role="img" aria-label="A cloud of AI buzzwords with one highlighted: evals">
+      <g fill="none" stroke="#F3EFE6" stroke-width="3">
+        <rect x="133" y="1.5" width="250" height="97"/><rect x="407" y="1.5" width="170" height="97"/><rect x="601" y="1.5" width="170" height="97"/>
+        <rect x="125" y="131.5" width="340" height="97"/><rect x="489" y="131.5" width="290" height="97"/>
+        <rect x="175" y="261.5" width="310" height="97"/>
+      </g>
+      <rect x="509" y="261.5" width="220" height="97" fill="#FF7A57"/>
+      <g text-anchor="middle" font-size="46" style="fill:#F3EFE6">
+        <text x="258" y="65" style="fill:#F3EFE6">Agents</text><text x="492" y="65" style="fill:#F3EFE6">RAG</text><text x="686" y="65" style="fill:#F3EFE6">MCP</text>
+        <text x="295" y="195" style="fill:#F3EFE6">Fine-tuning</text><text x="634" y="195" style="fill:#F3EFE6">Prompting</text>
+        <text x="330" y="325" style="fill:#F3EFE6">Guardrails</text><text x="619" y="325" style="fill:#141414">Evals</text>
+      </g>
+      <text x="0" y="440" font-size="40" style="fill:#B8B3A4;font-weight:600">The one that decides if it ships.</text>
+    </svg>
+  </div>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span><span class="cue">SWIPE →</span></div>
+</div></section>
+
+<!-- 3 compare -->
+<section class="slide" data-type="point"><div class="decor"><i></i><i></i><i></i></div><div class="bar" style="width:50%"></div>
+<div class="frame">
+  <h2 class="headline"><span class="lead">The fix is</span><span class="big" style="font-size:160px">Boring.</span></h2>
+  <div class="visual" data-kind="compare">
+    <div class="cmp">
+      <div class="before"><h3>Demo</h3><ul>
+        <li><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg>Happy path only</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg>No owner</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg>Vibes as tests</li></ul></div>
+      <div class="after"><h3>Production</h3><ul>
+        <li><svg viewBox="0 0 24 24" style="stroke:#B52A16"><path d="M4 12l5 5 11-11"/></svg>Edge cases logged</li>
+        <li><svg viewBox="0 0 24 24" style="stroke:#B52A16"><path d="M4 12l5 5 11-11"/></svg>One named owner</li>
+        <li><svg viewBox="0 0 24 24" style="stroke:#B52A16"><path d="M4 12l5 5 11-11"/></svg>Evals on every change</li></ul></div>
+    </div>
+  </div>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span><span class="cue">SWIPE →</span></div>
+</div></section>
+
+<!-- 4 chart -->
+<section class="slide ink" data-type="point"><div class="decor"><i></i><i></i><i></i></div><div class="bar" style="width:67%"></div>
+<div class="frame">
+  <h2 class="headline"><span class="lead">Where the</span><span class="big" style="font-size:200px">Time</span><span class="tail">actually goes.</span></h2>
+  <div class="visual" data-kind="chart">
+    <svg viewBox="0 0 904 520" role="img" aria-label="Three bars: building the demo is short, data access is longer, sign-off is longest">
+      <g font-size="44">
+        <text x="0" y="44">Building the demo</text><text x="0" y="214">Getting data access</text><text x="0" y="384">Waiting on sign-off</text>
+      </g>
+      <g fill="none" stroke="#F3EFE6" stroke-width="3">
+        <rect x="1.5" y="64.5" width="901" height="77"/><rect x="1.5" y="234.5" width="901" height="77"/><rect x="1.5" y="404.5" width="901" height="77"/>
+      </g>
+      <rect x="1.5" y="64.5" width="190" height="77" fill="#B8B3A4"/><rect x="1.5" y="234.5" width="470" height="77" fill="#B8B3A4"/>
+      <rect x="1.5" y="404.5" width="901" height="77" fill="#FF7A57"/>
+    </svg>
+  </div>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span><span class="cue">SWIPE →</span></div>
+</div></section>
+
+<!-- 5 timeline -->
+<section class="slide" data-type="point"><div class="decor"><i></i><i></i><i></i></div><div class="bar" style="width:83%"></div>
+<div class="frame">
+  <h2 class="headline"><span class="lead">Ship it in</span><span class="big" style="font-size:150px">4 moves.</span></h2>
+  <div class="visual" data-kind="timeline">
+    <svg viewBox="0 0 904 560" role="img" aria-label="A four-week timeline: name one owner, write the evals first, run it in the shadows, flip the switch">
+      <path d="M32 40V500" stroke="#141414" stroke-width="3" fill="none"/>
+      <g fill="#F3EFE6" stroke="#141414" stroke-width="3">
+        <rect x="6" y="14" width="52" height="52"/><rect x="6" y="154" width="52" height="52"/><rect x="6" y="294" width="52" height="52"/>
+      </g>
+      <rect x="6" y="434" width="52" height="52" fill="#B52A16"/>
+      <g class="mono" font-size="34" style="fill:#5A564C;font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:.08em">
+        <text x="100" y="32" style="fill:#5A564C">WEEK 1</text><text x="100" y="172" style="fill:#5A564C">WEEK 2</text>
+        <text x="100" y="312" style="fill:#5A564C">WEEK 3</text><text x="100" y="452" style="fill:#5A564C">WEEK 4</text>
+      </g>
+      <g font-size="46">
+        <text x="100" y="82">Name one owner</text><text x="100" y="222">Write the evals first</text>
+        <text x="100" y="362">Run it in the shadows</text><text x="100" y="502">Flip the switch</text>
+      </g>
+    </svg>
+  </div>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span><span class="cue">SWIPE →</span></div>
+</div></section>
+
+<!-- 6 cta -->
+<section class="slide red" data-type="cta"><div class="decor"><i></i><i></i><i></i></div><div class="bar" style="width:100%;background:#F3EFE6"></div>
+<div class="frame">
+  <h2 class="headline"><span class="lead">Send this to your</span><span class="big" style="font-size:120px;white-space:normal;line-height:.95">Pilot owner.</span></h2>
+  <div class="visual" data-kind="checklist">
+    <div class="box"><h3>Before you pilot</h3>
+      <ul style="padding:0">
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5 11-11"/></svg>One named owner</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5 11-11"/></svg>Evals written before the build</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5 11-11"/></svg>A shadow run next to the old process</li>
+      </ul>
+    </div>
+  </div>
+  <span class="btn">➤ Send to the owner</span>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span></div>
+</div></section>
+</body>
+</html>

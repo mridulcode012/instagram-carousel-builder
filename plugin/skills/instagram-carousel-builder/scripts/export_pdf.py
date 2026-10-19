@@ -23,19 +23,20 @@ import sys
 import tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import render  # noqa: E402  (same folder: Browser, find_chrome, file_url, W, H)
+import chrome  # noqa: E402  (same folder: Browser, find_chrome, file_url)
+import common  # noqa: E402  (W, H)
 
 PAGE_CSS = ("@page{size:%dpx %dpx;margin:0}"
-            "html,body{margin:0;padding:0;background:none!important}") % (render.W, render.H)
+            "html,body{margin:0;padding:0;background:none!important}") % (common.W, common.H)
 PRINT_CSS = PAGE_CSS + (".slide{break-after:page;page-break-after:always}"
                         ".slide:last-child{break-after:auto;page-break-after:auto}")
 
 
 def image_page_html(pngs):
-    imgs = "".join(f'<img src="{html.escape(render.file_url(p))}">' for p in pngs)
+    imgs = "".join(f'<img src="{html.escape(chrome.file_url(p))}">' for p in pngs)
     return ("<!doctype html><html><head><meta charset='utf-8'><style>" + PAGE_CSS +
             "img{display:block;width:%dpx;height:%dpx;break-after:page;page-break-after:always}"
-            "img:last-child{break-after:auto;page-break-after:auto}</style></head><body>" % (render.W, render.H) +
+            "img:last-child{break-after:auto;page-break-after:auto}</style></head><body>" % (common.W, common.H) +
             imgs + "<script>Promise.all([...document.images].map(i=>i.decode().catch(()=>{})))"
             ".then(()=>document.body.dataset.ready='1')</script></body></html>")
 
@@ -65,13 +66,13 @@ def main():
             f.write(image_page_html(pngs))
         src = tmp
 
-    binary = render.find_chrome()
+    binary = chrome.find_chrome()
     if not binary:
         sys.exit("No Chrome/Chromium found (set CHROME_PATH).")
-    b = render.Browser(binary)
+    b = chrome.Browser(binary)
     try:
-        sid = b.page(render.W, render.H)
-        b.goto(sid, render.file_url(src))
+        sid = b.page(common.W, common.H)
+        b.goto(sid, chrome.file_url(src))
         if args.vector:
             b.js(sid, "(() => { const s = document.createElement('style'); s.textContent = %r;"
                       " document.head.appendChild(s); document.body.classList.add('all'); return 1; })()" % PRINT_CSS)

@@ -1,0 +1,1126 @@
+{
+  "fonts": [
+    {
+      "family": "Press Start 2P",
+      "status": "loaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "loaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "status": "loaded"
+    }
+  ],
+  "slides": [
+    {
+      "n": 1,
+      "type": "cover",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 0
+      },
+      "headline": {
+        "text": "YOU CAN NOW MOD CLAUDE CODE LIKE A VIDEO GAME.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 84,
+          "w": 904,
+          "h": 356.4
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 39.3,
+        "box": {
+          "w": 904,
+          "h": 635
+        },
+        "svg_scale": null
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1232,
+          "w": 393,
+          "h": 34
+        },
+        "cue": true
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 12.3,
+        "x": 780,
+        "y": 0,
+        "w": 300,
+        "h": 600
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 6.53,
+        "px": 34,
+        "text": "MOD LOADED"
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 14,
+      "texts": [
+        {
+          "t": "You can now",
+          "px": 62,
+          "w": 400,
+          "y": 95,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "mod",
+          "px": 62,
+          "w": 400,
+          "y": 186,
+          "x": 103,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Claude Code like a video game.",
+          "px": 62,
+          "w": 400,
+          "y": 190,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "There's a catch.",
+          "px": 44,
+          "w": 700,
+          "y": 471,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "MOD LOADED",
+          "px": 34,
+          "w": 700,
+          "y": 616,
+          "x": 741,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "claude",
+          "px": 36,
+          "w": 700,
+          "y": 664,
+          "x": 212,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Usage",
+          "px": 34,
+          "w": 700,
+          "y": 732,
+          "x": 124,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Health",
+          "px": 34,
+          "w": 400,
+          "y": 732,
+          "x": 817,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Context",
+          "px": 34,
+          "w": 700,
+          "y": 837,
+          "x": 124,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "XP",
+          "px": 34,
+          "w": 400,
+          "y": 837,
+          "x": 904,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": ">",
+          "px": 38,
+          "w": 500,
+          "y": 970,
+          "x": 128,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "/plugin install <mod>@<marketplace>",
+          "px": 38,
+          "w": 500,
+          "y": 970,
+          "x": 128,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1226,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        },
+        {
+          "t": "SWIPE →",
+          "px": 34,
+          "w": 700,
+          "y": 1226,
+          "x": 830,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "type": "stake",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 1350
+      },
+      "headline": {
+        "text": "YOUR CODING SESSION CAN HAVE A HEALTH BAR.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 84,
+          "w": 904,
+          "h": 337.4
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 37.3,
+        "box": {
+          "w": 904,
+          "h": 601
+        },
+        "svg_scale": null
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1232,
+          "w": 393,
+          "h": 34
+        },
+        "cue": true
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 10.5,
+        "x": 780,
+        "y": 0,
+        "w": 300,
+        "h": 510
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 8.42,
+        "px": 34,
+        "text": "BUILDABLELABS.COM"
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 10,
+      "texts": [
+        {
+          "t": "Your coding session can have a",
+          "px": 58,
+          "w": 400,
+          "y": 95,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "health bar.",
+          "px": 58,
+          "w": 400,
+          "y": 336,
+          "x": 103,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "status",
+          "px": 36,
+          "w": 700,
+          "y": 540,
+          "x": 212,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Usage",
+          "px": 38,
+          "w": 700,
+          "y": 634,
+          "x": 138,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Health",
+          "px": 38,
+          "w": 400,
+          "y": 634,
+          "x": 788,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Context window",
+          "px": 38,
+          "w": 700,
+          "y": 792,
+          "x": 138,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "XP",
+          "px": 38,
+          "w": 400,
+          "y": 792,
+          "x": 885,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "One popular mod turns your usage into health and your contex",
+          "px": 42,
+          "w": 700,
+          "y": 1088,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1226,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        },
+        {
+          "t": "SWIPE →",
+          "px": 34,
+          "w": 700,
+          "y": 1226,
+          "x": 830,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "type": "point",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 2700
+      },
+      "headline": {
+        "text": "A MOD RUNS INSIDE CLAUDE CODE.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 84,
+          "w": 904,
+          "h": 256.2
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 42.3,
+        "box": {
+          "w": 904,
+          "h": 682
+        },
+        "svg_scale": null
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1232,
+          "w": 393,
+          "h": 34
+        },
+        "cue": true
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 12.6,
+        "x": 0,
+        "y": 360,
+        "w": 360,
+        "h": 510
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 8.42,
+        "px": 34,
+        "text": "BUILDABLELABS.COM"
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 11,
+      "texts": [
+        {
+          "t": "A mod runs",
+          "px": 58,
+          "w": 400,
+          "y": 95,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "inside",
+          "px": 58,
+          "w": 400,
+          "y": 178,
+          "x": 103,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Claude Code.",
+          "px": 58,
+          "w": 400,
+          "y": 184,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": ">_ Tool call",
+          "px": 36,
+          "w": 700,
+          "y": 482,
+          "x": 398,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Your mod",
+          "px": 46,
+          "w": 700,
+          "y": 678,
+          "x": 418,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "▶ Run it",
+          "px": 36,
+          "w": 700,
+          "y": 888,
+          "x": 136,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "<> Rewrite it",
+          "px": 36,
+          "w": 700,
+          "y": 888,
+          "x": 375,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "✕ Skip it",
+          "px": 36,
+          "w": 700,
+          "y": 888,
+          "x": 728,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Hooks only watch. Mods can change what happens next.",
+          "px": 42,
+          "w": 700,
+          "y": 1088,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1226,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        },
+        {
+          "t": "SWIPE →",
+          "px": 34,
+          "w": 700,
+          "y": 1226,
+          "x": 830,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "type": "point",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 4050
+      },
+      "headline": {
+        "text": "EQUIP ONE AND IT CAN CHANGE ANYTHING.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 84,
+          "w": 904,
+          "h": 256.2
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 42.3,
+        "box": {
+          "w": 904,
+          "h": 682
+        },
+        "svg_scale": 2.67
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1232,
+          "w": 393,
+          "h": 34
+        },
+        "cue": true
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 7.4,
+        "x": 990,
+        "y": 0,
+        "w": 90,
+        "h": 1200
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 6.53,
+        "px": 34,
+        "text": "EQUIPPED"
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 11,
+      "texts": [
+        {
+          "t": "Equip one and it can",
+          "px": 58,
+          "w": 400,
+          "y": 95,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "change",
+          "px": 58,
+          "w": 400,
+          "y": 178,
+          "x": 509,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "anything.",
+          "px": 58,
+          "w": 400,
+          "y": 270,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Redraw the interface",
+          "px": 42,
+          "w": 700,
+          "y": 568,
+          "x": 130,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "EQUIPPED",
+          "px": 34,
+          "w": 700,
+          "y": 407,
+          "x": 598,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Pause rm -rf before it runs",
+          "px": 42,
+          "w": 700,
+          "y": 568,
+          "x": 583,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Add your own /command",
+          "px": 42,
+          "w": 700,
+          "y": 874,
+          "x": 130,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Play Doom while it works",
+          "px": 42,
+          "w": 700,
+          "y": 874,
+          "x": 583,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Equipped: blast-radius, Anthropic's sample mod.",
+          "px": 42,
+          "w": 700,
+          "y": 1088,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1226,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        },
+        {
+          "t": "SWIPE →",
+          "px": 34,
+          "w": 700,
+          "y": 1226,
+          "x": 830,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "type": "point",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 5400
+      },
+      "headline": {
+        "text": "MODS AREN'T SANDBOXED. CHECK FIRST.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 84,
+          "w": 904,
+          "h": 256.2
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 42.3,
+        "box": {
+          "w": 904,
+          "h": 682
+        },
+        "svg_scale": null
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1232,
+          "w": 393,
+          "h": 34
+        },
+        "cue": true
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 11.1,
+        "x": 0,
+        "y": 360,
+        "w": 1080,
+        "h": 150
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 7.33,
+        "px": 40,
+        "text": "# lists every event it hooks"
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 10,
+      "texts": [
+        {
+          "t": "Mods aren't sandboxed.",
+          "px": 58,
+          "w": 400,
+          "y": 95,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Check first.",
+          "px": 58,
+          "w": 400,
+          "y": 253,
+          "x": 103,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "terminal",
+          "px": 36,
+          "w": 700,
+          "y": 546,
+          "x": 212,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "$",
+          "px": 40,
+          "w": 500,
+          "y": 633,
+          "x": 128,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "claude plugin validate ./the-mod",
+          "px": 40,
+          "w": 500,
+          "y": 633,
+          "x": 152,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "# lists every event it hooks",
+          "px": 40,
+          "w": 500,
+          "y": 709,
+          "x": 128,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "# and every API call it makes",
+          "px": 40,
+          "w": 500,
+          "y": 785,
+          "x": 128,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "They run with your permissions. Only install from sources yo",
+          "px": 42,
+          "w": 700,
+          "y": 1088,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1226,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        },
+        {
+          "t": "SWIPE →",
+          "px": 34,
+          "w": 700,
+          "y": 1226,
+          "x": 830,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "type": "cta",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 6750
+      },
+      "headline": {
+        "text": "SEND THIS TO YOUR TEAM'S FIRST MODDER.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 84,
+          "w": 904,
+          "h": 256.2
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 43,
+        "box": {
+          "w": 904,
+          "h": 694
+        },
+        "svg_scale": 1.83
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1232,
+          "w": 393,
+          "h": 34
+        },
+        "cue": false
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 11.1,
+        "x": 0,
+        "y": 360,
+        "w": 1080,
+        "h": 150
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 6.53,
+        "px": 34,
+        "text": "➤ Send to a teammate"
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 8,
+      "texts": [
+        {
+          "t": "Send this to your team's",
+          "px": 58,
+          "w": 400,
+          "y": 95,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "first modder.",
+          "px": 58,
+          "w": 400,
+          "y": 252,
+          "x": 103,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Before you install",
+          "px": 38,
+          "w": 700,
+          "y": 528,
+          "x": 212,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Installed only from a source you trust",
+          "px": 38,
+          "w": 700,
+          "y": 606,
+          "x": 192,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Ran claude plugin validate and read every event it hooks",
+          "px": 38,
+          "w": 700,
+          "y": 672,
+          "x": 192,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Added blast-radius to pause rm -rf and force pushes",
+          "px": 38,
+          "w": 700,
+          "y": 783,
+          "x": 192,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "➤ Send to a teammate",
+          "px": 34,
+          "w": 400,
+          "y": 1134,
+          "x": 128,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1226,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    }
+  ],
+  "rendered_at": "2026-10-19T12:27:43+05:30",
+  "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "size": [
+    1080,
+    1350
+  ],
+  "problems": [],
+  "design": "mod-night"
+}

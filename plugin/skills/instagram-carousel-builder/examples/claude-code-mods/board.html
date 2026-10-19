@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Board</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1500px;background:#15161A;color:#EDEEF2;font-family:Helvetica,Arial,sans-serif;padding:56px 64px 72px}
+.lbl{font-family:Menlo,monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#8A90A0}
+.hd{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;padding-bottom:26px;border-bottom:1px solid #2A2C34;margin-bottom:34px}
+.ttl{font-size:46px;font-weight:700;line-height:1.1;margin-top:12px;max-width:1100px}
+.tag{font-family:Menlo,monospace;font-size:13px;letter-spacing:.16em;padding:9px 16px;border:1px solid;white-space:nowrap}
+.panels{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:22px;margin-bottom:22px}
+.card{background:#1D1F26;border:1px solid #2A2C34;padding:26px 28px}
+.look{font-size:18px;line-height:1.5;color:#C9CCD6;margin-top:12px}
+.sw{display:flex;gap:12px;align-items:center;margin-top:12px;font-size:15px}
+.sw b{width:38px;height:38px;border:1px solid #444;flex:none}
+.m{font-family:Menlo,monospace;font-size:12px;color:#8A90A0}
+.chip{display:inline-block;font-size:14px;padding:6px 12px;border:1px solid #3A3D48;margin:8px 8px 0 0}
+.row{margin-top:12px;font-size:16px;line-height:1.4}
+.ok{color:#7FD4A0}.bad{color:#F26B6B}.warn{color:#F2B544}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:16px}
+.th img{width:100%;display:block;border:1px solid #2A2C34}
+.cap{margin-top:10px;font-size:14px;line-height:1.45}
+.cap .f{color:#F2B544}
+</style></head><body>
+<div class="hd"><div><div class="lbl">Design board &middot; mod-night &middot; mix &middot; mixed from arcade, brutal</div><div class="ttl">You can now mod Claude Code like a video game</div></div></div>
+<div class="panels">
+<div class="card"><div class="lbl">The design</div><div class="look">A game screen with brutalist furniture. Near-black slides with pixel-font caps headlines, where one word sits on a tilted acid-green sticker. Every box is outlined in cream with a hard pink offset shadow instead of the arcade theme&#x27;s stepped frames. Visuals are pixel game UI: hearts, a segmented XP bar, inventory slots, flow chips. The final CTA slide flips to full acid green.</div><div><span class="chip">stack-top</span><span class="chip">sticker-word</span><span class="chip">pixel</span><span class="chip">hard-shadow</span><span class="chip">outline-boxes</span><span class="chip">badges</span><span class="chip">progress-bar</span></div></div>
+<div class="card"><div class="lbl">Palette</div><div class="sw"><b style="background:#12131C"></b><div class="m">#12131C</div></div><div class="sw"><b style="background:#1E2030"></b><div class="m">#1E2030</div></div><div class="sw"><b style="background:#F4F1E8"></b><div class="m">#F4F1E8</div></div><div class="sw"><b style="background:#C6F432"></b><div class="m">#C6F432</div></div><div class="sw"><b style="background:#FF5EA8"></b><div class="m">#FF5EA8</div></div><div class="sw"><b style="background:#A8AEC9"></b><div class="m">#A8AEC9</div></div></div>
+<div class="card"><div class="lbl">Fonts</div><div class="row"><span class="m">display</span> &nbsp; Press Start 2P</div><div class="row"><span class="m">body</span> &nbsp; Manrope</div><div class="row"><span class="m">label</span> &nbsp; JetBrains Mono</div><div class="lbl" style="margin-top:18px">Mixed from</div><span class="chip">layout: arcade</span><span class="chip">type: arcade</span><span class="chip">colour: own</span><span class="chip">emphasis: brutal</span><span class="chip">devices: brutal</span><span class="chip">visual_style: arcade</span><div class="row">no-repeat check: first design in the log</div></div>
+</div>
+<div class="lbl">Slides at roughly phone size</div>
+<div class="grid"><div class="th"><img src="slides/01.png?v=1792393063"><div class="cap"><span class="lbl">01 &middot; cover &middot; min 34px &middot; visual 39%</span><div class="ok">clean</div></div></div><div class="th"><img src="slides/02.png?v=1792393063"><div class="cap"><span class="lbl">02 &middot; stake &middot; min 34px &middot; visual 37%</span><div class="ok">clean</div></div></div><div class="th"><img src="slides/03.png?v=1792393063"><div class="cap"><span class="lbl">03 &middot; point &middot; min 34px &middot; visual 42%</span><div class="ok">clean</div></div></div><div class="th"><img src="slides/04.png?v=1792393063"><div class="cap"><span class="lbl">04 &middot; point &middot; min 34px &middot; visual 42%</span><div class="ok">clean</div></div></div><div class="th"><img src="slides/05.png?v=1792393063"><div class="cap"><span class="lbl">05 &middot; point &middot; min 34px &middot; visual 42%</span><div class="ok">clean</div></div></div><div class="th"><img src="slides/06.png?v=1792393063"><div class="cap"><span class="lbl">06 &middot; cta &middot; min 34px &middot; visual 43%</span><div class="ok">clean</div></div></div></div>
+<script>(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));document.body.dataset.ready='1';})();</script>
+</body></html>

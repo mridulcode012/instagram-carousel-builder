@@ -3,17 +3,15 @@
 status.py - read a carousel's stage, or move it and log why.
 
 Stages
-  vision_draft         look drafted, board rendered, not signed off
-  waiting_on_designer  questions.json sent; waiting for answers.json (async)
-  vision_locked        designer signed off the look; script next
-  rendered             final slides rendered; ready for the check
+  designed             design.md written and the no-repeat check passed; copy and slides next
+  rendered             slides rendered and measured; ready for the check
   needs_fix            the check said FIX; fix list in check/round-N.md
   awaiting_approval    the check said PASS; Human check 2
   needs_human          failed the last allowed round; a person decides
   approved             approved for Publish
 
-render.py and score.py move the stage themselves. Use this for the
-moves in between (questions sent, answers applied, locked, approver notes).
+render.py and score.py move the stage themselves. Use this for the moves in between
+(designed, approver notes).
 
 status.json
   {"slug": "...", "stage": "...", "round": 1, "verdict": "FIX", "score": 3.4,
@@ -22,9 +20,9 @@ status.json
 
 Usage
   python3 status.py carousels/<slug>
-  python3 status.py carousels/<slug> waiting_on_designer --event questions_sent --note "round 1, 3 questions"
+  python3 status.py carousels/<slug> designed --event designed --note "mix of swiss-grid + zine"
   python3 status.py carousels/<slug> needs_fix --event approver_notes --note "Cover: lead with the cost instead"
-  python3 status.py carousels/<slug> --event answers_applied --note "bg dark, texture plain"   # log only, stage unchanged
+  python3 status.py carousels/<slug> --event note --note "cover headline cut to 8 words"   # log only, stage unchanged
 """
 
 import argparse
@@ -33,15 +31,14 @@ import json
 import os
 import sys
 
-STAGES = ["vision_draft", "waiting_on_designer", "vision_locked", "rendered", "needs_fix",
-          "awaiting_approval", "needs_human", "approved"]
+STAGES = ["designed", "rendered", "needs_fix", "awaiting_approval", "needs_human", "approved"]
 
 
 def main():
     ap = argparse.ArgumentParser(description="Read or move a carousel's stage.")
     ap.add_argument("carousel")
     ap.add_argument("stage", nargs="?", choices=STAGES)
-    ap.add_argument("--event", help="short event name, e.g. questions_sent, answers_applied, locked")
+    ap.add_argument("--event", help="short event name, e.g. designed, fixed, approver_notes")
     ap.add_argument("--note", default="")
     args = ap.parse_args()
 

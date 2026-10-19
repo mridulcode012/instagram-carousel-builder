@@ -43,3 +43,7 @@ Sources
 
 ## Story
 PAS: builders treat mods as a fun toy, so the risk (they run with your permissions) is the news. The hard part is getting them to care before they install one.
+
+## Search terms
+- claude code mods
+- claude code plugins

@@ -1,0 +1,180 @@
+<!doctype html>
+<!-- claude-code-mods: the finished slides for design.md (mod-night). Written by hand from assets/slide-base.html. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>You can now mod Claude Code like a video game</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=block">
+<style>
+:root{
+  --bg:#12131C; --panel:#1E2030; --text:#F4F1E8; --muted:#A8AEC9; --acid:#C6F432; --pink:#FF5EA8; --ink:#12131C;
+  --f-display:"Press Start 2P","Courier New",monospace; --f-body:"Manrope",Helvetica,Arial,sans-serif; --f-label:"JetBrains Mono",Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1080px;background:#000}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--f-body)}
+.slide.acid{--bg:var(--acid);--text:#12131C;--muted:#12131C;background:var(--acid);color:#12131C}
+.decor{position:absolute;inset:0;pointer-events:none;z-index:0}
+.bar{position:absolute;left:0;bottom:0;height:14px;z-index:2;background:repeating-linear-gradient(90deg,var(--acid) 0 30px,transparent 30px 36px)}
+.slide.acid .bar{background:repeating-linear-gradient(90deg,#12131C 0 30px,transparent 30px 36px)}
+.frame{position:absolute;inset:84px 88px 84px;display:flex;flex-direction:column;gap:34px;z-index:1}
+.headline{font-family:var(--f-display);font-weight:400;font-size:58px;line-height:1.4;text-transform:uppercase;max-width:904px}
+.slide[data-type=cover] .headline{font-size:62px;line-height:1.38}
+.mark{display:inline-block;line-height:1;margin:.12em 0;padding:.14em .2em .1em;background:var(--acid);color:#12131C;border:4px solid var(--text);
+  box-shadow:6px 6px 0 var(--pink);transform:rotate(-2deg)}
+.slide.acid .mark{background:#12131C;color:var(--acid);border-color:#12131C}
+.sub{font-weight:700;font-size:44px;line-height:1.25;color:var(--acid)}
+.body{font-weight:700;font-size:42px;line-height:1.28;color:var(--text);max-width:900px}
+.visual{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:26px;padding:0 14px 14px 6px}
+.box{position:relative;background:var(--panel);color:var(--text);border:4px solid var(--text);box-shadow:8px 8px 0 var(--pink)}
+.slide.acid .box{background:#12131C;color:#F4F1E8;border-color:#12131C}
+.tbar{display:flex;align-items:center;gap:14px;background:var(--acid);color:#12131C;padding:14px 24px 12px;font-family:var(--f-label);font-weight:700;font-size:36px;line-height:1;letter-spacing:.04em}
+.tbar i{width:16px;height:16px;background:#12131C;display:block}
+.tag{position:absolute;right:-8px;top:-44px;background:var(--pink);color:#12131C;border:4px solid #12131C;box-shadow:5px 5px 0 #12131C;transform:rotate(3deg);
+  font-family:var(--f-label);font-weight:700;font-size:34px;line-height:1;padding:12px 18px 10px;letter-spacing:.04em}
+.ln{font-family:var(--f-label);font-weight:500;font-size:38px;line-height:1.3;padding:4px 30px;white-space:pre-wrap}
+.ln .pr{color:var(--acid)}
+.ln.dim{color:var(--muted)}
+.ln.big{font-size:40px;padding-top:12px;padding-bottom:12px;line-height:1.3}
+.hud{padding:46px 40px 50px;display:flex;flex-direction:column;gap:46px}
+.hrow{display:flex;flex-direction:column;gap:14px}
+.hhead{display:flex;justify-content:space-between;font-family:var(--f-label);font-weight:700;font-size:38px;line-height:1;letter-spacing:.04em;text-transform:uppercase}
+.hhead b{font-weight:400;color:var(--acid)}
+.hearts{display:flex;gap:8px}
+.hearts svg{width:70px;height:60px;fill:var(--pink)} .hearts svg.off{fill:#3A3D55}
+.xp{display:flex;gap:6px;height:66px;padding:6px;border:4px solid var(--text);background:var(--bg)}
+.xp i{flex:1;background:#2A2D45} .xp i.on{background:var(--acid)}
+.hud.small{padding:20px 26px 22px;gap:16px;border-bottom:4px dashed #3A3D55}
+.hud.small .hearts svg{width:48px;height:41px} .hud.small .xp{height:36px}
+.hud.small .hhead{font-size:34px}
+.flow{display:flex;flex-direction:column;align-items:center;gap:0}
+.chip{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;background:var(--panel);color:var(--text);border:4px solid var(--text);box-shadow:6px 6px 0 var(--pink);
+  font-family:var(--f-label);font-weight:700;font-size:36px;line-height:1;padding:18px 16px 16px;letter-spacing:.04em;text-transform:uppercase}
+.chip.mod{background:var(--acid);color:#12131C;border-color:#12131C;font-size:46px;padding:24px 40px 22px;box-shadow:8px 8px 0 var(--pink)}
+.arr{width:6px;height:76px;margin:14px 0 24px;background:repeating-linear-gradient(180deg,var(--text) 0 8px,transparent 8px 16px);position:relative}
+.arr::after{content:"";position:absolute;left:-12px;bottom:-18px;width:30px;height:18px;background:var(--text);
+  clip-path:polygon(0 0,100% 0,100% 33%,80% 33%,80% 66%,60% 66%,60% 100%,40% 100%,40% 66%,20% 66%,20% 33%,0 33%)}
+.outs{display:flex;gap:14px;justify-content:center}
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:44px 34px;padding:30px 6px 6px}
+.slot{position:relative;min-height:262px;font-family:var(--f-body);background:var(--panel);border:4px solid var(--text);box-shadow:8px 8px 0 var(--pink);padding:26px 26px;
+  display:flex;flex-direction:column;justify-content:flex-end;gap:16px;font-weight:700;font-size:42px;line-height:1.12}
+.slot svg{width:64px;height:64px;fill:none;stroke:var(--acid);stroke-width:3;stroke-linecap:square;stroke-linejoin:miter}
+.slot.on{background:var(--acid);color:#12131C;border-color:#12131C}
+.slot.on svg{stroke:#12131C}
+.slot.on .tag{top:-40px;left:20px;right:auto;transform:rotate(-2deg);background:var(--pink)}
+.dlg .row{display:flex;gap:20px;align-items:flex-start;padding:10px 30px;font-weight:700;font-size:38px;line-height:1.2}
+.dlg .row svg{flex:none;width:44px;height:44px;margin-top:2px;fill:none;stroke:var(--acid);stroke-width:4;stroke-linecap:square;stroke-linejoin:miter}
+.dlg .tbar{font-size:38px}
+.btn{align-self:flex-start;display:inline-flex;align-items:center;gap:20px;background:var(--pink);color:#12131C;border:4px solid #12131C;box-shadow:8px 8px 0 #12131C;
+  font-family:var(--f-display);font-size:34px;line-height:1;padding:28px 36px 26px;text-transform:uppercase}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-family:var(--f-label);font-weight:500;font-size:34px;line-height:1;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.foot .cue{color:var(--acid);font-weight:700}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="heart" viewBox="0 0 7 6"><path d="M1 0h2v1H1zM4 0h2v1H4zM0 1h7v2H0zM1 3h5v1H1zM2 4h3v1H2zM3 5h1v1H3z"/></symbol>
+</defs></svg>
+
+<!-- 1 cover -->
+<section class="slide" data-type="cover"><div class="decor"></div><div class="bar" style="width:17%"></div>
+<div class="frame">
+  <h1 class="headline">You can now <span class="mark">mod</span> Claude Code like a video game.</h1>
+  <p class="sub">There's a catch.</p>
+  <div class="visual" data-kind="window">
+    <div class="box"><div class="tag">MOD LOADED</div>
+      <div class="tbar"><i></i><i></i><i></i>&nbsp;claude</div>
+      <div class="hud small">
+        <div class="hrow"><div class="hhead"><span>Usage</span><b>Health</b></div>
+          <div class="hearts"><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg class="off"><use href="#heart"/></svg><svg class="off"><use href="#heart"/></svg><svg class="off"><use href="#heart"/></svg></div></div>
+        <div class="hrow"><div class="hhead"><span>Context</span><b>XP</b></div>
+          <div class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      </div>
+      <div class="ln" style="padding-top:18px;padding-bottom:22px"><span class="pr">&gt;</span> /plugin install &lt;mod&gt;@&lt;marketplace&gt;</div>
+    </div>
+  </div>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span><span class="cue">SWIPE →</span></div>
+</div></section>
+
+<!-- 2 stake -->
+<section class="slide" data-type="stake"><div class="decor"></div><div class="bar" style="width:33%"></div>
+<div class="frame">
+  <h2 class="headline">Your coding session can have a <span class="mark">health bar.</span></h2>
+  <div class="visual" data-kind="hud">
+    <div class="box"><div class="tbar"><i></i><i></i><i></i>&nbsp;status</div>
+      <div class="hud">
+        <div class="hrow"><div class="hhead"><span>Usage</span><b>Health</b></div>
+          <div class="hearts"><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg class="off"><use href="#heart"/></svg><svg class="off"><use href="#heart"/></svg><svg class="off"><use href="#heart"/></svg></div></div>
+        <div class="hrow"><div class="hhead"><span>Context window</span><b>XP</b></div>
+          <div class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </div>
+  <p class="body">One popular mod turns your usage into health and your context window into XP.</p>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span><span class="cue">SWIPE →</span></div>
+</div></section>
+
+<!-- 3 point: flow -->
+<section class="slide" data-type="point"><div class="decor"></div><div class="bar" style="width:50%"></div>
+<div class="frame">
+  <h2 class="headline">A mod runs <span class="mark">inside</span> Claude Code.</h2>
+  <div class="visual" data-kind="flow"><div class="flow">
+    <span class="chip">&gt;_ Tool call</span><div class="arr"></div>
+    <span class="chip mod">Your mod</span><div class="arr"></div>
+    <div class="outs"><span class="chip">▶ Run it</span><span class="chip">&lt;&gt; Rewrite it</span><span class="chip">✕ Skip it</span></div>
+  </div></div>
+  <p class="body">Hooks only watch. Mods can change what happens next.</p>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span><span class="cue">SWIPE →</span></div>
+</div></section>
+
+<!-- 4 point: slots -->
+<section class="slide" data-type="point"><div class="decor"></div><div class="bar" style="width:67%"></div>
+<div class="frame">
+  <h2 class="headline">Equip one and it can <span class="mark">change</span> anything.</h2>
+  <div class="visual" data-kind="slots">
+    <div class="slots">
+      <div class="slot"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16"/><path d="M3 9h18M9 9v11"/></svg>Redraw the interface</div>
+      <div class="slot on"><div class="tag">EQUIPPED</div><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/></svg>Pause rm -rf before it runs</div>
+      <div class="slot"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><path d="M14 7l-4 10"/></svg>Add your own /command</div>
+      <div class="slot"><svg viewBox="0 0 24 24"><path d="M3 9h18v7l-3 3h-4l-2-3h-4l-2 3H5l-2-3zM8 12v2M7 13h2M16 12h.01M18 14h.01"/></svg>Play Doom while it works</div>
+    </div>
+  </div>
+  <p class="body">Equipped: blast-radius, Anthropic's sample mod.</p>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span><span class="cue">SWIPE →</span></div>
+</div></section>
+
+<!-- 5 point: validate terminal -->
+<section class="slide" data-type="point"><div class="decor"></div><div class="bar" style="width:83%"></div>
+<div class="frame">
+  <h2 class="headline">Mods aren't sandboxed. <span class="mark">Check first.</span></h2>
+  <div class="visual" data-kind="window">
+    <div class="box"><div class="tbar"><i></i><i></i><i></i>&nbsp;terminal</div>
+      <div class="ln big" style="padding-top:34px"><span class="pr">$</span> claude plugin validate ./the-mod</div>
+      <div class="ln big dim">  # lists every event it hooks</div>
+      <div class="ln big dim" style="padding-bottom:40px">  # and every API call it makes</div>
+    </div>
+  </div>
+  <p class="body">They run with your permissions. Only install from sources you trust.</p>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span><span class="cue">SWIPE →</span></div>
+</div></section>
+
+<!-- 6 cta -->
+<section class="slide acid" data-type="cta"><div class="decor"></div><div class="bar" style="width:100%"></div>
+<div class="frame">
+  <h2 class="headline">Send this to your team's <span class="mark">first modder.</span></h2>
+  <div class="visual" data-kind="dialog">
+    <div class="box dlg"><div class="tbar" style="background:var(--acid)"><i></i><i></i><i></i>&nbsp;Before you install</div>
+      <div style="padding:16px 0 20px">
+        <div class="row"><svg viewBox="0 0 24 24"><path d="M4 12l5 5 11-11"/></svg>Installed only from a source you trust</div>
+        <div class="row"><svg viewBox="0 0 24 24"><path d="M4 12l5 5 11-11"/></svg>Ran claude plugin validate and read every event it hooks</div>
+        <div class="row"><svg viewBox="0 0 24 24"><path d="M4 12l5 5 11-11"/></svg>Added blast-radius to pause rm -rf and force pushes</div>
+      </div>
+    </div>
+  </div>
+  <span class="btn">➤ Send to a teammate</span>
+  <div class="foot"><span class="site">BUILDABLELABS.COM</span></div>
+</div></section>
+</body>
+</html>
