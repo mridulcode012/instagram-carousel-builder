@@ -11,25 +11,30 @@
 
 ## 1. script.json shape
 
+`script.json` holds the copy. The slides themselves are written by hand in `slides.html` from the design
+(`references/design-system.md`); `script.json` is the plain-text record that lint reads for word counts, the
+cover length, the CTA and the numbers, and it has to say the same thing as the slides.
+
 ```json
 {
   "title": "Your AI pilot didn't fail. Your handoff did.",
   "variant": "standard",
   "blog_url": null,
-  "slides": [ { "type": "cover", "headline": "...", "sub": "...", "alt": "..." } ]
+  "slides": [
+    {"type": "cover", "headline": "...", "sub": "...", "alt": "...",
+     "visual": "a funnel losing a stage each slide: ideas, demos, pilots, production"}
+  ]
 }
 ```
 
-Slides are numbered by position, so don't store `n`. **Every slide carries one `visual`** (a drawn UI
-mockup or diagram: `window`, `hud`, `flow`, `slots`, `dialog`; see `visuals.md`), an `image`, or a big sourced
-`number`; slide 1's must be an infographic, a visual with information in it. Some themes print `ghost` (a big
-background word) and `badge` (circular badge text); other themes ignore them. Optional on any slide: `align`
-(override), `fill: true` (put this slide on the fill colour; at most once besides the CTA), and `alt` (alt
-text, required on the cover and good on all slides). There's no kicker: house rule, the headline is the first
-thing on every slide. Never a slide number either.
+Slides are numbered by position, so don't store `n`. **Every slide carries a `visual`**: one line saying what
+the drawn visual shows and what it explains (the visual itself is SVG or HTML in `slides.html`; see
+`references/visuals.md`). Slide 1's must be an infographic, a visual with information in it. `alt` is
+the alt text, required on the cover and good on all slides. There is no kicker (house rule: the headline is the
+first thing on every slide), and never a slide number.
 
-Wrap one to three words in `*asterisks*` to set them in the accent colour, once per slide at
-most. On a headline it reads as an italic accent; in body text it reads as bold.
+In `slides.html`, one to three words of a headline get the design's emphasis (highlight block, script word, colour,
+sticker...), once per slide at most. In `script.json` write them in `*asterisks*` so the two stay recognisable.
 
 ## 2. Slide types
 
@@ -39,10 +44,10 @@ most. On a headline it reads as an italic accent; in body text it reads as bold.
 | `stake` | why it matters; slide 2's job | `headline`, `body` |
 | `point` | one insight | `headline`, `body` |
 | `stat` | one sourced number | `number`, `headline`, `body`?, `source` (required) |
-| `steps` | a numbered how-to, 3-5 items | `headline`, `items[]`, `body`? |
+| `steps` | a how-to, 3-5 items (marked with letters or glyphs, never `01 02 03`) | `headline`, `items[]`, `body`? |
 | `quote` | a real quote from the evidence | `quote`, `attribution` |
-| `recap` | the screenshot slide | `headline`, `items[]` (≤5 items, ≤6 words each), `numbered`? |
-| `cta` | the one ask | `headline`, `body`?, `action` (`save`·`follow`·`comment`·`read`·`share`·`dm`), `button` |
+| `recap` | the screenshot slide | `headline`, `items[]` (≤5 items, ≤6 words each) |
+| `cta` | the one ask | `headline`, `body`?, `action` (`save`·`follow`·`read`·`share`), `button` |
 | `image` | a screenshot or photo in `refs/` | `image` (path relative to the carousel folder), `headline`, `body`? |
 
 ## 3. Arcs (6 slides maximum)
@@ -136,7 +141,8 @@ needs more, it's two slides. Headlines read best under 12 words, and body copy s
 two sentences.
 
 **Value.** Something worth saving: a step, a framework, a number, a line people would
-screenshot. The recap slide exists for that. **Numbers come only from `brief.md` evidence**, and a
+screenshot. The recap slide exists for that. **Numbers come only from `brief.md` evidence** (a plain count of items, 10 or fewer, like "4 moves" or "3 checks", is
+structure, not a statistic, and is fine without evidence; a figure, percentage or amount needs a source), and a
 stat slide always has a `source`. No evidence means no stat: use a step or a framework instead.
 Evidence the brief marks as unverified, placeholder or test data doesn't count, so leave it off
 the slides entirely. Quotes are real quotes from the evidence with attribution, never invented

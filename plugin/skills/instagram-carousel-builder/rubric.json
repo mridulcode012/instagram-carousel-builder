@@ -1,7 +1,7 @@
 {
   "format": "carousel",
-  "version": "3.2.0",
-  "updated": "2026-10-15",
+  "version": "4.0.0",
+  "updated": "2026-10-19",
   "calibrated": false,
   "calibration_note": "Not yet checked against past posts (references/calibration.md). Treat the 4.0 bar as provisional until it is; set calibrated: true when done.",
   "changelog": [
@@ -11,7 +11,8 @@
     "2.1.0 (2026-10-14): free themes. A theme with \"brand\": \"free\" is off-brand by design; lint checks it against its own palette and fonts, and the Brand line is scored as Design (Instagram craft) with its own anchors.",
     "3.0.0 (2026-10-14): Instagram house rules merged from the owner's carousel-post-review skill. Hard gates G1-G10 (any failure blocks a pass); 6 slides max; 34px minimum for all text; no slide numbers, no kicker, BUILDABLELABS.COM footer; judge also returns gate rulings and 'why might this NOT get engagement' risks. Scoring stays shares-first for Instagram.",
     "3.1.0 (2026-10-15): checks borrowed from the ig-carousel/ig-caption/ig-human and linkedin-carousel-builder skills. Render: measured contrast of every text run against what is painted under it (error under 3:1, warn under 4.5:1 for text under 48px), light font weights. Copy: machine-written sentence shapes ('It's not X, it's Y', 'not only/but also', one-word question lines, shouted runs), numbers spelled as words on slides, invisible characters, a longer stock-phrase list. Caption: links, weak openers, emoji density, junk hashtags, search terms from brief.md '## Search terms' (caption and alt text), and the feed preview line.",
-    "3.2.0 (2026-10-15): story framework. carousel-make picks PAS (readers underestimate the problem) or PPP (readers doubt the fix) and records it in brief.md '## Story'; the Flow 4 anchor now includes a framework that doesn't fit the reader; lint notes a missing '## Story' (info, no cap)."
+    "3.2.0 (2026-10-15): story framework. carousel-make picks PAS (readers underestimate the problem) or PPP (readers doubt the fix) and records it in brief.md '## Story'; the Flow 4 anchor now includes a framework that doesn't fit the reader; lint notes a missing '## Story' (info, no cap).",
+    "4.0.0 (2026-10-19): per-post designs. Every carousel has its own design.md (a mix of library specs or a design extracted from a reference photo); slides are written by hand and measured by render.py. The Brand line becomes Design for every post (no brand fence: colours and fonts are open), judged on Instagram craft and cohesion. Removed the theme, vision and brand-palette caps; added caps for text overlap, highlight blocks touching lines, text above the headline, a missing footer, and a design that repeats one of the last 5. Fonts are fixed like the LinkedIn skill: body Manrope, labels JetBrains Mono; only the display font is free (reference designs excepted)."
   ],
   "pass": {
     "weighted_avg_min": 4.0,
@@ -54,10 +55,10 @@
       "asks": "Each slide read in 3 seconds on a phone: one focal point, visual 40-60% of the slide, the type scale, strong contrast, balanced space."
     },
     {
-      "id": "brand",
-      "name": "Brand / design",
+      "id": "design",
+      "name": "Design",
       "weight": 0.1,
-      "asks": "Brand themes: ours (palette, fonts, theme, footer, voice) and a clean render. Free themes: design quality for Instagram."
+      "asks": "Instagram craft for this post's own look: one cohesive system (type, colour, devices, visuals), strong hierarchy, a clean render, and a design that doesn't repeat the last 5 posts."
     },
     {
       "id": "cta",
@@ -130,29 +131,9 @@
       "why": "Reading text is too small for a phone."
     },
     "font_fallback": {
-      "line": "brand",
+      "line": "design",
       "max": 2,
-      "why": "A brand font failed to load; the render used a fallback."
-    },
-    "font_off_brand": {
-      "line": "brand",
-      "max": 2,
-      "why": "The vision uses a font that is not in brand.json."
-    },
-    "colour_off_brand": {
-      "line": "brand",
-      "max": 3,
-      "why": "The vision uses a colour that is not in brand.json."
-    },
-    "vision_not_locked": {
-      "line": "brand",
-      "max": 3,
-      "why": "The look was never locked with the designer."
-    },
-    "no_handle": {
-      "line": "brand",
-      "max": 4,
-      "why": "Screenshots travel without the handle."
+      "why": "A font failed to load; the render used a fallback, so the design isn't what was meant."
     },
     "cover_way_long": {
       "line": "hook",
@@ -198,11 +179,6 @@
       "line": "cta",
       "max": 3,
       "why": "The CTA asks for more than one thing."
-    },
-    "unknown_theme": {
-      "line": "brand",
-      "max": 2,
-      "why": "The vision names a theme that doesn't exist."
     },
     "no_caption": {
       "line": "caption",
@@ -250,7 +226,7 @@
       "why": "More than 6 slides (gate G6)."
     },
     "slide_numbers": {
-      "line": "brand",
+      "line": "design",
       "max": 2,
       "why": "Slide numbers on the slides (gate G7)."
     },
@@ -278,6 +254,51 @@
       "line": "caption",
       "max": 3,
       "why": "Invisible characters from pasted AI text."
+    },
+    "text_overlap": {
+      "line": "readability",
+      "max": 2,
+      "why": "Text overlaps text or sits on the visual (gate G3)."
+    },
+    "highlight_touch": {
+      "line": "readability",
+      "max": 2,
+      "why": "A highlight block touches the line above or below it (gate G3)."
+    },
+    "text_above_headline": {
+      "line": "design",
+      "max": 3,
+      "why": "Text sits above the headline; the headline must be the first text on a slide."
+    },
+    "headline_count": {
+      "line": "design",
+      "max": 3,
+      "why": "A slide doesn't have exactly one headline."
+    },
+    "no_footer": {
+      "line": "design",
+      "max": 3,
+      "why": "The BUILDABLELABS.COM footer is missing."
+    },
+    "no_design": {
+      "line": "design",
+      "max": 2,
+      "why": "There is no design.md for this carousel."
+    },
+    "design_invalid": {
+      "line": "design",
+      "max": 3,
+      "why": "design.md is not valid, so the no-repeat check can't run."
+    },
+    "design_repeat": {
+      "line": "design",
+      "max": 3,
+      "why": "The design is too close to one of the last 5 posts."
+    },
+    "font_off_system": {
+      "line": "design",
+      "max": 3,
+      "why": "Text is set in a font outside the fixed set (Manrope, JetBrains Mono, and the design's display font)."
     }
   },
   "gates": [
@@ -301,7 +322,9 @@
       "id": "G3",
       "name": "No overlaps",
       "lint": [
-        "overflow"
+        "overflow",
+        "text_overlap",
+        "highlight_touch"
       ],
       "judge": true,
       "fails_when": "Text overlaps text or objects, objects collide, anything is hidden or clipped, or a highlight block touches the line above or below."

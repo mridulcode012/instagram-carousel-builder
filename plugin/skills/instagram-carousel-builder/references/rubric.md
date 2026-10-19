@@ -31,9 +31,9 @@ two judges on two different days land within a point of each other.
   don't double-penalise a capped problem in a second line unless it really hurts that line too.
 - **Score lines, not the verdict.** Don't add up the weights or predict PASS/FIX; `score.py` does
   that, and knowing the outcome tends to pull scores towards it.
-- **No render report?** (Canva or hand-made slides.) Then look deliberately for clipped text,
+- **No render report?** (Slides made outside render.py.) Then look deliberately for clipped text,
   text running into the edges, tiny type and fonts that look like a default fallback, and score
-  Readability and Brand with that in mind.
+  Readability and Design with that in mind.
 - **Expect most first drafts to fail at least one line.** That's the loop working. A
   competent-but-generic carousel lands around 3 to 3.5, and the pass bar is 4.0 on purpose.
 - **The angle is approved; the wording isn't.** The brief's angle was approved upstream (Step 03).
@@ -46,8 +46,8 @@ two judges on two different days land within a point of each other.
 ## 2. Gates (pass/fail) and how to measure by eye
 
 These are Instagram house rules from the account owner. **Any failed gate blocks a pass**, however good the
-scores. Lint already measures some of them (missing visual fields, text size, slide count, the counter, promo
-phrases, unsourced numbers, bait) and lists them in `check/lint.json → gates_failed`. You rule on what only eyes can
+scores. Lint already measures some of them (text size, overlaps, clipping, highlight blocks touching lines, text above the headline, slide count, slide
+numbers, promo phrases, unsourced numbers, bait) and lists them in `check/lint.json → gates_failed`. You rule on what only eyes can
 see: write a ruling for every gate marked "judge" in `../rubric.json`.
 
 | gate | fails when |
@@ -136,29 +136,22 @@ Ask four questions, and write the answers into `reason`:
 | 2 | Walls of text, cramped margins, or low contrast somewhere |
 | 1 | Clipped text, unreadable sizes, or the wrong dimensions |
 
-### Brand match (10%): original, and recognisably ours (brand themes)
+### Design (10%): this post's own look, as Instagram craft
+
+Every carousel has its own `design.md` (a mix of library specs, or a design extracted from a reference photo),
+so there is no brand to match: score how good this post's look is and whether it holds together. Read `design.md`
+and `board.png` first, then look at every slide.
 
 | score | looks like |
 |---|---|
-| 5 | A clean render (crisp, aligned, no clutter or faded ghost words behind cards) that looks exactly like the locked vision on `board.png` and its theme (`assets/themes/<theme>/preview.png`): the headline is the first element on every slide, the footer reads `BUILDABLELABS.COM` bottom-left with a swipe cue bottom-right, and every rule in `brand.json` → `rules` and `assets/brand/design-rules.md` holds (check them one by one: palette and usage ratio, emphasis style, type roles, labels, buttons, patterns, the imagery "never" list). Consistent across all slides. Original: our angle, visuals and evidence, nothing reposted. The voice is calm conviction, not hype |
-| 4 | On-brand; one inconsistency (a slide with a different alignment, an extra accent, a rule miss) |
-| 3 | On palette but drifting: sizes jump between slides, the accent is overused, or the locked vision is loosely followed |
-| 2 | An off-brand font or colour, hype voice, or it reads like a different account |
-| 1 | Unrecognisable as ours, or someone else's content |
-
-### Design (10%, replaces Brand match on free themes)
-
-Use this table instead of Brand match when the theme's `theme.json` says `"brand": "free"` (lint adds a
-`free_theme` note). These themes leave the brand on purpose, so don't mark them down for off-brand colour
-or type. Ask whether the look will do well on Instagram:
-
-| score | looks like |
-|---|---|
-| 5 | Stops the scroll on its own: a bold, distinctive visual system you'd recognise in the grid with the handle covered. Colour, type and devices feel deliberate and consistent across every slide, and it matches its theme preview. Every slide reads at thumbnail size. Type is legible (display faces only for display), contrast is strong, nothing looks cheap or templated. Original: no stock photos, nothing that looks like someone else's post |
-| 4 | Strong and consistent; one weak slide, one device overused, or a display face pushed into body text |
-| 3 | Pleasant but generic or template-like; or busy enough that the eye doesn't know where to land |
-| 2 | Inconsistent between slides, hard to read in places, or clashing colours |
+| 5 | Stops the scroll on its own: a distinctive system you'd recognise in the grid with the handle covered. Type, colour, devices and visuals feel like one deliberate design across every slide, and the slides match what `design.md` says (palette, fonts, layout, emphasis, devices). Strong hierarchy, every slide readable at thumbnail size, the headline first on every slide, the footer `BUILDABLELABS.COM` bottom-left with a swipe cue bottom-right (the last slide may drop the cue; its button is the cue). Type is legible (display faces only for display), contrast is strong, nothing looks cheap or templated. A clean render: crisp, aligned, no clutter. Original: our angle, our visuals and evidence, no stock photos, nothing that looks like someone else's post. For a **reference** design: it reads as the same system as the photo (same background, shapes in the same places, same type style) with only our content changed |
+| 4 | Strong and consistent; one weak slide, one device overused, a display face pushed into body text, or one slide drifting from `design.md` |
+| 3 | Pleasant but generic or template-like (it looks like one library spec with the colours changed); or busy enough that the eye doesn't know where to land; or the mix feels like a collage of parts rather than one system |
+| 2 | Inconsistent between slides, hard to read in places, or clashing colours and fonts |
 | 1 | Looks broken, cheap or unreadable |
+
+A design that repeats one of the last 5 posts is capped by lint (`design_repeat`); don't double-penalise it, but do
+say so if two posts in a row still feel alike in a way the fingerprint can't see.
 
 ### Call to action (8%): one honest ask
 
@@ -197,7 +190,7 @@ Write `check/judge-r<N>.json` exactly like this:
     "flow":        {"score": 4, "reason": "...", "evidence": "Slides 2-3: ...", "to_reach_5": "..."},
     "value":       {"score": 3, "reason": "...", "evidence": "Slide 4: ...", "to_reach_5": "..."},
     "readability": {"score": 5, "reason": "...", "evidence": "Slides 1-7: ...", "to_reach_5": ""},
-    "brand":       {"score": 4, "reason": "...", "evidence": "Slide 5: ...", "to_reach_5": "..."},
+    "design":      {"score": 4, "reason": "...", "evidence": "Slide 5: ...", "to_reach_5": "..."},
     "cta":         {"score": 5, "reason": "...", "evidence": "Slide 7: ...", "to_reach_5": ""},
     "caption":     {"score": 4, "reason": "...", "evidence": "Caption line 1: '...'", "to_reach_5": "Caption line 1: ..."}
   },

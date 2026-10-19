@@ -1,0 +1,1097 @@
+{
+  "fonts": [
+    {
+      "family": "Instrument Serif",
+      "status": "loaded"
+    },
+    {
+      "family": "Archivo Black",
+      "status": "loaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "loaded"
+    },
+    {
+      "family": "JetBrains Mono",
+      "status": "loaded"
+    }
+  ],
+  "slides": [
+    {
+      "n": 1,
+      "type": "cover",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 0
+      },
+      "headline": {
+        "text": "Most AI pilots never reach PRODUCTION.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 92,
+          "w": 904,
+          "h": 172.9
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 46.9,
+        "box": {
+          "w": 904,
+          "h": 757
+        },
+        "svg_scale": 1
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1221,
+          "w": 393,
+          "h": 45
+        },
+        "cue": true
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 6.3,
+        "x": 900,
+        "y": 0,
+        "w": 180,
+        "h": 510
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 5.53,
+        "px": 104,
+        "text": "Production."
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 9,
+      "texts": [
+        {
+          "t": "Most AI pilots never reach",
+          "px": 64,
+          "w": 400,
+          "y": 84,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Production.",
+          "px": 104,
+          "w": 400,
+          "y": 156,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Here's where they stall.",
+          "px": 44,
+          "w": 600,
+          "y": 302,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Ideas",
+          "px": 44,
+          "w": 700,
+          "y": 533,
+          "x": 483,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Demos",
+          "px": 44,
+          "w": 700,
+          "y": 673,
+          "x": 467,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Pilots",
+          "px": 44,
+          "w": 700,
+          "y": 813,
+          "x": 479,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "In production",
+          "px": 40,
+          "w": 700,
+          "y": 957,
+          "x": 410,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1221,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        },
+        {
+          "t": "SWIPE →",
+          "px": 34,
+          "w": 700,
+          "y": 1221,
+          "x": 830,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "type": "point",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 1350
+      },
+      "headline": {
+        "text": "Everyone's chasing the same TOOLS.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 92,
+          "w": 904,
+          "h": 252
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 47.9,
+        "box": {
+          "w": 904,
+          "h": 773
+        },
+        "svg_scale": 1
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1221,
+          "w": 393,
+          "h": 45
+        },
+        "cue": true
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 8.4,
+        "x": 840,
+        "y": 0,
+        "w": 240,
+        "h": 510
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 7.17,
+        "px": 190,
+        "text": "Tools."
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 12,
+      "texts": [
+        {
+          "t": "Everyone's chasing the same",
+          "px": 64,
+          "w": 400,
+          "y": 84,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Tools.",
+          "px": 190,
+          "w": 400,
+          "y": 148,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Agents",
+          "px": 46,
+          "w": 700,
+          "y": 551,
+          "x": 266,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "RAG",
+          "px": 46,
+          "w": 700,
+          "y": 551,
+          "x": 533,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "MCP",
+          "px": 46,
+          "w": 700,
+          "y": 551,
+          "x": 723,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Fine-tuning",
+          "px": 46,
+          "w": 700,
+          "y": 681,
+          "x": 253,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Prompting",
+          "px": 46,
+          "w": 700,
+          "y": 681,
+          "x": 604,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Guardrails",
+          "px": 46,
+          "w": 700,
+          "y": 811,
+          "x": 303,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Evals",
+          "px": 46,
+          "w": 700,
+          "y": 811,
+          "x": 649,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "The one that decides if it ships.",
+          "px": 40,
+          "w": 600,
+          "y": 932,
+          "x": 88,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1221,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        },
+        {
+          "t": "SWIPE →",
+          "px": 34,
+          "w": 700,
+          "y": 1221,
+          "x": 830,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "type": "point",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 2700
+      },
+      "headline": {
+        "text": "The fix is BORING.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 92,
+          "w": 904,
+          "h": 224.4
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 49.6,
+        "box": {
+          "w": 904,
+          "h": 801
+        },
+        "svg_scale": 1.67
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1221,
+          "w": 393,
+          "h": 45
+        },
+        "cue": true
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 7.4,
+        "x": 840,
+        "y": 0,
+        "w": 240,
+        "h": 450
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 5.53,
+        "px": 160,
+        "text": "Boring."
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 12,
+      "texts": [
+        {
+          "t": "The fix is",
+          "px": 64,
+          "w": 400,
+          "y": 84,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Boring.",
+          "px": 160,
+          "w": 400,
+          "y": 151,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Demo",
+          "px": 36,
+          "w": 700,
+          "y": 496,
+          "x": 117,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Happy path only",
+          "px": 40,
+          "w": 600,
+          "y": 591,
+          "x": 175,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "No owner",
+          "px": 40,
+          "w": 600,
+          "y": 701,
+          "x": 175,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Vibes as tests",
+          "px": 40,
+          "w": 600,
+          "y": 811,
+          "x": 175,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Production",
+          "px": 36,
+          "w": 700,
+          "y": 496,
+          "x": 569,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Edge cases logged",
+          "px": 40,
+          "w": 600,
+          "y": 591,
+          "x": 627,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "One named owner",
+          "px": 40,
+          "w": 600,
+          "y": 749,
+          "x": 627,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Evals on every change",
+          "px": 40,
+          "w": 600,
+          "y": 907,
+          "x": 627,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1221,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        },
+        {
+          "t": "SWIPE →",
+          "px": 34,
+          "w": 700,
+          "y": 1221,
+          "x": 830,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "type": "point",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 4050
+      },
+      "headline": {
+        "text": "Where the TIME actually goes.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 92,
+          "w": 904,
+          "h": 320
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 43.7,
+        "box": {
+          "w": 904,
+          "h": 705
+        },
+        "svg_scale": 1
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1221,
+          "w": 393,
+          "h": 45
+        },
+        "cue": true
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 11.1,
+        "x": 780,
+        "y": 0,
+        "w": 300,
+        "h": 540
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 7.17,
+        "px": 200,
+        "text": "Time"
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 8,
+      "texts": [
+        {
+          "t": "Where the",
+          "px": 64,
+          "w": 400,
+          "y": 84,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Time",
+          "px": 200,
+          "w": 400,
+          "y": 148,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "actually goes.",
+          "px": 56,
+          "w": 700,
+          "y": 346,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Building the demo",
+          "px": 44,
+          "w": 700,
+          "y": 541,
+          "x": 88,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Getting data access",
+          "px": 44,
+          "w": 700,
+          "y": 711,
+          "x": 88,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Waiting on sign-off",
+          "px": 44,
+          "w": 700,
+          "y": 881,
+          "x": 88,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1221,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        },
+        {
+          "t": "SWIPE →",
+          "px": 34,
+          "w": 700,
+          "y": 1221,
+          "x": 830,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "type": "point",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 5400
+      },
+      "headline": {
+        "text": "Ship it in 4 MOVES.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 92,
+          "w": 904,
+          "h": 215.2
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 50.2,
+        "box": {
+          "w": 904,
+          "h": 810
+        },
+        "svg_scale": 1
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1221,
+          "w": 393,
+          "h": 45
+        },
+        "cue": true
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 6.5,
+        "x": 870,
+        "y": 0,
+        "w": 210,
+        "h": 450
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 5.53,
+        "px": 150,
+        "text": "4 moves."
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 12,
+      "texts": [
+        {
+          "t": "Ship it in",
+          "px": 64,
+          "w": 400,
+          "y": 84,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "4 moves.",
+          "px": 150,
+          "w": 400,
+          "y": 152,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "WEEK 1",
+          "px": 34,
+          "w": 700,
+          "y": 468,
+          "x": 188,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "WEEK 2",
+          "px": 34,
+          "w": 700,
+          "y": 608,
+          "x": 188,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "WEEK 3",
+          "px": 34,
+          "w": 700,
+          "y": 748,
+          "x": 188,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "WEEK 4",
+          "px": 34,
+          "w": 700,
+          "y": 888,
+          "x": 188,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Name one owner",
+          "px": 46,
+          "w": 700,
+          "y": 505,
+          "x": 188,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Write the evals first",
+          "px": 46,
+          "w": 700,
+          "y": 645,
+          "x": 188,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Run it in the shadows",
+          "px": 46,
+          "w": 700,
+          "y": 785,
+          "x": 188,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Flip the switch",
+          "px": 46,
+          "w": 700,
+          "y": 925,
+          "x": 188,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1221,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        },
+        {
+          "t": "SWIPE →",
+          "px": 34,
+          "w": 700,
+          "y": 1221,
+          "x": 830,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "type": "cta",
+      "size": {
+        "w": 1080,
+        "h": 1350
+      },
+      "doc": {
+        "x": 0,
+        "y": 6750
+      },
+      "headline": {
+        "text": "Send this to your PILOT OWNER.",
+        "count": 1,
+        "box": {
+          "x": 88,
+          "y": 92,
+          "w": 904,
+          "h": 305.2
+        }
+      },
+      "visual": {
+        "count": 1,
+        "pct": 35.5,
+        "box": {
+          "w": 904,
+          "h": 573
+        },
+        "svg_scale": 1.83
+      },
+      "footer": {
+        "site": "BUILDABLELABS.COM",
+        "site_box": {
+          "x": 88,
+          "y": 1221,
+          "w": 393,
+          "h": 45
+        },
+        "cue": false
+      },
+      "above_headline": [],
+      "clipped": [],
+      "overlaps": [],
+      "text_over_visual": [],
+      "highlight_touch": [],
+      "empty": {
+        "pct": 10.5,
+        "x": 780,
+        "y": 0,
+        "w": 300,
+        "h": 510
+      },
+      "min_px": 34,
+      "small_text": [],
+      "min_contrast": {
+        "ratio": 5.53,
+        "px": 64,
+        "text": "Send this to your"
+      },
+      "light_weight": null,
+      "big_digits": [],
+      "images": [],
+      "text_count": 8,
+      "texts": [
+        {
+          "t": "Send this to your",
+          "px": 64,
+          "w": 400,
+          "y": 84,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Pilot owner.",
+          "px": 120,
+          "w": 400,
+          "y": 157,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": true,
+          "foot": false
+        },
+        {
+          "t": "Before you pilot",
+          "px": 36,
+          "w": 700,
+          "y": 545,
+          "x": 117,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "One named owner",
+          "px": 42,
+          "w": 700,
+          "y": 631,
+          "x": 181,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "Evals written before the build",
+          "px": 42,
+          "w": 700,
+          "y": 735,
+          "x": 181,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "A shadow run next to the old process",
+          "px": 42,
+          "w": 700,
+          "y": 840,
+          "x": 181,
+          "decor": false,
+          "visual": true,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "➤ Send to the owner",
+          "px": 40,
+          "w": 700,
+          "y": 1076,
+          "x": 128,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": false
+        },
+        {
+          "t": "BUILDABLELABS.COM",
+          "px": 34,
+          "w": 500,
+          "y": 1221,
+          "x": 88,
+          "decor": false,
+          "visual": false,
+          "headline": false,
+          "foot": true
+        }
+      ]
+    }
+  ],
+  "rendered_at": "2026-10-19T12:27:46+05:30",
+  "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "size": [
+    1080,
+    1350
+  ],
+  "problems": [],
+  "design": "pilot-paper"
+}

@@ -8,5 +8,5 @@ dist/
 __pycache__/
 *.pyc
 
-# template reference photos are third-party work: kept locally and in the private zip, not published
-plugin/skills/instagram-carousel-builder/assets/themes/*/refs/
+# reference photos are third-party work: they live in a carousel's refs/ folder and are never committed
+carousels/*/refs/

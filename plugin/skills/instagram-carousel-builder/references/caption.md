@@ -9,6 +9,8 @@ no heading, and no markdown beyond line breaks. The check workflow scores it (Ca
 - **Instagram search reads captions.** Keywords in the caption (and in alt text) are how a post is found
   in search, and public posts from professional accounts can show up on Google. Hashtags only help
   classify the post. A few precise ones are enough.
+  Lint matches each search term as the exact phrase, or with all of its words present in any order (plurals and -ing
+  forms count), so write the words naturally rather than forcing the phrase.
 - Sources and confidence: `references/engagement-research.md`.
 
 ## Shape
