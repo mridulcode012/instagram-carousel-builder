@@ -25,6 +25,7 @@ import tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import chrome  # noqa: E402  (same folder: Browser, find_chrome, file_url)
 import common  # noqa: E402  (W, H)
+import fonts  # noqa: E402  (local fallback for web fonts)
 
 PAGE_CSS = ("@page{size:%dpx %dpx;margin:0}"
             "html,body{margin:0;padding:0;background:none!important}") % (common.W, common.H)
@@ -68,12 +69,15 @@ def main():
 
     binary = chrome.find_chrome()
     if not binary:
-        sys.exit("No Chrome/Chromium found (set CHROME_PATH).")
+        sys.exit(chrome.NO_CHROME)
     b = chrome.Browser(binary)
     try:
         sid = b.page(common.W, common.H)
-        b.goto(sid, chrome.file_url(src))
+        offline = fonts.prepare(b, sid, src) if args.vector else False
+        b.goto(sid, chrome.file_url(src), wait_ready=not args.vector)
         if args.vector:
+            fonts.apply(b, sid, src, offline)
+            b.js(sid, "document.fonts.ready.then(() => 1)")
             b.js(sid, "(() => { const s = document.createElement('style'); s.textContent = %r;"
                       " document.head.appendChild(s); document.body.classList.add('all'); return 1; })()" % PRINT_CSS)
         res = b.send("Page.printToPDF", {"printBackground": True, "preferCSSPageSize": True,

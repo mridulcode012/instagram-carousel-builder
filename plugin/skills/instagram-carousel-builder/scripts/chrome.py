@@ -19,6 +19,10 @@ import time
 import urllib.parse
 
 
+NO_CHROME = ("No Chrome/Chromium found. Install Google Chrome or set CHROME_PATH. In a sandbox without one, run "
+             "`pip install playwright && python3 -m playwright install chromium` and try again.")
+
+
 def find_chrome():
     cands = [
         os.environ.get("CHROME_PATH"),
@@ -30,6 +34,10 @@ def find_chrome():
     home = os.path.expanduser("~")
     cands += sorted(glob.glob(f"{home}/Library/Caches/ms-playwright/chromium-*/chrome-mac*/*.app/Contents/MacOS/*"), reverse=True)
     cands += sorted(glob.glob(f"{home}/.cache/ms-playwright/chromium-*/chrome-linux*/chrome"), reverse=True)
+    # claude.ai chat sandbox and other Playwright installs (PLAYWRIGHT_BROWSERS_PATH, else /opt/pw-browsers)
+    for pw in dict.fromkeys(p for p in (os.environ.get("PLAYWRIGHT_BROWSERS_PATH"), "/opt/pw-browsers") if p):
+        cands += sorted(glob.glob(f"{pw}/chromium-*/chrome-linux*/chrome"), reverse=True)
+        cands += sorted(glob.glob(f"{pw}/chromium_headless_shell-*/chrome-linux*/headless_shell"), reverse=True)
     for c in cands:
         if c and os.path.isfile(c) and os.access(c, os.X_OK):
             return c
@@ -54,6 +62,7 @@ class Browser:
             [binary, "--headless=new", "--remote-debugging-pipe", "--disable-gpu", "--hide-scrollbars",
              "--no-first-run", "--no-default-browser-check", "--disable-extensions",
              "--allow-file-access-from-files", "--force-device-scale-factor=1",
+             "--disable-dev-shm-usage", *(["--no-sandbox"] if hasattr(os, "geteuid") and os.geteuid() == 0 else []),
              f"--user-data-dir={self.prof}", "about:blank"],
             preexec_fn=child_fds, close_fds=False,
             stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

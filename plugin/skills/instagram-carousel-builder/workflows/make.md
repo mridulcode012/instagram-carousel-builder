@@ -40,7 +40,8 @@ on conversation memory.
     exports/              PDFs (scripts/export_pdf.py)
 ```
 
-Run commands from the working folder. Scripts are in this skill's `scripts/` folder: call them by absolute path.
+Run commands from the working folder (in claude.ai chat: `/home/claude/work`, see "Running in claude.ai chat" in
+SKILL.md, which also covers delivery to `/mnt/user-data/outputs/` and design history for a fresh chat). Scripts are in this skill's `scripts/` folder: call them by absolute path.
 `render.py` sets the stage `rendered` itself; use `status.py` for every other move, so the history says what happened.
 
 ## Start by reading status.json
@@ -83,6 +84,9 @@ Read `references/design-system.md` once per session.
 `design.md` with `kind: "reference"`. No mixing.
 
 **No reference** → mix a new design:
+
+Fresh sandbox and the person attached earlier design files? Run `python3 <skill-dir>/scripts/design_log.py import <files>`
+first, so the last-5 check has its history.
 
 ```bash
 python3 <skill-dir>/scripts/design_log.py library        # the specs you can mix from

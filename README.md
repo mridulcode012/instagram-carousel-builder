@@ -35,8 +35,10 @@ are written by hand and the visuals drawn fresh each time; `render.py` just scre
 Plugins added in claude.ai load in Claude Code for anyone signed in with their claude.ai account
 (Claude Code 2.1.273+), within about 10 minutes or on a new session.
 
-**Each person needs:** Claude Code, Python 3, Google Chrome (set `CHROME_PATH` if it's somewhere unusual),
-internet for Google Fonts. Mac or Linux. No pip packages.
+**Each person needs:** Python 3 and Google Chrome or Chromium (set `CHROME_PATH` if it's somewhere unusual); works in
+Claude Code and in a claude.ai chat with code execution (the sandbox's Chromium is found automatically). Fonts come from
+Google Fonts, or from local copies when that is blocked (Manrope and JetBrains Mono ship with the skill, other families
+come from npm). Mac or Linux. No pip packages.
 
 ## Use it
 

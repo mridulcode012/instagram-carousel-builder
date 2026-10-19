@@ -11,10 +11,12 @@ Usage
   python3 design_log.py recent [N] [--root DIR]     the last N (default 5) saved designs' fingerprints
   python3 design_log.py check carousels/<slug>      compare this post's design with the last 5 (exit 1 if it repeats)
   python3 design_log.py save carousels/<slug>       validate, copy to designs/ and log the fingerprint
+  python3 design_log.py import FILE...              bring earlier posts' <date>-<slug>.design.md files back into the log
 """
 
 import argparse
 import colorsys
+import datetime as dt
 import glob
 import os
 import re
@@ -277,24 +279,59 @@ def cmd_save(cdir):
     return 0
 
 
+def cmd_import(root, paths):
+    """Add earlier posts' design files (named <date>-<slug>.design.md, as save writes them) to the log. For a
+    fresh sandbox with no history: the person attaches the last few design files and this brings them back."""
+    log = load_log(root)
+    known = {e["slug"] for e in log}
+    os.makedirs(designs_dir(root), exist_ok=True)
+    added = 0
+    for p in paths:
+        fp, _, err = common.load_design(p)
+        if err:
+            print(f"skipped {p}: {err}")
+            continue
+        base = os.path.basename(p)
+        m = re.match(r"^(\d{4}-\d{2}-\d{2})-(.+?)\.design\.md$", base)
+        date, slug = (m.group(1), m.group(2)) if m else (dt.date.fromtimestamp(os.path.getmtime(p)).isoformat(),
+                                                         re.sub(r"\.design\.md$|\.md$", "", base))
+        if slug in known:
+            print(f"skipped {base}: '{slug}' is already in the log")
+            continue
+        dest = os.path.join(designs_dir(root), f"{date}-{slug}.design.md")
+        if os.path.abspath(p) != os.path.abspath(dest):
+            shutil.copyfile(p, dest)
+        log.append({"slug": slug, "date": date, "file": os.path.relpath(dest, root), "fingerprint": fp})
+        known.add(slug)
+        added += 1
+    log.sort(key=lambda e: e["date"])
+    common.write_json(os.path.join(designs_dir(root), "log.json"), log)
+    print(f"imported {added} design(s); {len(log)} in the log")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=["library", "recent", "check", "save"])
-    ap.add_argument("arg", nargs="?", help="carousel folder (check, save) or N (recent)")
+    ap.add_argument("command", choices=["library", "recent", "check", "save", "import"])
+    ap.add_argument("arg", nargs="*", help="carousel folder (check, save), N (recent) or design files (import)")
     ap.add_argument("--root", default=os.getcwd(), help="working folder that holds designs/ (default: current folder)")
     a = ap.parse_args()
     if a.command == "library":
         cmd_library(a.root)
     elif a.command == "recent":
-        cmd_recent(a.root, int(a.arg) if a.arg else LOOKBACK)
+        cmd_recent(a.root, int(a.arg[0]) if a.arg else LOOKBACK)
     elif a.command == "check":
         if not a.arg:
             ap.error("check needs a carousel folder")
-        sys.exit(cmd_check(a.arg))
+        sys.exit(cmd_check(a.arg[0]))
+    elif a.command == "import":
+        if not a.arg:
+            ap.error("import needs one or more design files")
+        sys.exit(cmd_import(a.root, a.arg))
     else:
         if not a.arg:
             ap.error("save needs a carousel folder")
-        sys.exit(cmd_save(a.arg))
+        sys.exit(cmd_save(a.arg[0]))
 
 
 if __name__ == "__main__":

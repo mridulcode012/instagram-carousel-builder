@@ -59,7 +59,28 @@ can overrule any of them afterwards. The one exception is an idea that isn't a c
 The check's judge runs in a **fresh subagent**, never the session that made the slides (`workflows/check.md` §2). If no
 subagent is available, label the score `same-session`.
 
+## Running in claude.ai chat
+
+Most use is in a normal chat with code execution, where the sandbox resets between conversations. What changes:
+
+- **Work in `/home/claude/work`** (`mkdir -p` it, run commands from there; `carousels/` and `designs/` go in it). Find this
+  skill's folder first (it is where this SKILL.md was read from) and use it as `<skill-dir>`.
+- **Chrome is found automatically** (Playwright's Chromium in `/opt/pw-browsers`). If a script says no Chrome was found:
+  `pip install playwright && python3 -m playwright install chromium`, then run it again.
+- **Fonts load by themselves.** Google Fonts is usually blocked there, so `render.py` falls back to local copies (Manrope and
+  JetBrains Mono ship with the skill; any other family is fetched from npm). Nothing to do; a font it couldn't get shows
+  up as a problem in the render output.
+- **Attached photos** are in `/mnt/user-data/uploads/`: copy them into `carousels/<slug>/refs/` before extracting.
+- **Deliver** by copying into `/mnt/user-data/outputs/`: the slide PNGs, `board.png`, `caption.md`, the PDF
+  (`export_pdf.py`, run it every time here) and the design as `<date>-<slug>.design.md` (the file `designs/` just saved),
+  then present them. Tell the person to keep that design file.
+- **Design memory does not survive a new chat.** At the start, if the person attached earlier design files, run
+  `python3 <skill-dir>/scripts/design_log.py import <files>` so the last-5 check has its history. With none attached, say once
+  in the hand-off that the no-repeat check only covered this chat, and ask them to attach the last few design files next time.
+- **No subagents here** unless the tool exists: the check then labels its score `same-session` (`workflows/check.md`).
+
 ## Requirements
 
-Python 3 and Google Chrome (or Chromium; set `CHROME_PATH` if it's somewhere unusual), plus internet for Google Fonts. No
-pip packages. Mac or Linux.
+Python 3 and Google Chrome or Chromium (set `CHROME_PATH` if it's somewhere unusual). No pip packages. Mac, Linux, Claude
+Code, and the claude.ai chat sandbox. Fonts come from Google Fonts, or from local copies when that is blocked (npm needed
+for any family other than Manrope and JetBrains Mono).

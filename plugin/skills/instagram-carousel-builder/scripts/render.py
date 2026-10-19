@@ -35,6 +35,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import chrome  # noqa: E402
 import common  # noqa: E402
+import fonts  # noqa: E402  (local fallback for web fonts)
 
 W, H = common.W, common.H
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -167,7 +168,7 @@ def main():
 
     binary = chrome.find_chrome()
     if not binary:
-        print("No Chrome/Chromium found. Install Google Chrome or set CHROME_PATH.", file=sys.stderr)
+        print(chrome.NO_CHROME, file=sys.stderr)
         sys.exit(2)
 
     measure = open(os.path.join(HERE, "measure.js"), encoding="utf-8").read()
@@ -176,7 +177,11 @@ def main():
     problems = []
     try:
         sid = browser.page(W, H)
+        offline = fonts.prepare(browser, sid, src)
         browser.goto(sid, chrome.file_url(src), wait_ready=False)
+        lacking = fonts.apply(browser, sid, src, offline)
+        for fam in lacking:
+            problems.append(f"font {fam} could not be loaded (no Google Fonts access, no local copy); it will fall back")
         report = browser.js(sid, measure, timeout=180)
         total = len(report["slides"])
         if not total:
